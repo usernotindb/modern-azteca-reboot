@@ -27,24 +27,32 @@ const FadeIn = ({
 
   // Set initial animation states based on direction
   const getDirectionalVariants = () => {
-    const variants = {
+    let variants = {
       hidden: { opacity: 0 },
       visible: { opacity: 1, transition: { duration, delay } },
     };
 
     // Add transform properties based on direction
     if (direction === 'up') {
-      variants.hidden.y = distance;
-      variants.visible.y = 0;
+      variants = {
+        hidden: { opacity: 0, y: distance },
+        visible: { opacity: 1, y: 0, transition: { duration, delay } },
+      };
     } else if (direction === 'down') {
-      variants.hidden.y = -distance;
-      variants.visible.y = 0;
+      variants = {
+        hidden: { opacity: 0, y: -distance },
+        visible: { opacity: 1, y: 0, transition: { duration, delay } },
+      };
     } else if (direction === 'left') {
-      variants.hidden.x = distance;
-      variants.visible.x = 0;
+      variants = {
+        hidden: { opacity: 0, x: distance },
+        visible: { opacity: 1, x: 0, transition: { duration, delay } },
+      };
     } else if (direction === 'right') {
-      variants.hidden.x = -distance;
-      variants.visible.x = 0;
+      variants = {
+        hidden: { opacity: 0, x: -distance },
+        visible: { opacity: 1, x: 0, transition: { duration, delay } },
+      };
     }
 
     return variants;

@@ -7,6 +7,7 @@
   "buildSettings": {
     "dockerFile": "Dockerfile",
     "port": 3235,
+    "buildMethod": "dockerfile"  // Add this line if supported,
     "useNixpacks": false  // Add this if supported
   },
   "environmentVariables": [

@@ -18,11 +18,12 @@ const Hero = () => {
     <section className="relative overflow-hidden min-h-[90vh] flex items-center">
       {/* Background elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-900 to-blue-800"></div>
+        {/* Updated gradient to match Azteca Technology logo colors */}
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-400 via-blue-500 to-blue-900"></div>
         
         {/* Abstract shapes */}
         <motion.div
-          className="absolute top-20 right-[10%] w-64 h-64 bg-blue-700 rounded-full opacity-20 blur-3xl"
+          className="absolute top-20 right-[10%] w-64 h-64 bg-blue-300 rounded-full opacity-20 blur-3xl"
           animate={{
             y: [0, 20, 0],
             scale: [1, 1.05, 1],
@@ -35,7 +36,7 @@ const Hero = () => {
         />
         
         <motion.div
-          className="absolute bottom-20 left-[5%] w-80 h-80 bg-blue-600 rounded-full opacity-30 blur-3xl"
+          className="absolute bottom-20 left-[5%] w-80 h-80 bg-yellow-400 rounded-full opacity-20 blur-3xl"
           animate={{
             y: [0, -30, 0],
             scale: [1, 1.1, 1],
@@ -47,8 +48,8 @@ const Hero = () => {
           }}
         />
         
-        {/* Background pattern */}
-        <div className="absolute inset-0 bg-[url('/lovable-uploads/8d93ccd6-f135-4472-ad9a-677825e40020.png')] bg-no-repeat bg-cover opacity-20" />
+        {/* Add the Azteca Technology logo image in the background */}
+        <div className="absolute inset-0 bg-[url('/lovable-uploads/881ea460-231f-4a79-9b8a-a49b932665d7.png')] bg-no-repeat bg-contain bg-center opacity-10" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10">
@@ -74,7 +75,7 @@ const Hero = () => {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="inline-block px-4 py-1.5 mb-4 rounded-full bg-blue-700 text-blue-100 text-sm font-medium"
+              className="inline-block px-4 py-1.5 mb-4 rounded-full bg-yellow-400 text-blue-900 text-sm font-medium"
             >
               The Ultimate IT Department
             </motion.span>
@@ -94,7 +95,7 @@ const Hero = () => {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="text-blue-100 text-lg mb-8 leading-relaxed"
+              className="text-blue-50 text-lg mb-8 leading-relaxed"
             >
               We understand practical deployment of technology. Whether it's solving problems, planning for growth, or optimization, our team of experts is ready to help your business thrive.
             </motion.p>
@@ -106,11 +107,11 @@ const Hero = () => {
               }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <AnimatedButton href="/products" withArrow className="bg-blue-500 hover:bg-blue-600 text-white">
+              <AnimatedButton href="/products" withArrow className="bg-blue-600 hover:bg-blue-700 text-white">
                 Explore Our Solutions
               </AnimatedButton>
               
-              <AnimatedButton href="/contact" variant="outline" className="border-blue-400 text-white hover:bg-blue-700">
+              <AnimatedButton href="/contact" variant="outline" className="border-blue-200 text-white hover:bg-blue-700">
                 Contact Us
               </AnimatedButton>
             </motion.div>
@@ -126,22 +127,22 @@ const Hero = () => {
             <div className="grid grid-cols-2 gap-6">
               <ServiceIcon 
                 title="IT Management" 
-                icon="/lovable-uploads/8d93ccd6-f135-4472-ad9a-677825e40020.png"
+                icon="/lovable-uploads/881ea460-231f-4a79-9b8a-a49b932665d7.png"
                 delay={0.1}
               />
               <ServiceIcon 
                 title="Disaster Recovery" 
-                icon="/lovable-uploads/8d93ccd6-f135-4472-ad9a-677825e40020.png"
+                icon="/lovable-uploads/881ea460-231f-4a79-9b8a-a49b932665d7.png"
                 delay={0.2}
               />
               <ServiceIcon 
                 title="Server Management" 
-                icon="/lovable-uploads/8d93ccd6-f135-4472-ad9a-677825e40020.png"
+                icon="/lovable-uploads/881ea460-231f-4a79-9b8a-a49b932665d7.png"
                 delay={0.3}
               />
               <ServiceIcon 
                 title="Network Management" 
-                icon="/lovable-uploads/8d93ccd6-f135-4472-ad9a-677825e40020.png"
+                icon="/lovable-uploads/881ea460-231f-4a79-9b8a-a49b932665d7.png"
                 delay={0.4}
               />
             </div>
@@ -160,8 +161,8 @@ const ServiceIcon = ({ title, icon, delay = 0 }: { title: string; icon: string; 
       transition={{ duration: 0.5, delay }}
       className="bg-white/10 backdrop-blur-sm p-6 rounded-xl text-center hover:bg-white/15 transition-all"
     >
-      <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-        <div className="text-white text-4xl">
+      <div className="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+        <div className="text-blue-900 text-4xl">
           {title.charAt(0)}
         </div>
       </div>

@@ -1,0 +1,23 @@
+
+{
+  "name": "aztecas-website",
+  "version": "1.0.0",
+  "description": "Aztecas modern website",
+  "deploymentType": "container",
+  "buildSettings": {
+    "dockerFile": "Dockerfile",
+    "port": 3000
+  },
+  "environmentVariables": [
+    {
+      "name": "NODE_ENV",
+      "value": "production"
+    }
+  ],
+  "scaling": {
+    "minInstances": 1,
+    "maxInstances": 5,
+    "cpuThreshold": 80,
+    "memoryThreshold": 80
+  }
+}

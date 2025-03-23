@@ -1,6 +1,6 @@
 
 import { useEffect, useRef, ReactNode } from 'react';
-import { motion, useInView, useAnimation, Variant } from 'framer-motion';
+import { motion, useInView, useAnimation, Variant, Variants } from 'framer-motion';
 
 interface FadeInProps {
   children: ReactNode;
@@ -10,12 +10,6 @@ interface FadeInProps {
   distance?: number;
   threshold?: number;
   className?: string;
-}
-
-// Define proper types for variants
-interface AnimationVariants {
-  hidden: Variant;
-  visible: Variant;
 }
 
 const FadeIn = ({
@@ -32,7 +26,7 @@ const FadeIn = ({
   const isInView = useInView(ref, { amount: threshold, once: true });
 
   // Set initial animation states based on direction
-  const getDirectionalVariants = (): AnimationVariants => {
+  const getDirectionalVariants = (): Variants => {
     // Base no-direction variant
     if (direction === 'none') {
       return {

@@ -44,15 +44,15 @@ const Contact = () => {
                 <ContactItem 
                   icon={<Phone className="h-5 w-5" />}
                   title="Call Us"
-                  content="+1 (234) 567-890"
-                  href="tel:+12345678901"
+                  content="714-363-0006"
+                  href="tel:+17143630006"
                 />
                 
                 <ContactItem 
                   icon={<MapPin className="h-5 w-5" />}
                   title="Visit Us"
-                  content="123 Business Avenue, New York, NY 10001"
-                  href="https://maps.google.com"
+                  content="3111 Tustin St, Suite 235, Orange, CA 92865"
+                  href="https://maps.google.com/?q=3111+Tustin+St+Suite+235+Orange+CA+92865"
                 />
               </FadeIn>
             </div>

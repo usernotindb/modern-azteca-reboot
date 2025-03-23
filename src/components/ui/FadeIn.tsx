@@ -1,6 +1,6 @@
 
 import { useEffect, useRef, ReactNode } from 'react';
-import { motion, useInView, useAnimation } from 'framer-motion';
+import { motion, useInView, useAnimation, Variant } from 'framer-motion';
 
 interface FadeInProps {
   children: ReactNode;
@@ -10,6 +10,12 @@ interface FadeInProps {
   distance?: number;
   threshold?: number;
   className?: string;
+}
+
+// Define proper types for variants
+interface AnimationVariants {
+  hidden: Variant;
+  visible: Variant;
 }
 
 const FadeIn = ({
@@ -26,36 +32,61 @@ const FadeIn = ({
   const isInView = useInView(ref, { amount: threshold, once: true });
 
   // Set initial animation states based on direction
-  const getDirectionalVariants = () => {
-    let variants = {
-      hidden: { opacity: 0 },
-      visible: { opacity: 1, transition: { duration, delay } },
-    };
-
-    // Add transform properties based on direction
-    if (direction === 'up') {
-      variants = {
-        hidden: { opacity: 0, y: distance },
-        visible: { opacity: 1, y: 0, transition: { duration, delay } },
-      };
-    } else if (direction === 'down') {
-      variants = {
-        hidden: { opacity: 0, y: -distance },
-        visible: { opacity: 1, y: 0, transition: { duration, delay } },
-      };
-    } else if (direction === 'left') {
-      variants = {
-        hidden: { opacity: 0, x: distance },
-        visible: { opacity: 1, x: 0, transition: { duration, delay } },
-      };
-    } else if (direction === 'right') {
-      variants = {
-        hidden: { opacity: 0, x: -distance },
-        visible: { opacity: 1, x: 0, transition: { duration, delay } },
+  const getDirectionalVariants = (): AnimationVariants => {
+    // Base no-direction variant
+    if (direction === 'none') {
+      return {
+        hidden: { opacity: 0 },
+        visible: { 
+          opacity: 1, 
+          transition: { duration, delay } 
+        },
       };
     }
-
-    return variants;
+    
+    // Direction-specific variants
+    if (direction === 'up') {
+      return {
+        hidden: { opacity: 0, y: distance },
+        visible: { 
+          opacity: 1, 
+          y: 0, 
+          transition: { duration, delay } 
+        },
+      };
+    } 
+    
+    if (direction === 'down') {
+      return {
+        hidden: { opacity: 0, y: -distance },
+        visible: { 
+          opacity: 1, 
+          y: 0, 
+          transition: { duration, delay } 
+        },
+      };
+    } 
+    
+    if (direction === 'left') {
+      return {
+        hidden: { opacity: 0, x: distance },
+        visible: { 
+          opacity: 1, 
+          x: 0, 
+          transition: { duration, delay } 
+        },
+      };
+    }
+    
+    // direction === 'right'
+    return {
+      hidden: { opacity: 0, x: -distance },
+      visible: { 
+        opacity: 1, 
+        x: 0, 
+        transition: { duration, delay } 
+      },
+    };
   };
 
   useEffect(() => {

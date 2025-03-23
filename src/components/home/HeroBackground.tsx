@@ -5,14 +5,11 @@ import { motion } from 'framer-motion';
 const HeroBackground = () => {
   return (
     <div className="absolute inset-0 -z-10">
-      {/* Updated gradient to create a more modern tech look with deeper blues */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-800 via-blue-900 to-blue-950"></div>
+      {/* Updated gradient to match the logo colors - blue gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-500 via-blue-600 to-blue-900"></div>
       
-      {/* Modern tech pattern overlay */}
-      <div className="absolute inset-0 opacity-10 bg-[url('/lovable-uploads/afed578c-bf2b-497e-b9a9-8507af071ac4.png')] bg-cover bg-center"></div>
-      
-      {/* Digital circuit pattern */}
-      <div className="absolute inset-0 opacity-15 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-repeat-space mix-blend-overlay"></div>
+      {/* Digital circuit pattern with reduced opacity */}
+      <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-repeat-space mix-blend-overlay"></div>
       
       {/* Abstract shapes with improved animations */}
       <motion.div
@@ -29,7 +26,7 @@ const HeroBackground = () => {
       />
       
       <motion.div
-        className="absolute bottom-20 left-[5%] w-80 h-80 bg-blue-300 rounded-full opacity-10 blur-3xl"
+        className="absolute bottom-20 left-[5%] w-80 h-80 bg-yellow-300 rounded-full opacity-10 blur-3xl"
         animate={{
           y: [0, -30, 0],
           scale: [1, 1.1, 1],
@@ -60,8 +57,8 @@ const HeroBackground = () => {
       {/* Subtle vignette effect */}
       <div className="absolute inset-0 bg-gradient-radial from-transparent to-blue-950/50"></div>
       
-      {/* Azteca Technology logo in the background with reduced opacity */}
-      <div className="absolute inset-0 bg-[url('/lovable-uploads/881ea460-231f-4a79-9b8a-a49b932665d7.png')] bg-no-repeat bg-contain bg-center opacity-5"></div>
+      {/* Prominently display the new Azteca Technology logo */}
+      <div className="absolute inset-0 bg-[url('/lovable-uploads/aafd8b1b-4480-41c4-9f11-0d6862cff6dd.png')] bg-no-repeat bg-contain bg-center opacity-20"></div>
     </div>
   );
 };

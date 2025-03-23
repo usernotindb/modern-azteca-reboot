@@ -6,7 +6,8 @@
   "deploymentType": "container",
   "buildSettings": {
     "dockerFile": "Dockerfile",
-    "port": 3235
+    "port": 3235,
+    "useNixpacks": false  // Add this if supported
   },
   "environmentVariables": [
     {

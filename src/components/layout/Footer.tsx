@@ -100,16 +100,14 @@ const Footer = () => {
               <h3 className="text-lg font-semibold mb-4 text-aztec-900">Contact Us</h3>
               <address className="not-italic text-aztec-600 space-y-2">
                 <p>3111 Tustin St, Suite 235, Orange, CA 92865</p>
-                <p>New York, NY 10001</p>
+                
                 <p className="mt-4">
                   <a href="mailto:info@aztecas.com" className="hover:text-accent-600 transition-colors">
                     info@aztecas.com
                   </a>
                 </p>
                 <p>
-                  <a href="tel:+1234567890" className="hover:text-accent-600 transition-colors">
-                    +1 (234) 567-890
-                  </a>
+                  <a href="tel:+1234567890" className="hover:text-accent-600 transition-colors">(714) 373-0006</a>
                 </p>
               </address>
             </motion.div>

@@ -1,7 +1,11 @@
+import express from 'express';
+import path from 'path';
+import compression from 'compression';
+import { fileURLToPath } from 'url';
 
-const express = require('express');
-const path = require('path');
-const compression = require('compression');
+// Get __dirname equivalent in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3235;

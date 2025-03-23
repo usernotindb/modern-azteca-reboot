@@ -16,7 +16,8 @@ const ITServices = () => {
   
   return (
     <section ref={ref} className="section-padding bg-gradient-to-b from-blue-900 to-blue-800 text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('/lovable-uploads/8d93ccd6-f135-4472-ad9a-677825e40020.png')] bg-no-repeat bg-cover opacity-20" />
+      {/* Enhanced gradient background without the image */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 opacity-90"></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <FadeIn className="text-center max-w-3xl mx-auto mb-16">

@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import Hero from '@/components/home/Hero';
-import Features from '@/components/home/Features';
 import About from '@/components/home/About';
 import Products from '@/components/home/Products';
 import Contact from '@/components/home/Contact';
@@ -29,7 +28,6 @@ const Index = () => {
         animate={controls}
       >
         <Hero />
-        <Features />
         <SoftwareSolutions />
         <ITServices />
         <Products />

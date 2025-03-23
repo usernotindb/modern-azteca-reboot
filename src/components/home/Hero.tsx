@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { motion, useInView, useAnimation } from 'framer-motion';
 import AnimatedButton from '../ui/AnimatedButton';
+import { Camera } from 'lucide-react';
 
 const Hero = () => {
   const controls = useAnimation();
@@ -144,6 +145,11 @@ const Hero = () => {
                 title="Network Management" 
                 icon="/lovable-uploads/881ea460-231f-4a79-9b8a-a49b932665d7.png"
                 delay={0.4}
+              />
+              <ServiceIcon 
+                title="IP Cameras" 
+                icon="/lovable-uploads/bec2f6ea-6fb3-4073-9c82-38aea9579aab.png"
+                delay={0.5}
               />
             </div>
           </motion.div>

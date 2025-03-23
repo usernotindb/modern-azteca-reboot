@@ -2,8 +2,22 @@
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, ArrowUp } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 const Footer = () => {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      // Show button when user has scrolled down 300px
+      setShowScrollTop(scrollPosition > 300);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -95,20 +109,24 @@ const Footer = () => {
           >
             © {new Date().getFullYear()} Aztecas. All rights reserved.
           </motion.p>
-          
-          <motion.button 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            onClick={scrollToTop} 
-            className="mt-4 md:mt-0 flex items-center text-aztec-600 hover:text-accent-600 transition-colors text-sm"
-          >
-            <span className="mr-2">Back to top</span>
-            <ArrowUp size={14} />
-          </motion.button>
         </div>
       </div>
+      
+      {/* Fixed Back to Top Button */}
+      <motion.button 
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ 
+          opacity: showScrollTop ? 1 : 0,
+          scale: showScrollTop ? 1 : 0.8,
+          pointerEvents: showScrollTop ? 'auto' : 'none'
+        }}
+        transition={{ duration: 0.3 }}
+        onClick={scrollToTop} 
+        className="fixed bottom-6 right-6 bg-aztec-900 text-white p-3 rounded-full shadow-lg hover:bg-accent-600 z-50 flex items-center justify-center"
+        aria-label="Back to top"
+      >
+        <ArrowUp size={20} />
+      </motion.button>
     </footer>
   );
 };

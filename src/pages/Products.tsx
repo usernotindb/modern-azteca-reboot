@@ -9,42 +9,114 @@ const Products = () => {
   const productCategories = [
     {
       id: 1,
-      name: "Premium Collection",
-      description: "Our flagship line featuring the finest materials and craftsmanship",
+      name: "Software Solutions",
+      description: "Professional software for businesses of all sizes",
       products: [
-        { id: 101, name: "Premium Product 1", price: "$199" },
-        { id: 102, name: "Premium Product 2", price: "$249" },
-        { id: 103, name: "Premium Product 3", price: "$299" },
+        { 
+          id: 101, 
+          name: "ATS Tax Software", 
+          price: "Contact for pricing",
+          description: "Professional tax software for high volume tax businesses with comprehensive features for tax preparation and filing.",
+          image: "/lovable-uploads/628857d0-dac0-42fc-b3e9-4528eee9ef00.png" 
+        },
+        { 
+          id: 102, 
+          name: "Office 365", 
+          price: "Starting at $149.99/year",
+          description: "Work anywhere, anytime, on any device with Microsoft's industry-leading productivity suite.",
+          image: "/lovable-uploads/f9ca7c28-be78-46ba-9cdc-eff03c287cb7.png" 
+        },
+        { 
+          id: 103, 
+          name: "Anti-Virus Solutions", 
+          price: "$49.99/year",
+          description: "Complete protection for your devices with WiFi Security VPN and antivirus protection.",
+          image: "/lovable-uploads/74da57e4-5aa3-4a37-aa85-c1c28943253c.png" 
+        },
       ]
     },
     {
       id: 2,
-      name: "Essentials Series",
-      description: "Everyday excellence with our signature attention to detail",
+      name: "Hardware Solutions",
+      description: "Premium hardware for optimal performance",
       products: [
-        { id: 201, name: "Essential Product 1", price: "$99" },
-        { id: 202, name: "Essential Product 2", price: "$129" },
-        { id: 203, name: "Essential Product 3", price: "$149" },
+        { 
+          id: 201, 
+          name: "Laptops", 
+          price: "Starting at $899",
+          description: "Get everything done faster with solid state drives, powerful processors, and sleek designs.",
+          image: "/lovable-uploads/0cc76fb6-7912-43fd-9e88-c94137d92a37.png" 
+        },
+        { 
+          id: 202, 
+          name: "Servers", 
+          price: "Starting at $1,499",
+          description: "Operate reliably, manage easily, and scale your business with our server solutions.",
+          image: "/lovable-uploads/9f23050e-b4e0-417a-bc5f-cf88dd8c3e82.png" 
+        },
+        { 
+          id: 203, 
+          name: "Workstations", 
+          price: "Starting at $1,299",
+          description: "Fully customizable Workstation-class performance for demanding professional applications.",
+          image: "/lovable-uploads/628857d0-dac0-42fc-b3e9-4528eee9ef00.png" 
+        },
       ]
     },
     {
       id: 3,
-      name: "Limited Edition",
-      description: "Exclusive designs created in small batches for discerning customers",
+      name: "IT Services",
+      description: "Comprehensive IT support and management",
       products: [
-        { id: 301, name: "Limited Product 1", price: "$399" },
-        { id: 302, name: "Limited Product 2", price: "$449" },
-        { id: 303, name: "Limited Product 3", price: "$499" },
+        { 
+          id: 301, 
+          name: "Managed IT Services", 
+          price: "Custom pricing",
+          description: "Comprehensive IT management to keep your systems running smoothly and securely.",
+          image: "/lovable-uploads/8d93ccd6-f135-4472-ad9a-677825e40020.png" 
+        },
+        { 
+          id: 302, 
+          name: "Disaster Recovery", 
+          price: "Custom pricing",
+          description: "Protect your business with our robust backup and disaster recovery solutions.",
+          image: "/lovable-uploads/8d93ccd6-f135-4472-ad9a-677825e40020.png" 
+        },
+        { 
+          id: 303, 
+          name: "Network Management", 
+          price: "Custom pricing",
+          description: "Keep your network infrastructure secure, up-to-date and operating at peak performance.",
+          image: "/lovable-uploads/8d93ccd6-f135-4472-ad9a-677825e40020.png" 
+        },
       ]
     },
     {
       id: 4,
-      name: "Custom Solutions",
-      description: "Tailored to your exact specifications with personalized service",
+      name: "Security Solutions",
+      description: "Protect your business data and assets",
       products: [
-        { id: 401, name: "Custom Product 1", price: "Custom" },
-        { id: 402, name: "Custom Product 2", price: "Custom" },
-        { id: 403, name: "Custom Product 3", price: "Custom" },
+        { 
+          id: 401, 
+          name: "IP Camera Systems", 
+          price: "Custom pricing",
+          description: "Expert installation of security camera systems for homes and businesses.",
+          image: "/lovable-uploads/74da57e4-5aa3-4a37-aa85-c1c28943253c.png" 
+        },
+        { 
+          id: 402, 
+          name: "Anti-Virus Protection", 
+          price: "$49.99/year",
+          description: "Complete protection for your devices with WiFi Security VPN and antivirus protection.",
+          image: "/lovable-uploads/74da57e4-5aa3-4a37-aa85-c1c28943253c.png" 
+        },
+        { 
+          id: 403, 
+          name: "Network Security", 
+          price: "Custom pricing",
+          description: "Comprehensive network security solutions to protect your business from threats.",
+          image: "/lovable-uploads/8d93ccd6-f135-4472-ad9a-677825e40020.png" 
+        },
       ]
     }
   ];
@@ -55,13 +127,13 @@ const Products = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="max-w-4xl mx-auto text-center">
             <span className="inline-block px-4 py-1.5 mb-4 rounded-full bg-accent-50 text-accent-600 text-sm font-medium">
-              Our Collections
+              Our Products & Services
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-aztec-900">
-              Premium Products
+              Technology Solutions
             </h1>
             <p className="text-aztec-600 text-lg mb-8 max-w-2xl mx-auto">
-              Explore our carefully crafted collections designed with precision and elegance.
+              Explore our comprehensive range of software, hardware, and IT services designed to help your business thrive.
             </p>
           </FadeIn>
         </div>
@@ -81,6 +153,8 @@ const Products = () => {
                       <ProductCard 
                         name={product.name} 
                         price={product.price} 
+                        description={product.description}
+                        image={product.image}
                         delay={0.1 * productIndex}
                       />
                     </SlideUpItem>
@@ -95,16 +169,30 @@ const Products = () => {
   );
 };
 
-const ProductCard = ({ name, price, delay = 0 }: { name: string; price: string; delay?: number }) => {
+const ProductCard = ({ 
+  name, 
+  price, 
+  description, 
+  image, 
+  delay = 0 
+}: { 
+  name: string; 
+  price: string; 
+  description: string;
+  image: string;
+  delay?: number 
+}) => {
   return (
-    <div className="group bg-white border border-aztec-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-      <div className="aspect-square bg-aztec-100 relative">
-        <div className="absolute inset-0 flex items-center justify-center text-aztec-500 font-medium">
-          Product Image
-        </div>
+    <div className="group bg-white border border-aztec-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
+      <div className="aspect-video bg-aztec-50 relative">
+        <img 
+          src={image} 
+          alt={name} 
+          className="w-full h-full object-cover object-center"
+        />
       </div>
       
-      <div className="p-6">
+      <div className="p-6 flex-grow flex flex-col">
         <div className="flex justify-between items-start mb-4">
           <h3 className="text-lg font-semibold text-aztec-900 group-hover:text-accent-600 transition-colors">
             {name}
@@ -114,18 +202,18 @@ const ProductCard = ({ name, price, delay = 0 }: { name: string; price: string; 
           </span>
         </div>
         
-        <p className="text-aztec-600 mb-6">
-          This is a short description of the product features and benefits. It highlights what makes this product special.
+        <p className="text-aztec-600 mb-6 flex-grow">
+          {description}
         </p>
         
         <AnimatedButton
-          href="#"
+          href="/contact"
           variant="outline"
           className="w-full justify-center border-aztec-200 text-aztec-800 hover:bg-accent-50 hover:text-accent-700 hover:border-accent-200"
           icon={<ChevronRight className="h-4 w-4" />}
           iconPosition="right"
         >
-          View Details
+          Get a Quote
         </AnimatedButton>
       </div>
     </div>

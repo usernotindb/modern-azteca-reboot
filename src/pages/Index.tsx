@@ -7,6 +7,9 @@ import Features from '@/components/home/Features';
 import About from '@/components/home/About';
 import Products from '@/components/home/Products';
 import Contact from '@/components/home/Contact';
+import ITServices from '@/components/home/ITServices';
+import SoftwareSolutions from '@/components/home/SoftwareSolutions';
+import SecuritySolutions from '@/components/home/SecuritySolutions';
 
 const Index = () => {
   const controls = useAnimation();
@@ -27,8 +30,11 @@ const Index = () => {
       >
         <Hero />
         <Features />
-        <About />
+        <SoftwareSolutions />
+        <ITServices />
         <Products />
+        <SecuritySolutions />
+        <About />
         <Contact />
       </motion.div>
     </Layout>

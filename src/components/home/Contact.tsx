@@ -3,7 +3,9 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import FadeIn from '../ui/FadeIn';
 import AnimatedButton from '../ui/AnimatedButton';
-import { Send, Mail, MapPin, Phone } from 'lucide-react';
+import { Send } from 'lucide-react';
+import ContactItem from '../contact/ContactItem';
+import { Mail, MapPin, Phone } from 'lucide-react';
 
 const Contact = () => {
   const ref = useRef(null);
@@ -39,21 +41,21 @@ const Contact = () => {
               </p>
               
               <div className="space-y-6 mb-8">
-                <ContactItem 
+                <HomeContactItem 
                   icon={<Mail className="h-5 w-5" />}
                   title="Email Us"
                   content="info@aztecas.com"
                   href="mailto:info@aztecas.com"
                 />
                 
-                <ContactItem 
+                <HomeContactItem 
                   icon={<Phone className="h-5 w-5" />}
                   title="Call Us"
                   content="714-363-0006"
                   href="tel:+17143630006"
                 />
                 
-                <ContactItem 
+                <HomeContactItem 
                   icon={<MapPin className="h-5 w-5" />}
                   title="Visit Us"
                   content="3111 Tustin St, Suite 235, Orange, CA 92865"
@@ -135,7 +137,8 @@ const Contact = () => {
   );
 };
 
-const ContactItem = ({ icon, title, content, href }: { 
+// Home-specific contact item with white styling
+const HomeContactItem = ({ icon, title, content, href }: { 
   icon: React.ReactNode; 
   title: string; 
   content: string;

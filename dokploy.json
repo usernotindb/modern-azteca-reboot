@@ -6,7 +6,7 @@
   "deploymentType": "container",
   "buildSettings": {
     "dockerFile": "Dockerfile",
-    "port": 3000
+    "port": 3235
   },
   "environmentVariables": [
     {

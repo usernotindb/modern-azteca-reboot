@@ -6,7 +6,7 @@ env:
   - NODE_ENV=production
 buildCommand: npm ci && npm run build
 startCommand: node server.js
-port: 3000
+port: 3235
 resources:
   cpu: 0.5
   memory: 512Mi

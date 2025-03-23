@@ -4,7 +4,7 @@ const path = require('path');
 const compression = require('compression');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3235;
 
 // Enable compression for all responses
 app.use(compression());

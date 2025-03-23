@@ -19,6 +19,6 @@ COPY --from=build /app/package*.json ./
 
 RUN npm ci --only=production
 
-EXPOSE 3000
+EXPOSE 3235
 
 CMD ["node", "server.js"]

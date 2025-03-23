@@ -1,7 +1,9 @@
+
 import { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import AnimatedButton from '@/components/ui/AnimatedButton';
+import FadeIn from '@/components/ui/FadeIn';
 
 const SoftwareSolutions = () => {
   const controls = useAnimation();
@@ -25,20 +27,16 @@ const SoftwareSolutions = () => {
       
       <div className="container mx-auto px-4">
         {/* Section Heading */}
-        <motion.div
-          ref={ref}
-          variants={fadeInVariants}
-          initial="hidden"
-          animate={controls}
-          className="text-center"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
-            Our Software Solutions
-          </h2>
-          <p className="text-blue-600 text-lg">
-            Empowering your business with cutting-edge software solutions tailored to your unique needs.
-          </p>
-        </motion.div>
+        <FadeIn direction="up" duration={0.8}>
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+              Our Software Solutions
+            </h2>
+            <p className="text-blue-600 text-lg">
+              Empowering your business with cutting-edge software solutions tailored to your unique needs.
+            </p>
+          </div>
+        </FadeIn>
         
         <div className="relative mt-12 md:mt-16 lg:mt-20">
           {/* Main feature box with gradient background */}
@@ -75,37 +73,28 @@ const SoftwareSolutions = () => {
           {/* Feature cards and additional content */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             {/* Card 1 */}
-            <motion.div
-              variants={fadeInVariants}
-              initial="hidden"
-              animate={controls}
-              className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
-            >
-              <h4 className="text-xl font-semibold text-blue-800 mb-2">Web Applications</h4>
-              <p className="text-blue-600">Develop scalable and responsive web applications that enhance user experience and streamline operations.</p>
-            </motion.div>
+            <FadeIn delay={0.1} direction="up">
+              <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+                <h4 className="text-xl font-semibold text-blue-800 mb-2">Web Applications</h4>
+                <p className="text-blue-600">Develop scalable and responsive web applications that enhance user experience and streamline operations.</p>
+              </div>
+            </FadeIn>
             
             {/* Card 2 */}
-            <motion.div
-              variants={fadeInVariants}
-              initial="hidden"
-              animate={controls}
-              className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
-            >
-              <h4 className="text-xl font-semibold text-blue-800 mb-2">Mobile Apps</h4>
-              <p className="text-blue-600">Create native and cross-platform mobile applications that keep your business connected and accessible.</p>
-            </motion.div>
+            <FadeIn delay={0.2} direction="up">
+              <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+                <h4 className="text-xl font-semibold text-blue-800 mb-2">Mobile Apps</h4>
+                <p className="text-blue-600">Create native and cross-platform mobile applications that keep your business connected and accessible.</p>
+              </div>
+            </FadeIn>
             
             {/* Card 3 */}
-            <motion.div
-              variants={fadeInVariants}
-              initial="hidden"
-              animate={controls}
-              className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
-            >
-              <h4 className="text-xl font-semibold text-blue-800 mb-2">Enterprise Solutions</h4>
-              <p className="text-blue-600">Implement robust enterprise software solutions that improve collaboration, productivity, and decision-making.</p>
-            </motion.div>
+            <FadeIn delay={0.3} direction="up">
+              <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+                <h4 className="text-xl font-semibold text-blue-800 mb-2">Enterprise Solutions</h4>
+                <p className="text-blue-600">Implement robust enterprise software solutions that improve collaboration, productivity, and decision-making.</p>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </div>

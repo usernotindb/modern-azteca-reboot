@@ -1,7 +1,7 @@
+
 import { useEffect, useRef } from 'react';
 import { motion, useInView, useAnimation } from 'framer-motion';
 import AnimatedButton from '../ui/AnimatedButton';
-import FadeIn from '../ui/FadeIn';
 
 const Hero = () => {
   const controls = useAnimation();
@@ -16,20 +16,14 @@ const Hero = () => {
 
   return (
     <section className="relative overflow-hidden min-h-[90vh] flex items-center">
-      {/* Background image */}
+      {/* Background elements */}
       <div className="absolute inset-0 -z-10">
-        {/* Use the uploaded image as background */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center" 
-          style={{ backgroundImage: "url('/lovable-uploads/305ff0fa-2a8c-422f-89b7-f6ca71907481.png')" }}
-        />
+        {/* Updated gradient to match Azteca Technology logo colors */}
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-400 via-blue-500 to-blue-900"></div>
         
-        {/* Gradient overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/30 to-blue-900/60"></div>
-        
-        {/* Abstract shapes - keep but reduce opacity */}
+        {/* Abstract shapes */}
         <motion.div
-          className="absolute top-20 right-[10%] w-64 h-64 bg-blue-300 rounded-full opacity-10 blur-3xl"
+          className="absolute top-20 right-[10%] w-64 h-64 bg-blue-300 rounded-full opacity-20 blur-3xl"
           animate={{
             y: [0, 20, 0],
             scale: [1, 1.05, 1],
@@ -42,7 +36,7 @@ const Hero = () => {
         />
         
         <motion.div
-          className="absolute bottom-20 left-[5%] w-80 h-80 bg-yellow-400 rounded-full opacity-10 blur-3xl"
+          className="absolute bottom-20 left-[5%] w-80 h-80 bg-yellow-400 rounded-full opacity-20 blur-3xl"
           animate={{
             y: [0, -30, 0],
             scale: [1, 1.1, 1],
@@ -53,6 +47,9 @@ const Hero = () => {
             repeatType: 'reverse',
           }}
         />
+        
+        {/* Add the Azteca Technology logo image in the background */}
+        <div className="absolute inset-0 bg-[url('/lovable-uploads/881ea460-231f-4a79-9b8a-a49b932665d7.png')] bg-no-repeat bg-contain bg-center opacity-10" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10">

@@ -59,13 +59,7 @@ const SoftwareSolutions = () => {
             <div className="absolute inset-0 bg-blue-900/30"></div>
             
             {/* Content inside the main feature box */}
-            <div className="relative p-8 md:p-12 lg:p-16 text-white">
-              
-              
-              <AnimatedButton href="/contact" className="bg-yellow-400 text-blue-900 hover:bg-yellow-500">
-                Get a Free Consultation
-              </AnimatedButton>
-            </div>
+            
           </div>
           
           {/* Feature cards and additional content */}

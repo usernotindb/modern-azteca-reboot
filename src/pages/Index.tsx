@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
@@ -86,7 +87,11 @@ const Index = () => {
                   a strategic roadmap for your business.
                 </p>
               </div>
-              <AnimatedButton href="/contact" className="bg-white hover:bg-blue-50 text-blue-800 px-8 py-4 text-lg font-medium" withArrow>
+              <AnimatedButton 
+                href="/contact" 
+                className="bg-white hover:bg-blue-50 text-blue-800 px-8 py-4 text-lg font-medium" 
+                withArrow
+              >
                 Schedule a Consultation
               </AnimatedButton>
             </div>

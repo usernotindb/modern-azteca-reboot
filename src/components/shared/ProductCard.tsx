@@ -79,7 +79,7 @@ const ProductCard = ({
           <AnimatedButton
             href={categorySlug ? `/products/${categorySlug}` : '#'}
             variant="outline"
-            className="text-sm px-4 py-2 bg-white text-blue-700 border-blue-200 hover:bg-blue-50 font-medium shadow-sm"
+            className="text-sm px-4 py-2 bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100 font-medium shadow-sm"
             onClick={handleLearnMoreClick}
           >
             Learn More

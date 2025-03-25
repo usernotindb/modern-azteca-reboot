@@ -29,7 +29,10 @@ const Products = () => {
         
         <ProductsShowcase />
         
-        <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          style={{ position: 'relative' }} // Setting position for scroll offset calculation
+        >
           {productsList.map((product, index) => (
             <ProductCard 
               key={product.id} 

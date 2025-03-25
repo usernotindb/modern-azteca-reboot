@@ -35,7 +35,7 @@ const ITServices = () => {
           </p>
         </FadeIn>
         
-        <motion.div style={{ y }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <motion.div style={{ y, position: 'relative' }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <ServiceCard 
             icon={<Wifi size={32} />}
             title="I.T. Management"

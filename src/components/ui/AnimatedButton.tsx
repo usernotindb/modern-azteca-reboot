@@ -17,7 +17,6 @@ interface AnimatedButtonProps {
   type?: 'button' | 'submit' | 'reset';
   fullWidth?: boolean;
   isExternal?: boolean;
-  // Adding the missing properties
   withArrow?: boolean;
   icon?: ReactNode;
   iconPosition?: 'left' | 'right';

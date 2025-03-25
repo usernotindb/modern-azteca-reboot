@@ -1,6 +1,6 @@
 
 import SlideUp, { SlideUpItem } from '@/components/ui/SlideUp';
-import ProductCard from './ProductCard';
+import ProductCard from '../shared/ProductCard';
 
 export interface Product {
   id: number;
@@ -40,6 +40,7 @@ const ProductCategory = ({ category, isFirst }: ProductCategoryProps) => {
                 image={product.image}
                 categorySlug={category.slug}
                 delay={0.1 * productIndex}
+                variant="product"
               />
             </SlideUpItem>
           ))}

@@ -1,8 +1,7 @@
-
 import { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
-import ProductCard from '@/components/products/ProductCard';
+import ProductCard from '@/components/shared/ProductCard';
 import FadeIn from '@/components/ui/FadeIn';
 import SlideUp, { SlideUpItem } from '@/components/ui/SlideUp';
 import { Monitor, PenTool, FileVideo, Database } from 'lucide-react';

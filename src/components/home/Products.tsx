@@ -1,7 +1,7 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import ProductCard from './ProductCard';
+import ProductCard from '../shared/ProductCard';
 import ProductsHeader from './ProductsHeader';
 import ProductsShowcase from './ProductsShowcase';
 import { productsList } from './ProductsData';
@@ -30,6 +30,7 @@ const Products = () => {
               description={product.description}
               image={product.image}
               index={index}
+              variant="home"
             />
           ))}
         </motion.div>

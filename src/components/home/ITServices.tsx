@@ -73,7 +73,7 @@ const ITServices = () => {
             <p className="text-lg font-medium">For pricing information:</p>
             <AnimatedButton 
               href="/products/it-services" 
-              className="bg-green-600 hover:bg-green-700 text-white min-w-40"
+              className="bg-blue-600 hover:bg-blue-500 text-black min-w-40"
             >
               Learn more
             </AnimatedButton>

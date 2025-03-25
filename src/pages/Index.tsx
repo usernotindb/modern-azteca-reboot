@@ -136,14 +136,16 @@ const ServiceCard = ({
     <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
       <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
       <p className="text-blue-100 mb-4">{description}</p>
-      <AnimatedButton 
-        href={link} 
-        variant="outline" 
-        className="border-white text-white hover:bg-white hover:text-blue-800 font-medium shadow-md" 
-        withArrow
-      >
-        Learn More
-      </AnimatedButton>
+      <div className="flex justify-center">
+        <AnimatedButton 
+          href={link} 
+          variant="outline" 
+          className="border-blue-300 bg-blue-600 text-black hover:bg-blue-500 font-medium shadow-md w-full justify-center" 
+          withArrow
+        >
+          Learn More
+        </AnimatedButton>
+      </div>
     </div>
   </FadeIn>;
 

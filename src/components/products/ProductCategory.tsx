@@ -16,6 +16,7 @@ interface ProductCategoryProps {
     name: string;
     description: string;
     products: Product[];
+    slug: string;
   };
   isFirst: boolean;
 }
@@ -37,6 +38,7 @@ const ProductCategory = ({ category, isFirst }: ProductCategoryProps) => {
                 price={product.price} 
                 description={product.description}
                 image={product.image}
+                categorySlug={category.slug}
                 delay={0.1 * productIndex}
               />
             </SlideUpItem>

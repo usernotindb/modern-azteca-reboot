@@ -12,6 +12,7 @@ export interface ProductCategory {
   name: string;
   description: string;
   products: Product[];
+  slug: string;
 }
 
 export const productCategories: ProductCategory[] = [
@@ -19,6 +20,7 @@ export const productCategories: ProductCategory[] = [
     id: 1,
     name: "Software Solutions",
     description: "Professional software for businesses of all sizes",
+    slug: "software-solutions",
     products: [
       { 
         id: 101, 
@@ -47,6 +49,7 @@ export const productCategories: ProductCategory[] = [
     id: 2,
     name: "Hardware Solutions",
     description: "Premium hardware for optimal performance",
+    slug: "hardware-solutions",
     products: [
       { 
         id: 201, 
@@ -75,6 +78,7 @@ export const productCategories: ProductCategory[] = [
     id: 3,
     name: "IT Services",
     description: "Comprehensive IT support and management",
+    slug: "it-services",
     products: [
       { 
         id: 301, 
@@ -103,6 +107,7 @@ export const productCategories: ProductCategory[] = [
     id: 4,
     name: "Security Solutions",
     description: "Protect your business data and assets",
+    slug: "security-solutions",
     products: [
       { 
         id: 401, 

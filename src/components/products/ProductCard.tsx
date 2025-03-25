@@ -7,6 +7,7 @@ interface ProductCardProps {
   price: string;
   description: string;
   image: string;
+  categorySlug: string;
   delay?: number;
 }
 
@@ -15,6 +16,7 @@ const ProductCard = ({
   price, 
   description, 
   image, 
+  categorySlug,
   delay = 0 
 }: ProductCardProps) => {
   return (
@@ -41,15 +43,25 @@ const ProductCard = ({
           {description}
         </p>
         
-        <AnimatedButton
-          href="/contact"
-          variant="outline"
-          className="w-full justify-center border-aztec-200 text-aztec-800 hover:bg-accent-50 hover:text-accent-700 hover:border-accent-200"
-          icon={<ChevronRight className="h-4 w-4" />}
-          iconPosition="right"
-        >
-          Get a Quote
-        </AnimatedButton>
+        <div className="flex gap-3">
+          <AnimatedButton
+            href={`/products/${categorySlug}`}
+            variant="outline"
+            className="w-1/2 justify-center bg-blue-600 hover:bg-blue-700 text-white border-0"
+            icon={<ChevronRight className="h-4 w-4" />}
+            iconPosition="right"
+          >
+            Learn More
+          </AnimatedButton>
+          
+          <AnimatedButton
+            href="/contact"
+            variant="outline"
+            className="w-1/2 justify-center border-aztec-200 text-aztec-800 hover:bg-accent-50 hover:text-accent-700 hover:border-accent-200"
+          >
+            Get a Quote
+          </AnimatedButton>
+        </div>
       </div>
     </div>
   );

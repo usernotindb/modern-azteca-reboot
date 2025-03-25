@@ -79,7 +79,7 @@ const ProductCard = ({
           <AnimatedButton
             href={categorySlug ? `/products/${categorySlug}` : '#'}
             variant="outline"
-            className="text-sm px-4 py-2"
+            className="text-sm px-4 py-2 bg-white text-blue-700 border-blue-200 hover:bg-blue-50 font-medium shadow-sm"
             onClick={handleLearnMoreClick}
           >
             Learn More
@@ -89,7 +89,7 @@ const ProductCard = ({
             <AnimatedButton
               href="/contact"
               variant="link"
-              className="text-sm"
+              className="text-sm text-blue-600 hover:text-blue-800"
             >
               Contact Us
             </AnimatedButton>

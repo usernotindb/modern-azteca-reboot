@@ -28,7 +28,12 @@ const ProductsHeader = () => {
         transition={{ duration: 0.5, delay: 0.3 }}
         className="mt-6 md:mt-0"
       >
-        <AnimatedButton href="/products" withArrow variant="ghost" className="text-accent-600 hover:text-accent-700">
+        <AnimatedButton 
+          href="/products" 
+          withArrow 
+          variant="ghost" 
+          className="text-accent-600 hover:text-accent-700 font-medium"
+        >
           View All Products
         </AnimatedButton>
       </motion.div>

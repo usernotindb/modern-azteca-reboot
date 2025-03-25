@@ -11,6 +11,7 @@ import SecuritySolutions from '@/components/home/SecuritySolutions';
 import FadeIn from '@/components/ui/FadeIn';
 import { Check, Award, Clock, Users } from 'lucide-react';
 import AnimatedButton from '@/components/ui/AnimatedButton';
+
 const Index = () => {
   const controls = useAnimation();
   useEffect(() => {
@@ -71,9 +72,6 @@ const Index = () => {
         <SecuritySolutions />
         <About />
         
-        {/* Testimonials Section */}
-        
-        
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -99,6 +97,7 @@ const Index = () => {
       </motion.div>
     </Layout>;
 };
+
 const StatCard = ({
   number,
   label,
@@ -114,6 +113,7 @@ const StatCard = ({
     <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">{number}</div>
     <div className="text-aztec-600">{label}</div>
   </FadeIn>;
+
 const ServiceCard = ({
   title,
   description,
@@ -125,17 +125,23 @@ const ServiceCard = ({
   image: string;
   link: string;
 }) => <FadeIn direction="up" className="group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-shadow">
-    <div className="absolute inset-0 bg-gradient-to-t from-blue-900 to-blue-900/0 z-10"></div>
+    <div className="absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/80 to-blue-900/30 z-10"></div>
     <img src={image} alt={title} className="w-full h-64 object-cover object-center group-hover:scale-105 transition-transform duration-500" />
     
     <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
       <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
       <p className="text-blue-100 mb-4">{description}</p>
-      <AnimatedButton href={link} variant="outline" className="border-white text-white hover:bg-white hover:text-blue-800" withArrow>
+      <AnimatedButton 
+        href={link} 
+        variant="outline" 
+        className="border-white text-white hover:bg-white hover:text-blue-800 font-medium shadow-md" 
+        withArrow
+      >
         Learn More
       </AnimatedButton>
     </div>
   </FadeIn>;
+
 const TestimonialCard = ({
   quote,
   author,
@@ -167,4 +173,5 @@ const TestimonialCard = ({
       </div>
     </div>
   </FadeIn>;
+
 export default Index;

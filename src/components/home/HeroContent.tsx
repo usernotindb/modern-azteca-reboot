@@ -1,8 +1,7 @@
 
 import React from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import AnimatedButton from '../ui/AnimatedButton';
-import { useInView } from 'framer-motion';
 
 interface HeroContentProps {
   controls: any;
@@ -63,7 +62,7 @@ const HeroContent = ({ controls, reference }: HeroContentProps) => {
         }}
         className="flex flex-col sm:flex-row gap-4"
       >
-        <AnimatedButton href="/products" withArrow className="bg-blue-600 hover:bg-blue-700 text-white">
+        <AnimatedButton href="/services" withArrow className="bg-blue-600 hover:bg-blue-700 text-white">
           Explore Our Solutions
         </AnimatedButton>
         

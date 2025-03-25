@@ -1,5 +1,4 @@
 
-import { Link } from 'react-router-dom';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import { ChevronRight } from 'lucide-react';
 
@@ -18,27 +17,6 @@ const ProductCard = ({
   image, 
   delay = 0 
 }: ProductCardProps) => {
-  // Get category name from product name to create proper link
-  const getCategoryForProduct = (productName: string): string => {
-    // Map product names to their categories
-    const categoryMap: Record<string, string> = {
-      'ATS Tax Software': 'software-solutions',
-      'Office 365': 'software-solutions',
-      'Anti-Virus Solutions': 'software-solutions',
-      'Laptops': 'hardware-solutions',
-      'Servers': 'hardware-solutions',
-      'Workstations': 'hardware-solutions',
-      'Managed IT Services': 'it-services',
-      'Disaster Recovery': 'it-services',
-      'Network Management': 'it-services',
-      'IP Camera Systems': 'security-solutions',
-      'Anti-Virus Protection': 'security-solutions',
-      'Network Security': 'security-solutions',
-    };
-    
-    return categoryMap[productName] || 'products';
-  };
-
   return (
     <div className="group bg-white border border-aztec-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
       <div className="aspect-video bg-aztec-50 relative">

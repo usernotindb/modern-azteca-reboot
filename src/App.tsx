@@ -11,10 +11,6 @@ import Services from "./pages/Services";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import SoftwareSolutionsPage from "./pages/product-categories/SoftwareSolutionsPage";
-import HardwareSolutionsPage from "./pages/product-categories/HardwareSolutionsPage";
-import ITServicesPage from "./pages/product-categories/ITServicesPage";
-import SecuritySolutionsPage from "./pages/product-categories/SecuritySolutionsPage";
 
 const queryClient = new QueryClient();
 
@@ -28,10 +24,6 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/products" element={<Products />} />
-            <Route path="/products/software-solutions" element={<SoftwareSolutionsPage />} />
-            <Route path="/products/hardware-solutions" element={<HardwareSolutionsPage />} />
-            <Route path="/products/it-services" element={<ITServicesPage />} />
-            <Route path="/products/security-solutions" element={<SecuritySolutionsPage />} />
             <Route path="/services" element={<Services />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />

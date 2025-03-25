@@ -65,6 +65,14 @@ const SolutionsShowcase = ({ category }: SolutionsShowcaseProps) => {
                     className="w-full justify-center border-purple-300 text-purple-700 hover:bg-purple-50"
                     icon={<ArrowRight className="h-4 w-4" />}
                     iconPosition="right"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const targetId = getProductSectionId(product.name);
+                      const targetElement = document.getElementById(targetId);
+                      if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }
+                    }}
                   >
                     Learn More
                   </AnimatedButton>

@@ -33,6 +33,29 @@ const AnimatedButton = ({
   const rightIcon = withArrow ? <ArrowRight className="h-4 w-4" /> : icon && iconPosition === 'right' ? icon : null;
   const leftIcon = icon && iconPosition === 'left' ? icon : null;
   
+  // Default click handler for anchor links (links that start with #)
+  const handleAnchorClick = (event: React.MouseEvent) => {
+    // If there's a custom onClick handler, use that
+    if (onClick) {
+      onClick(event);
+      return;
+    }
+    
+    // If this is an anchor link, handle smooth scrolling
+    if (href && href.startsWith('#')) {
+      event.preventDefault();
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        targetElement.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+  };
+  
   const buttonContent = (
     <>
       {leftIcon && (
@@ -75,7 +98,11 @@ const AnimatedButton = ({
           size={size} 
           className={cn("font-medium text-foreground flex items-center w-full", className)}
         >
-          <Link to={href} className="flex items-center justify-center w-full" onClick={onClick}>
+          <Link 
+            to={href} 
+            className="flex items-center justify-center w-full" 
+            onClick={href.startsWith('#') ? handleAnchorClick : onClick}
+          >
             {buttonContent}
           </Link>
         </Button>

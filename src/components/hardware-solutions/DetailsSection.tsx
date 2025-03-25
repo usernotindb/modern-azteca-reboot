@@ -1,105 +1,93 @@
 
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { ProductCategory } from '@/data/productData';
 import FadeIn from '@/components/ui/FadeIn';
 import AnimatedButton from '@/components/ui/AnimatedButton';
-import { Check } from 'lucide-react';
-import { ProductCategory } from '@/data/productData';
 
 interface DetailsSectionProps {
   category: ProductCategory;
 }
 
 const DetailsSection = ({ category }: DetailsSectionProps) => {
-  const parallaxRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: parallaxRef,
-    offset: ["start end", "end start"]
-  });
-  
-  const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  
   return (
-    <section ref={parallaxRef} className="py-24 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden relative">
-      <motion.div style={{ y }} className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
-            Hardware Specifications & Details
+            Detailed Hardware Specifications
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Our hardware solutions are built with the latest technology to ensure optimal performance, 
-            reliability, and scalability for your business.
+          <p className="text-gray-700 text-lg max-w-2xl mx-auto">
+            Learn more about our high-quality hardware solutions and how they can benefit your business.
           </p>
         </FadeIn>
         
-        {category.products.map((product, index) => (
-          <div 
-            key={product.id} 
-            id={product.name.toLowerCase().replace(/\s+/g, '-')}
-            className={`mb-16 ${index !== 0 ? 'pt-12 border-t border-gray-200' : ''}`}
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-              <FadeIn direction={index % 2 === 0 ? "right" : "left"}>
-                <div className={`order-2 ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{product.name}</h3>
-                  <p className="text-gray-600 mb-6">{product.description}</p>
-                  
-                  <div className="bg-white rounded-lg p-6 shadow-md mb-6">
-                    <h4 className="font-semibold text-gray-900 mb-4">Key Specifications:</h4>
-                    <ul className="space-y-3">
-                      {[
-                        "Latest generation processors for optimal performance",
-                        "High-speed memory for multitasking efficiency",
-                        "Reliable storage solutions with backup capabilities",
-                        "Enhanced graphics for demanding applications",
-                        "Energy-efficient design for reduced operating costs"
-                      ].map((spec, i) => (
-                        <motion.li 
-                          key={i}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3, delay: i * 0.1 }}
-                          viewport={{ once: true }}
-                          className="flex items-start"
-                        >
-                          <span className="flex-shrink-0 bg-green-500 rounded-full p-1 mr-3 mt-1">
-                            <Check className="h-3 w-3 text-white" />
-                          </span>
-                          <span className="text-gray-600">{spec}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
+        <div className="space-y-16">
+          {category.products.map((product) => {
+            // Create ID from product name
+            const productId = product.name.toLowerCase().replace(/\s+/g, '-');
+            
+            return (
+              <div key={product.id} id={productId} className="bg-white rounded-xl shadow-md overflow-hidden">
+                <div className="flex flex-col lg:flex-row">
+                  <div className="lg:w-1/3">
+                    <div className="h-full">
+                      <img 
+                        src={product.image} 
+                        alt={product.name} 
+                        className="w-full h-full object-cover object-center"
+                      />
+                    </div>
                   </div>
                   
-                  <div className="flex flex-wrap gap-4">
-                    <AnimatedButton 
-                      href="/contact" 
-                      className="bg-blue-600 hover:bg-blue-700 text-white"
-                    >
-                      Request a Quote
-                    </AnimatedButton>
-                    <span className="inline-flex items-center text-gray-600 font-semibold">
-                      Starting at <span className="text-blue-600 ml-1">{product.price}</span>
-                    </span>
+                  <div className="lg:w-2/3 p-8">
+                    <div className="flex justify-between items-start mb-4">
+                      <h3 className="text-2xl font-bold text-gray-900">
+                        {product.name}
+                      </h3>
+                      {product.price && (
+                        <span className="bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-medium">
+                          {product.price}
+                        </span>
+                      )}
+                    </div>
+                    
+                    <p className="text-gray-700 mb-6">
+                      {product.description}
+                    </p>
+                    
+                    <div className="bg-gray-50 p-6 rounded-lg mb-6">
+                      <h4 className="text-lg font-semibold mb-4">Key Specifications</h4>
+                      <ul className="space-y-2 text-gray-700">
+                        <li>• High-performance components</li>
+                        <li>• Enterprise-grade reliability</li>
+                        <li>• Advanced security features</li>
+                        <li>• Comprehensive warranty coverage</li>
+                        <li>• Professional support services</li>
+                      </ul>
+                    </div>
+                    
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <AnimatedButton
+                        href="/contact"
+                        className="sm:w-auto justify-center bg-blue-600 hover:bg-blue-700 text-white"
+                      >
+                        Request a Quote
+                      </AnimatedButton>
+                      
+                      <AnimatedButton
+                        href="/products"
+                        variant="outline"
+                        className="sm:w-auto justify-center border-gray-200"
+                      >
+                        Browse More Products
+                      </AnimatedButton>
+                    </div>
                   </div>
                 </div>
-              </FadeIn>
-              
-              <FadeIn direction={index % 2 === 0 ? "left" : "right"}>
-                <div className={`order-1 ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
-                  <div className="bg-white p-2 rounded-xl shadow-lg overflow-hidden">
-                    <img 
-                      src={product.image} 
-                      alt={product.name} 
-                      className="w-full h-auto rounded-lg"
-                    />
-                  </div>
-                </div>
-              </FadeIn>
-            </div>
-          </div>
-        ))}
-      </motion.div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 };

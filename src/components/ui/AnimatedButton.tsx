@@ -1,4 +1,3 @@
-
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
@@ -46,7 +45,7 @@ const AnimatedButton = ({
         </motion.span>
       )}
       
-      <span className="whitespace-normal truncate">{children}</span>
+      <span className="whitespace-normal text-ellipsis overflow-hidden">{children}</span>
       
       {rightIcon && (
         <motion.span 
@@ -73,7 +72,7 @@ const AnimatedButton = ({
           asChild 
           variant={variant} 
           size={size} 
-          className={cn("font-medium text-foreground overflow-hidden", className)}
+          className={cn("font-medium text-foreground", className)}
         >
           <Link to={href} className="flex items-center w-full">
             {buttonContent}
@@ -94,7 +93,7 @@ const AnimatedButton = ({
         variant={variant} 
         size={size} 
         onClick={onClick} 
-        className={cn("font-medium text-foreground overflow-hidden", className)}
+        className={cn("font-medium text-foreground", className)}
       >
         {buttonContent}
       </Button>

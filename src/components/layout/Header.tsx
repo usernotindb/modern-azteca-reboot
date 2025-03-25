@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -26,7 +25,6 @@ const Header = () => {
 
   const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/services', label: 'Services' },
     { href: '/products', label: 'Products' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },

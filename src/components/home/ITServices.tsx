@@ -72,10 +72,10 @@ const ITServices = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <p className="text-lg font-medium">For pricing information:</p>
             <AnimatedButton 
-              href="/contact" 
+              href="/products/it-services" 
               className="bg-green-600 hover:bg-green-700 text-white min-w-40"
             >
-              Contact us now
+              Learn more
             </AnimatedButton>
             <a href="tel:+17143630006" className="text-xl font-bold hover:text-blue-200 transition-colors">
               714-363-0006

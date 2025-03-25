@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 
@@ -42,7 +41,6 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4">Company</h3>
             <ul className="space-y-2">
               <FooterLink href="/about" text="About Us" />
-              <FooterLink href="/services" text="Services" />
               <FooterLink href="/contact" text="Contact" />
               <FooterLink href="/privacy-policy" text="Privacy Policy" />
               <FooterLink href="/terms-of-service" text="Terms of Service" />

@@ -1,10 +1,11 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import ProductCard from '../shared/ProductCard';
+import ProductCard from '@/components/shared/ProductCard';
 import ProductsHeader from './ProductsHeader';
 import ProductsShowcase from './ProductsShowcase';
 import { productsList } from './ProductsData';
+import { scrollToElement } from '@/lib/hooks/useScroll';
 
 const Products = () => {
   const ref = useRef(null);
@@ -14,6 +15,11 @@ const Products = () => {
   });
   
   const translateX = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  
+  // Helper function to get product ID from name
+  const getProductId = (name: string): string => {
+    return name.toLowerCase().replace(/\s+/g, '-');
+  };
   
   return (
     <section ref={ref} className="section-padding bg-white relative overflow-hidden">
@@ -31,6 +37,7 @@ const Products = () => {
               image={product.image}
               index={index}
               variant="home"
+              onLearnMore={() => scrollToElement(getProductId(product.name), 100)}
             />
           ))}
         </motion.div>
@@ -39,7 +46,7 @@ const Products = () => {
         <div className="mt-20 space-y-12">
           {productsList.map((product) => {
             // Create ID from product name
-            const productId = product.name.toLowerCase().replace(/\s+/g, '-');
+            const productId = getProductId(product.name);
             
             return (
               <div 

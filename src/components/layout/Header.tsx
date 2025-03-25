@@ -1,27 +1,14 @@
-import { useState, useEffect } from 'react';
+
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useScroll } from '@/lib/hooks/useScroll';
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const isScrolled = useScroll(10);
   const location = useLocation();
-
-  // Update isScrolled state based on window scroll position
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Close mobile menu when location changes
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [location]);
 
   const navLinks = [
     { href: '/', label: 'Home' },

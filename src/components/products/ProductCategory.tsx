@@ -1,14 +1,9 @@
-import SlideUp, { SlideUpItem } from '@/components/ui/SlideUp';
-import ProductCard from '../shared/ProductCard';
-import AnimatedButton from '@/components/ui/AnimatedButton';
 
-export interface Product {
-  id: number;
-  name: string;
-  price: string;
-  description: string;
-  image: string;
-}
+import SlideUp, { SlideUpItem } from '@/components/ui/SlideUp';
+import ProductCard from '@/components/shared/ProductCard';
+import AnimatedButton from '@/components/ui/AnimatedButton';
+import { Product } from '@/lib/types/product';
+import { scrollToElement } from '@/lib/hooks/useScroll';
 
 interface ProductCategoryProps {
   category: {
@@ -22,6 +17,11 @@ interface ProductCategoryProps {
 }
 
 const ProductCategory = ({ category, isFirst }: ProductCategoryProps) => {
+  // Helper function to get product ID from name
+  const getProductId = (name: string): string => {
+    return name.toLowerCase().replace(/\s+/g, '-');
+  };
+
   return (
     <div className={`py-12 ${!isFirst ? 'border-t border-aztec-100' : ''}`}>
       <SlideUp>
@@ -41,6 +41,7 @@ const ProductCategory = ({ category, isFirst }: ProductCategoryProps) => {
                 categorySlug={category.slug}
                 delay={0.1 * productIndex}
                 variant="product"
+                onLearnMore={() => scrollToElement(getProductId(product.name), 100)}
               />
             </SlideUpItem>
           ))}
@@ -50,7 +51,7 @@ const ProductCategory = ({ category, isFirst }: ProductCategoryProps) => {
         <div className="mt-16 space-y-16">
           {category.products.map((product) => {
             // Create ID from product name
-            const productId = product.name.toLowerCase().replace(/\s+/g, '-');
+            const productId = getProductId(product.name);
             
             return (
               <SlideUpItem key={product.id}>

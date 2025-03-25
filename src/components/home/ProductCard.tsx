@@ -12,6 +12,22 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ name, description, image, index }: ProductCardProps) => {
+  const handleLearnMoreClick = (event: React.MouseEvent) => {
+    event.preventDefault();
+    
+    // Create a slug from the product name
+    const productSlug = name.toLowerCase().replace(/\s+/g, '-');
+    const targetElement = document.getElementById(productSlug);
+    
+    if (targetElement) {
+      // Smooth scroll to the element
+      targetElement.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -28,11 +44,12 @@ const ProductCard = ({ name, description, image, index }: ProductCardProps) => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-aztec-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
           <AnimatedButton
-            href={`/products/${name.toLowerCase().replace(/\s+/g, '-')}`}
+            href={`#${name.toLowerCase().replace(/\s+/g, '-')}`}
             className="bg-white text-aztec-900 hover:bg-aztec-50 font-medium"
             size="sm"
             icon={<ChevronRight className="h-4 w-4" />}
             iconPosition="right"
+            onClick={handleLearnMoreClick}
           >
             View Details
           </AnimatedButton>
@@ -49,10 +66,11 @@ const ProductCard = ({ name, description, image, index }: ProductCardProps) => {
         </p>
         
         <AnimatedButton
-          href={`/products/${name.toLowerCase().replace(/\s+/g, '-')}`}
+          href={`#${name.toLowerCase().replace(/\s+/g, '-')}`}
           variant="outline"
           className="w-full justify-center bg-blue-600 hover:bg-blue-700 text-white border-0 font-medium"
           size="default"
+          onClick={handleLearnMoreClick}
         >
           Learn More
         </AnimatedButton>

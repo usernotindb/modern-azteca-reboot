@@ -19,6 +19,22 @@ const ProductCard = ({
   categorySlug,
   delay = 0 
 }: ProductCardProps) => {
+  const handleLearnMoreClick = (event: React.MouseEvent) => {
+    event.preventDefault();
+    
+    // Create a slug from the product name
+    const productSlug = name.toLowerCase().replace(/\s+/g, '-');
+    const targetElement = document.getElementById(productSlug);
+    
+    if (targetElement) {
+      // Smooth scroll to the element
+      targetElement.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+  
   return (
     <div className="group bg-white border border-aztec-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
       <div className="aspect-video bg-aztec-50 relative">
@@ -45,12 +61,13 @@ const ProductCard = ({
         
         <div className="flex flex-col sm:flex-row gap-3 mt-auto">
           <AnimatedButton
-            href={`/products/${categorySlug}`}
+            href={`#${name.toLowerCase().replace(/\s+/g, '-')}`}
             variant="default"
             className="w-full sm:w-1/2 justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium"
             icon={<ChevronRight className="h-4 w-4" />}
             iconPosition="right"
             size="default"
+            onClick={handleLearnMoreClick}
           >
             Learn More
           </AnimatedButton>

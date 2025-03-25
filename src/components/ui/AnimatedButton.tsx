@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 interface AnimatedButtonProps {
   children: ReactNode;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent) => void;
   href?: string;
   className?: string;
   variant?: 'default' | 'outline' | 'ghost' | 'link' | 'secondary' | 'destructive';
@@ -75,7 +75,7 @@ const AnimatedButton = ({
           size={size} 
           className={cn("font-medium text-foreground flex items-center w-full", className)}
         >
-          <Link to={href} className="flex items-center justify-center w-full">
+          <Link to={href} className="flex items-center justify-center w-full" onClick={onClick}>
             {buttonContent}
           </Link>
         </Button>

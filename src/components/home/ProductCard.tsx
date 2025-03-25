@@ -29,7 +29,7 @@ const ProductCard = ({ name, description, image, index }: ProductCardProps) => {
         <div className="absolute inset-0 bg-gradient-to-t from-aztec-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
           <AnimatedButton
             href={`/products/${name.toLowerCase().replace(/\s+/g, '-')}`}
-            className="bg-white text-aztec-900 hover:bg-aztec-50"
+            className="bg-white text-aztec-900 hover:bg-aztec-50 font-medium"
             size="sm"
             icon={<ChevronRight className="h-4 w-4" />}
             iconPosition="right"
@@ -51,10 +51,10 @@ const ProductCard = ({ name, description, image, index }: ProductCardProps) => {
         <AnimatedButton
           href={`/products/${name.toLowerCase().replace(/\s+/g, '-')}`}
           variant="outline"
-          className="w-full justify-center bg-blue-600 hover:bg-blue-700 text-white border-0"
+          className="w-full justify-center bg-blue-600 hover:bg-blue-700 text-white border-0 font-medium"
           size="sm"
         >
-          Learn More...
+          Learn More
         </AnimatedButton>
       </div>
     </motion.div>

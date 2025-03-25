@@ -47,7 +47,7 @@ const ProductCard = ({
           <AnimatedButton
             href={`/products/${categorySlug}`}
             variant="default"
-            className="w-full sm:w-1/2 justify-center bg-blue-600 hover:bg-blue-700 text-white"
+            className="w-full sm:w-1/2 justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium"
             icon={<ChevronRight className="h-4 w-4" />}
             iconPosition="right"
           >
@@ -57,7 +57,7 @@ const ProductCard = ({
           <AnimatedButton
             href="/contact"
             variant="outline"
-            className="w-full sm:w-1/2 justify-center border-aztec-200 text-aztec-800 hover:bg-accent-50 hover:text-accent-700 hover:border-accent-200"
+            className="w-full sm:w-1/2 justify-center border-aztec-200 text-aztec-800 hover:bg-accent-50 hover:text-accent-700 hover:border-accent-200 font-medium"
           >
             Get a Quote
           </AnimatedButton>

@@ -1,3 +1,4 @@
+
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
@@ -10,8 +11,8 @@ interface AnimatedButtonProps {
   onClick?: () => void;
   href?: string;
   className?: string;
-  variant?: 'default' | 'outline' | 'ghost' | 'link';
-  size?: 'default' | 'sm' | 'lg';
+  variant?: 'default' | 'outline' | 'ghost' | 'link' | 'secondary' | 'destructive';
+  size?: 'default' | 'sm' | 'lg' | 'icon';
   icon?: ReactNode;
   iconPosition?: 'left' | 'right';
   withArrow?: boolean;
@@ -36,7 +37,7 @@ const AnimatedButton = ({
     <>
       {leftIcon && (
         <motion.span 
-          className="mr-2" 
+          className="mr-2 flex-shrink-0" 
           initial={{ x: 0 }}
           whileHover={{ x: -3 }}
           transition={{ duration: 0.2 }}
@@ -72,7 +73,7 @@ const AnimatedButton = ({
           asChild 
           variant={variant} 
           size={size} 
-          className={cn("font-medium text-foreground", className)}
+          className={cn("font-medium text-foreground flex items-center", className)}
         >
           <Link to={href} className="flex items-center w-full">
             {buttonContent}
@@ -93,7 +94,7 @@ const AnimatedButton = ({
         variant={variant} 
         size={size} 
         onClick={onClick} 
-        className={cn("font-medium text-foreground", className)}
+        className={cn("font-medium text-foreground flex items-center", className)}
       >
         {buttonContent}
       </Button>

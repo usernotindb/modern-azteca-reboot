@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { ArrowRight } from 'lucide-react';
 
 interface AnimatedButtonProps {
   children: ReactNode;
@@ -16,6 +17,10 @@ interface AnimatedButtonProps {
   type?: 'button' | 'submit' | 'reset';
   fullWidth?: boolean;
   isExternal?: boolean;
+  // Adding the missing properties
+  withArrow?: boolean;
+  icon?: ReactNode;
+  iconPosition?: 'left' | 'right';
 }
 
 const AnimatedButton = ({
@@ -28,7 +33,10 @@ const AnimatedButton = ({
   disabled = false,
   type = 'button',
   fullWidth = false,
-  isExternal = false
+  isExternal = false,
+  withArrow = false,
+  icon,
+  iconPosition = 'right'
 }: AnimatedButtonProps) => {
   // Button content with animation
   const buttonContent = (
@@ -38,7 +46,12 @@ const AnimatedButton = ({
       whileTap={{ scale: 0.97 }}
       transition={{ duration: 0.2 }}
     >
-      {children}
+      <span className="flex items-center justify-center gap-2">
+        {icon && iconPosition === 'left' && icon}
+        {children}
+        {withArrow && <ArrowRight className="h-4 w-4 ml-1" />}
+        {icon && iconPosition === 'right' && icon}
+      </span>
     </motion.span>
   );
 

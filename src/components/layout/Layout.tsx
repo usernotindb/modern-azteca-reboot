@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Header from './Header';
 import Footer from './Footer';
+import ScrollToTop from '@/components/ui/ScrollToTop';
 
 interface LayoutProps {
   children: ReactNode;
@@ -35,6 +36,9 @@ const Layout = ({ children }: LayoutProps) => {
       </AnimatePresence>
       
       <Footer />
+      
+      {/* Add scroll to top button */}
+      <ScrollToTop threshold={300} />
     </div>
   );
 };

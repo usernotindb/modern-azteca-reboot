@@ -1,6 +1,6 @@
-
 import SlideUp, { SlideUpItem } from '@/components/ui/SlideUp';
 import ProductCard from '../shared/ProductCard';
+import AnimatedButton from '@/components/ui/AnimatedButton';
 
 export interface Product {
   id: number;

@@ -43,11 +43,11 @@ const ProductCard = ({
           {description}
         </p>
         
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-3">
           <AnimatedButton
             href={`/products/${categorySlug}`}
-            variant="outline"
-            className="w-1/2 justify-center bg-blue-600 hover:bg-blue-700 text-white border-0"
+            variant="default"
+            className="w-full sm:w-1/2 justify-center bg-blue-600 hover:bg-blue-700 text-white"
             icon={<ChevronRight className="h-4 w-4" />}
             iconPosition="right"
           >
@@ -57,7 +57,7 @@ const ProductCard = ({
           <AnimatedButton
             href="/contact"
             variant="outline"
-            className="w-1/2 justify-center border-aztec-200 text-aztec-800 hover:bg-accent-50 hover:text-accent-700 hover:border-accent-200"
+            className="w-full sm:w-1/2 justify-center border-aztec-200 text-aztec-800 hover:bg-accent-50 hover:text-accent-700 hover:border-accent-200"
           >
             Get a Quote
           </AnimatedButton>

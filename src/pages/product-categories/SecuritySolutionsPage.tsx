@@ -25,6 +25,11 @@ const SecuritySolutionsPage = () => {
     if (name.includes("Network")) return <Lock className="w-8 h-8" />;
     return <Fingerprint className="w-8 h-8" />;
   };
+
+  // Function to convert product name to ID format
+  const getProductSectionId = (name: string) => {
+    return name.toLowerCase().replace(/\s+/g, '-');
+  };
   
   return (
     <Layout>
@@ -165,7 +170,7 @@ const SecuritySolutionsPage = () => {
                     </AnimatedButton>
                     
                     <AnimatedButton 
-                      href={`#${product.name.toLowerCase().replace(/\s+/g, '-')}`}
+                      href={`#${getProductSectionId(product.name)}`}
                       variant="outline"
                       className="w-full justify-center border-purple-300 text-purple-700 hover:bg-purple-50"
                       icon={<ArrowRight className="h-4 w-4" />}
@@ -187,7 +192,7 @@ const SecuritySolutionsPage = () => {
           {securityCategory.products.map((product, index) => (
             <div 
               key={product.id}
-              id={product.name.toLowerCase().replace(/\s+/g, '-')}
+              id={getProductSectionId(product.name)}
               className={`py-16 ${index !== 0 ? 'border-t border-slate-200 mt-16' : ''}`}
             >
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

@@ -30,7 +30,7 @@ const AnimatedButton = ({
   withArrow = false
 }: AnimatedButtonProps) => {
   // Handle hover animation for arrow or icon
-  const rightIcon = withArrow ? <ArrowRight className="ml-2 h-4 w-4" /> : icon && iconPosition === 'right' ? icon : null;
+  const rightIcon = withArrow ? <ArrowRight className="h-4 w-4" /> : icon && iconPosition === 'right' ? icon : null;
   const leftIcon = icon && iconPosition === 'left' ? icon : null;
   
   const buttonContent = (
@@ -46,7 +46,7 @@ const AnimatedButton = ({
         </motion.span>
       )}
       
-      <span className="whitespace-normal text-ellipsis overflow-hidden">{children}</span>
+      <span className="whitespace-normal text-center">{children}</span>
       
       {rightIcon && (
         <motion.span 
@@ -67,15 +67,15 @@ const AnimatedButton = ({
       <motion.div 
         whileHover={{ scale: 1.02 }} 
         whileTap={{ scale: 0.98 }} 
-        className="inline-block"
+        className="inline-block w-full"
       >
         <Button 
           asChild 
           variant={variant} 
           size={size} 
-          className={cn("font-medium text-foreground flex items-center", className)}
+          className={cn("font-medium text-foreground flex items-center w-full", className)}
         >
-          <Link to={href} className="flex items-center w-full">
+          <Link to={href} className="flex items-center justify-center w-full">
             {buttonContent}
           </Link>
         </Button>
@@ -88,13 +88,13 @@ const AnimatedButton = ({
     <motion.div 
       whileHover={{ scale: 1.02 }} 
       whileTap={{ scale: 0.98 }} 
-      className="inline-block"
+      className="inline-block w-full"
     >
       <Button 
         variant={variant} 
         size={size} 
         onClick={onClick} 
-        className={cn("font-medium text-foreground flex items-center", className)}
+        className={cn("font-medium text-foreground flex items-center justify-center w-full", className)}
       >
         {buttonContent}
       </Button>

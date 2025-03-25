@@ -52,7 +52,7 @@ const ProductCard = ({ name, description, image, index }: ProductCardProps) => {
           href={`/products/${name.toLowerCase().replace(/\s+/g, '-')}`}
           variant="outline"
           className="w-full justify-center bg-blue-600 hover:bg-blue-700 text-white border-0 font-medium"
-          size="sm"
+          size="default"
         >
           Learn More
         </AnimatedButton>

@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import { Product } from '@/lib/types/product';
@@ -36,11 +37,17 @@ const ProductCard = ({
     }
   };
 
-  // Use the new image for laptops, keep original behavior for other products
+  // Get the appropriate image source based on category
   const getImageSource = () => {
+    // For laptops, use the uploaded laptop image
     if (categorySlug === 'laptops') {
       return "/lovable-uploads/78f56f78-5618-46cc-87a1-bbb19df328bb.png";
     }
+    // For servers, use the new server image
+    else if (categorySlug === 'servers') {
+      return "/lovable-uploads/9f952ca9-69ce-4ab5-8239-0dbdcdae2c6b.png";
+    }
+    // For all other categories, use the provided image
     return image;
   };
 

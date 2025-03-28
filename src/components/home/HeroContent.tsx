@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import AnimatedButton from '../ui/AnimatedButton';
 
 interface HeroContentProps {
-  controls: any;
-  reference: React.RefObject<HTMLDivElement>;
+  controls?: any;
+  reference?: React.RefObject<HTMLDivElement>;
 }
 
 const HeroContent = ({ controls, reference }: HeroContentProps) => {

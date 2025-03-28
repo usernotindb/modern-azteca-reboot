@@ -11,7 +11,7 @@ const workstations = [
   {
     id: 1,
     name: "Design Pro Workstation",
-    price: "$3,499",
+    price: "$1,499",
     description: "High-performance workstation optimized for graphic design, CAD, and creative applications.",
     image: "/lovable-uploads/881ea460-231f-4a79-9b8a-a49b932665d7.png",
     categorySlug: "workstations"

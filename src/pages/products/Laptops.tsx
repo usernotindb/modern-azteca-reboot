@@ -11,7 +11,7 @@ const laptops = [
   {
     id: 1,
     name: "Business Pro Laptop",
-    price: "$1,299",
+    price: "$999",
     description: "High performance laptop designed for business professionals with enhanced security features.",
     image: "/lovable-uploads/6d1b82c7-3784-46ea-9384-d24ef9ad8509.png",
     categorySlug: "laptops"

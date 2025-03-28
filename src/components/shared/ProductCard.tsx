@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import { Product } from '@/lib/types/product';
@@ -37,6 +36,14 @@ const ProductCard = ({
     }
   };
 
+  // Use the new image for laptops, keep original behavior for other products
+  const getImageSource = () => {
+    if (categorySlug === 'laptops') {
+      return "/lovable-uploads/78f56f78-5618-46cc-87a1-bbb19df328bb.png";
+    }
+    return image;
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -47,7 +54,7 @@ const ProductCard = ({
       {image && (
         <div className="mb-4 aspect-video overflow-hidden rounded-md">
           <img
-            src={image}
+            src={getImageSource()}
             alt={name || 'Product image'}
             className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
           />

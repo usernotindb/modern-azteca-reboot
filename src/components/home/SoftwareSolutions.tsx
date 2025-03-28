@@ -68,7 +68,7 @@ const SoftwareSolutions = () => {
             <FadeIn delay={0.1} direction="up">
               <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
                 <h4 className="text-xl font-semibold text-blue-800 mb-2">The Best Tax Software in the Industry</h4>
-                <p className="text-blue-600">Use </p>
+                <p className="text-blue-600">Use ATS (Azteca Tax Systems) stands out as the best tax software in the industry due to its comprehensive solutions, user-friendly interface, and dedicated support tailored to meet the needs of tax professionals</p>
               </div>
             </FadeIn>
             

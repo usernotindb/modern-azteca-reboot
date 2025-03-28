@@ -1,13 +1,29 @@
 
+import { useState } from 'react';
 import { ProductCategory } from '@/data/productData';
 import FadeIn from '@/components/ui/FadeIn';
 import AnimatedButton from '@/components/ui/AnimatedButton';
+import ImageSelector from '@/components/ui/ImageSelector';
 
 interface DetailsSectionProps {
   category: ProductCategory;
 }
 
 const DetailsSection = ({ category }: DetailsSectionProps) => {
+  // Store images state for each product
+  const [productImages, setProductImages] = useState<Record<number, string>>({});
+
+  const getProductImage = (productId: number, defaultImage: string) => {
+    return productImages[productId] || defaultImage;
+  };
+
+  const handleImageChange = (productId: number, newImage: string) => {
+    setProductImages(prev => ({
+      ...prev,
+      [productId]: newImage
+    }));
+  };
+
   return (
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,10 +46,13 @@ const DetailsSection = ({ category }: DetailsSectionProps) => {
                 <div className="flex flex-col lg:flex-row">
                   <div className="lg:w-1/3">
                     <div className="h-full">
-                      <img 
-                        src={product.image} 
-                        alt={product.name} 
-                        className="w-full h-full object-cover object-center"
+                      <ImageSelector
+                        currentImage={getProductImage(product.id, product.image)}
+                        onImageChange={(newImage) => handleImageChange(product.id, newImage)}
+                        imageAlt={product.name}
+                        position="top-left"
+                        size="lg"
+                        className="w-full h-full"
                       />
                     </div>
                   </div>

@@ -1,5 +1,5 @@
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import ProductCard from '@/components/shared/ProductCard';
 import ProductsHeader from './ProductsHeader';
@@ -49,7 +49,7 @@ const Products = () => {
               variant="home" 
               onLearnMore={() => scrollToElement(getProductId(product.name), 100)} 
               className="hover:shadow-lg"
-              imageId={product.imageId || `home-product-${index}`} // Pass the imageId
+              imageId={product.imageId || `home-product-${index}`}
             />
           ))}
         </motion.div>

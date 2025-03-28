@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import FadeIn from '@/components/ui/FadeIn';
 import AnimatedButton from '@/components/ui/AnimatedButton';
@@ -40,7 +41,7 @@ const ProductsShowcase = ({ category }: ProductsShowcaseProps) => {
               categorySlug={category.slug}
               index={index}
               variant="product"
-              imageId={`category-${category.slug}-product-${index}`} // Add unique ID
+              imageId={`category-${category.slug}-product-${index}`}
             />
           ))}
         </div>

@@ -1,16 +1,32 @@
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import FadeIn from '@/components/ui/FadeIn';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import { ArrowRight } from 'lucide-react';
 import { Product, ProductCategory } from '@/data/productData';
 import { getSecurityIcon, getProductSectionId } from './securityUtils';
+import ImageSelector from '@/components/ui/ImageSelector';
 
 interface SolutionsShowcaseProps {
   category: ProductCategory;
 }
 
 const SolutionsShowcase = ({ category }: SolutionsShowcaseProps) => {
+  // Store images state for each product
+  const [productImages, setProductImages] = useState<Record<number, string>>({});
+
+  const getProductImage = (productId: number, defaultImage: string) => {
+    return productImages[productId] || defaultImage;
+  };
+
+  const handleImageChange = (productId: number, newImage: string) => {
+    setProductImages(prev => ({
+      ...prev,
+      [productId]: newImage
+    }));
+  };
+
   return (
     <section id="solutions" className="py-20 bg-gradient-to-b from-white to-slate-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,6 +62,16 @@ const SolutionsShowcase = ({ category }: SolutionsShowcaseProps) => {
               </div>
               
               <div className="p-6">
+                <div className="mb-4 aspect-video rounded-lg overflow-hidden">
+                  <ImageSelector
+                    currentImage={getProductImage(product.id, product.image || "/lovable-uploads/8d93ccd6-f135-4472-ad9a-677825e40020.png")}
+                    onImageChange={(newImage) => handleImageChange(product.id, newImage)}
+                    imageAlt={product.name}
+                    position="top-right"
+                    size="md"
+                  />
+                </div>
+
                 <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors">
                   {product.name}
                 </h3>

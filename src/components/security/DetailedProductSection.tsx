@@ -1,11 +1,12 @@
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import FadeIn from '@/components/ui/FadeIn';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import { Check } from 'lucide-react';
 import { Product } from '@/data/productData';
 import { getProductSectionId } from './securityUtils';
+import ImageSelector from '@/components/ui/ImageSelector';
 
 interface DetailedProductSectionProps {
   products: Product[];
@@ -19,6 +20,20 @@ const DetailedProductSection = ({ products }: DetailedProductSectionProps) => {
   });
   
   const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
+
+  // Store images state for each product
+  const [productImages, setProductImages] = useState<Record<number, string>>({});
+
+  const getProductImage = (productId: number, defaultImage: string) => {
+    return productImages[productId] || defaultImage;
+  };
+
+  const handleImageChange = (productId: number, newImage: string) => {
+    setProductImages(prev => ({
+      ...prev,
+      [productId]: newImage
+    }));
+  };
   
   return (
     <section ref={ref} className="py-24 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
@@ -89,16 +104,14 @@ const DetailedProductSection = ({ products }: DetailedProductSectionProps) => {
               <FadeIn direction={index % 2 === 0 ? "left" : "right"} className={index % 2 === 0 ? "order-2" : "order-1 lg:order-2"}>
                 <div className="p-4 bg-gradient-to-br from-purple-100 to-slate-100 rounded-xl shadow-xl relative overflow-hidden">
                   <div className="aspect-square relative rounded-lg overflow-hidden border-4 border-white shadow-inner">
-                    <img 
-                      src={product.image} 
-                      alt={product.name} 
-                      className="w-full h-full object-cover"
+                    <ImageSelector
+                      currentImage={getProductImage(product.id, product.image)}
+                      onImageChange={(newImage) => handleImageChange(product.id, newImage)}
+                      imageAlt={product.name}
+                      position="top-right"
+                      size="lg"
+                      className="w-full h-full"
                     />
-                    {/* Overlay with product info */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-purple-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
-                      <h3 className="text-white text-xl font-bold mb-2">{product.name}</h3>
-                      <p className="text-purple-100 text-sm">{product.description}</p>
-                    </div>
                   </div>
                 </div>
               </FadeIn>

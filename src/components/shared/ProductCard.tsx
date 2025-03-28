@@ -1,7 +1,9 @@
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import { Product } from '@/lib/types/product';
+import ImageSelector from '@/components/ui/ImageSelector';
 
 interface ProductCardProps extends Partial<Product> {
   variant?: 'home' | 'product' | 'featured';
@@ -9,7 +11,7 @@ interface ProductCardProps extends Partial<Product> {
   delay?: number;
   onLearnMore?: () => void;
   className?: string;
-  imageId?: string; // Add imageId prop
+  imageId?: string;
 }
 
 const ProductCard = ({
@@ -23,8 +25,26 @@ const ProductCard = ({
   delay = 0,
   onLearnMore,
   className = '',
-  imageId // Receive imageId 
+  imageId
 }: ProductCardProps) => {
+  // Get the default image based on category and variant
+  const getDefaultImage = () => {
+    if (variant === 'home') {
+      return "/lovable-uploads/fd6981e3-b5e5-4a03-9cd8-38fac8167126.png";
+    }
+    
+    if (categorySlug === 'laptops') {
+      return "/lovable-uploads/78f56f78-5618-46cc-87a1-bbb19df328bb.png";
+    }
+    else if (categorySlug === 'servers') {
+      return "/lovable-uploads/9f952ca9-69ce-4ab5-8239-0dbdcdae2c6b.png";
+    }
+    return image || "/lovable-uploads/fd6981e3-b5e5-4a03-9cd8-38fac8167126.png";
+  };
+
+  // Initialize state with the appropriate default image
+  const [productImage, setProductImage] = useState(getDefaultImage());
+
   const variantStyles = {
     home: 'p-4 bg-white border border-aztec-50 rounded-lg shadow-sm hover:shadow-md transition-shadow',
     product: 'p-4 bg-white border border-aztec-50 rounded-lg shadow-sm hover:shadow-md transition-shadow',
@@ -39,25 +59,6 @@ const ProductCard = ({
     }
   };
 
-  // Get the appropriate image source - prioritizing our new image
-  const getImageSource = () => {
-    // Use our new generic product image for home page products
-    if (variant === 'home') {
-      return "/lovable-uploads/fd6981e3-b5e5-4a03-9cd8-38fac8167126.png";
-    }
-    
-    // For laptops, use the uploaded laptop image
-    if (categorySlug === 'laptops') {
-      return "/lovable-uploads/78f56f78-5618-46cc-87a1-bbb19df328bb.png";
-    }
-    // For servers, use the server image
-    else if (categorySlug === 'servers') {
-      return "/lovable-uploads/9f952ca9-69ce-4ab5-8239-0dbdcdae2c6b.png";
-    }
-    // For all other categories, use the provided image or fallback to our new image
-    return image || "/lovable-uploads/fd6981e3-b5e5-4a03-9cd8-38fac8167126.png";
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -65,13 +66,14 @@ const ProductCard = ({
       transition={{ duration: 0.5, delay: delay + (index * 0.1) }}
       className={`${variantStyles[variant]} ${className}`}
     >
-      {image && (
+      {image !== undefined && (
         <div className="mb-4 aspect-video overflow-hidden rounded-md">
-          <img
-            src={getImageSource()}
-            alt={name || 'Product image'}
-            className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
-            id={imageId || `product-image-${index}`} // Add unique ID based on imageId or index
+          <ImageSelector
+            currentImage={productImage}
+            onImageChange={setProductImage}
+            imageAlt={name || 'Product image'}
+            position="top-right"
+            size="md"
           />
         </div>
       )}

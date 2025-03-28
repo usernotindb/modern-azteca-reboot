@@ -6,51 +6,66 @@ import { useIsMobile } from '@/hooks/use-mobile';
 
 interface CardContainerProps {
   children: ReactNode;
+  onMouseMove?: (e: React.MouseEvent) => void;
 }
 
-// Define what props we'll pass to children
+// Define the type of the props that will be passed to children
 interface ChildProps {
   mouseX: number;
   mouseY: number;
 }
 
-const CardContainer = ({ children }: CardContainerProps) => {
+const CardContainer = ({ children, onMouseMove }: CardContainerProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
+  const isMobile = useIsMobile();
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
-  const isMobile = useIsMobile();
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current || isMobile) return;
+  // Handle mouse movement to create the 3D tilting effect
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isMobile || !cardRef.current) return;
     
-    const rect = cardRef.current.getBoundingClientRect();
-    
-    // Calculate mouse position relative to the center of the card
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    
-    // Get mouse distance from center
-    const mouseX = e.clientX - centerX;
-    const mouseY = e.clientY - centerY;
-    
-    // Set maximum rotation (degrees) - reduced for better performance
-    const maxRotation = 8;
-    
-    // Calculate rotation based on mouse position
-    // Normalize the rotation to our max range based on card dimensions
-    const rotateY = (mouseX / (rect.width / 2)) * maxRotation;
-    const rotateX = -(mouseY / (rect.height / 2)) * maxRotation;
-    
-    setRotateX(rotateX);
-    setRotateY(rotateY);
-    setMouseX(mouseX);
-    setMouseY(mouseY);
+    try {
+      // Get card dimensions and position
+      const card = cardRef.current;
+      const rect = card.getBoundingClientRect();
+      
+      // Calculate mouse position relative to the card center
+      const cardCenterX = rect.left + rect.width / 2;
+      const cardCenterY = rect.top + rect.height / 2;
+      
+      // Calculate rotation based on mouse position
+      const rotateYValue = ((e.clientX - cardCenterX) / (rect.width / 2)) * 5;
+      const rotateXValue = ((e.clientY - cardCenterY) / (rect.height / 2)) * 5;
+      
+      // Update rotation state
+      setRotateX(-rotateXValue);
+      setRotateY(rotateYValue);
+      
+      // Update mouse position state
+      const newMouseX = (e.clientX / window.innerWidth) * 2 - 1;
+      const newMouseY = (e.clientY / window.innerHeight) * 2 - 1;
+      setMouseX(newMouseX);
+      setMouseY(newMouseY);
+      
+      // Call the onMouseMove prop if provided
+      if (onMouseMove) {
+        onMouseMove(e);
+      }
+    } catch (error) {
+      console.error("Error in handleMouseMove:", error);
+      // Set default values if an error occurs
+      setRotateX(0);
+      setRotateY(0);
+      setMouseX(0);
+      setMouseY(0);
+    }
   };
 
+  // Handle mouse leave to reset the card position
   const handleMouseLeave = () => {
-    // Smoothly reset to default position
     setRotateX(0);
     setRotateY(0);
   };
@@ -68,29 +83,21 @@ const CardContainer = ({ children }: CardContainerProps) => {
   });
 
   return (
-    <div 
-      className="relative w-full h-[400px] md:h-[400px] flex items-center justify-center"
-      style={{ perspective: isMobile ? "none" : "1200px" }}
+    <motion.div
+      ref={cardRef}
+      className="relative w-full aspect-square max-w-md mx-auto bg-transparent perspective"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        transform: isMobile 
+          ? 'none' 
+          : `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+        transformStyle: isMobile ? undefined : 'preserve-3d',
+        transition: 'transform 0.1s ease',
+      }}
     >
-      {/* Main card container */}
-      <motion.div
-        ref={cardRef}
-        className="w-full h-full rounded-2xl overflow-hidden"
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        animate={{
-          rotateX: isMobile ? 0 : rotateX,
-          rotateY: isMobile ? 0 : rotateY,
-        }}
-        // Increase stiffness and damping for smoother, less calculation-intensive animations
-        transition={{ type: "spring", stiffness: 200, damping: 25 }}
-        style={{
-          transformStyle: isMobile ? "flat" : "preserve-3d",
-        }}
-      >
-        {childrenWithProps}
-      </motion.div>
-    </div>
+      {childrenWithProps}
+    </motion.div>
   );
 };
 

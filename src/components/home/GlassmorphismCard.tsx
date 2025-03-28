@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import CardContainer from './glassmorphism/CardContainer';
 import CardBackground from './glassmorphism/CardBackground';
 import CardContent from './glassmorphism/CardContent';
@@ -19,8 +19,21 @@ const GlassmorphismCard = () => {
     { src: "/lovable-uploads/9f23050e-b4e0-417a-bc5f-cf88dd8c3e82.png", label: "Support" },
   ];
 
+  // Add error handling for the 3D transformations
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    try {
+      setMouseX((e.clientX / window.innerWidth) * 2 - 1);
+      setMouseY((e.clientY / window.innerHeight) * 2 - 1);
+    } catch (error) {
+      console.error("Mouse move error:", error);
+      // Set default values if an error occurs
+      setMouseX(0);
+      setMouseY(0);
+    }
+  }, []);
+
   return (
-    <CardContainer>
+    <CardContainer onMouseMove={handleMouseMove}>
       <CardBackground mouseX={mouseX} mouseY={mouseY} />
       <CardContent mouseX={mouseX} mouseY={mouseY}>
         <CenterLogo />

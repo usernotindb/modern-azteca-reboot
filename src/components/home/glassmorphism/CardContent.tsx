@@ -12,12 +12,15 @@ interface CardContentProps {
 const CardContent = ({ mouseX, mouseY, children }: CardContentProps) => {
   const isMobile = useIsMobile();
   
+  // Simplify the transform style to avoid Framer Motion conflicts
+  const transformStyle = isMobile ? undefined : "preserve-3d";
+  
   return (
     <div 
       className="relative h-full w-full p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center"
       style={{
-        transform: isMobile ? "none" : "translateZ(20px)",
-        transformStyle: isMobile ? "flat" : "preserve-3d",
+        transform: isMobile ? undefined : `translateZ(20px)`,
+        transformStyle,
       }}
     >
       {children}

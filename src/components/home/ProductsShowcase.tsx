@@ -9,7 +9,8 @@ const ProductsShowcase = () => {
           <img 
             alt="Product showcase" 
             className="w-full max-w-2xl mx-auto rounded-lg shadow-lg" 
-            src="/lovable-uploads/fd6981e3-b5e5-4a03-9cd8-38fac8167126.png" 
+            src="/lovable-uploads/fd6981e3-b5e5-4a03-9cd8-38fac8167126.png"
+            id="showcase-hero-image" // Add unique ID
           />
         </div>
         <div className="lg:w-1/2 lg:pl-12">

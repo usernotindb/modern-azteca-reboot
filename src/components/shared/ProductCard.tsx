@@ -9,6 +9,7 @@ interface ProductCardProps extends Partial<Product> {
   delay?: number;
   onLearnMore?: () => void;
   className?: string;
+  imageId?: string; // Add imageId prop
 }
 
 const ProductCard = ({
@@ -21,7 +22,8 @@ const ProductCard = ({
   index = 0,
   delay = 0,
   onLearnMore,
-  className = ''
+  className = '',
+  imageId // Receive imageId 
 }: ProductCardProps) => {
   const variantStyles = {
     home: 'p-4 bg-white border border-aztec-50 rounded-lg shadow-sm hover:shadow-md transition-shadow',
@@ -69,6 +71,7 @@ const ProductCard = ({
             src={getImageSource()}
             alt={name || 'Product image'}
             className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
+            id={imageId || `product-image-${index}`} // Add unique ID based on imageId or index
           />
         </div>
       )}

@@ -49,6 +49,7 @@ const Products = () => {
               variant="home" 
               onLearnMore={() => scrollToElement(getProductId(product.name), 100)} 
               className="hover:shadow-lg"
+              imageId={product.imageId || `home-product-${index}`} // Pass the imageId
             />
           ))}
         </motion.div>

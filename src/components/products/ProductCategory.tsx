@@ -1,3 +1,4 @@
+
 import SlideUp, { SlideUpItem } from '@/components/ui/SlideUp';
 import ProductCard from '@/components/shared/ProductCard';
 import AnimatedButton from '@/components/ui/AnimatedButton';
@@ -30,12 +31,19 @@ const ProductCategory = ({
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
           {category.products.map((product, productIndex) => <SlideUpItem key={product.id}>
-              <ProductCard name={product.name} price={product.price} description={product.description} image={product.image} categorySlug={category.slug} delay={0.1 * productIndex} variant="product" onLearnMore={() => scrollToElement(getProductId(product.name), 100)} />
+              <ProductCard 
+                name={product.name} 
+                price={product.price} 
+                description={product.description} 
+                image={product.image} 
+                categorySlug={category.slug} 
+                delay={0.1 * productIndex} 
+                variant="product" 
+                onLearnMore={() => scrollToElement(getProductId(product.name), 100)}
+                imageId={`category-list-${category.slug}-product-${productIndex}`} // Add unique ID
+              />
             </SlideUpItem>)}
         </div>
-        
-        {/* Product detail sections with IDs for scrolling */}
-        
       </SlideUp>
     </div>;
 };

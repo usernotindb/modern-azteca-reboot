@@ -40,6 +40,7 @@ const ProductsShowcase = ({ category }: ProductsShowcaseProps) => {
               categorySlug={category.slug}
               index={index}
               variant="product"
+              imageId={`category-${category.slug}-product-${index}`} // Add unique ID
             />
           ))}
         </div>

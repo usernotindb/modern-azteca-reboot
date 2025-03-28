@@ -39,17 +39,17 @@ const AnimatedButton = ({
 }: AnimatedButtonProps) => {
   // Button content with animation
   const buttonContent = (
-    <motion.span
-      className="inline-flex items-center justify-center w-full"
+    <motion.div
+      className="flex items-center justify-center w-full gap-1"
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
       transition={{ duration: 0.2 }}
     >
-      {icon && iconPosition === 'left' && icon}
+      {icon && iconPosition === 'left' && <span className="flex-shrink-0">{icon}</span>}
       <span>{children}</span>
-      {withArrow && <ArrowRight className="h-4 w-4 ml-1" />}
-      {icon && iconPosition === 'right' && icon}
-    </motion.span>
+      {withArrow && <ArrowRight className="h-4 w-4 flex-shrink-0" />}
+      {icon && iconPosition === 'right' && <span className="flex-shrink-0">{icon}</span>}
+    </motion.div>
   );
 
   // Determine if the button should be full width

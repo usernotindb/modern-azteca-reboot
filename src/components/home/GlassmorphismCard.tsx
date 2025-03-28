@@ -1,16 +1,18 @@
 
 import * as React from 'react';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import CardContainer from './glassmorphism/CardContainer';
 import CardBackground from './glassmorphism/CardBackground';
 import CardContent from './glassmorphism/CardContent';
 import CenterLogo from './glassmorphism/CenterLogo';
 import OrbitingIcons from './glassmorphism/OrbitingIcons';
 import FloatingParticles from './glassmorphism/FloatingParticles';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const GlassmorphismCard = () => {
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
+  const isMobile = useIsMobile();
 
   const icons = [
     { src: "/lovable-uploads/74da57e4-5aa3-4a37-aa85-c1c28943253c.png", label: "Cloud" },
@@ -22,14 +24,28 @@ const GlassmorphismCard = () => {
   // Add error handling for the 3D transformations
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     try {
-      setMouseX((e.clientX / window.innerWidth) * 2 - 1);
-      setMouseY((e.clientY / window.innerHeight) * 2 - 1);
+      if (isMobile) return;
+      
+      // Calculate mouse position relative to the window
+      const newMouseX = (e.clientX / window.innerWidth) * 2 - 1;
+      const newMouseY = (e.clientY / window.innerHeight) * 2 - 1;
+      
+      setMouseX(newMouseX);
+      setMouseY(newMouseY);
     } catch (error) {
       console.error("Mouse move error:", error);
       // Set default values if an error occurs
       setMouseX(0);
       setMouseY(0);
     }
+  }, [isMobile]);
+
+  // Reset the mouse position on component unmount
+  useEffect(() => {
+    return () => {
+      setMouseX(0);
+      setMouseY(0);
+    };
   }, []);
 
   return (

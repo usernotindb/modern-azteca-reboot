@@ -1,11 +1,11 @@
 
 import * as React from 'react';
-import { useRef, useState, ReactNode } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 interface CardContainerProps {
-  children: ReactNode;
+  children: React.ReactNode;
   onMouseMove?: (e: React.MouseEvent) => void;
 }
 
@@ -70,6 +70,16 @@ const CardContainer = ({ children, onMouseMove }: CardContainerProps) => {
     setRotateY(0);
   };
 
+  // Reset states when component unmounts
+  useEffect(() => {
+    return () => {
+      setRotateX(0);
+      setRotateY(0);
+      setMouseX(0);
+      setMouseY(0);
+    };
+  }, []);
+
   // Clone children and inject the mouseX and mouseY props
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
@@ -83,7 +93,7 @@ const CardContainer = ({ children, onMouseMove }: CardContainerProps) => {
   });
 
   return (
-    <motion.div
+    <div
       ref={cardRef}
       className="relative w-full aspect-square max-w-md mx-auto bg-transparent perspective"
       onMouseMove={handleMouseMove}
@@ -94,10 +104,11 @@ const CardContainer = ({ children, onMouseMove }: CardContainerProps) => {
           : `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
         transformStyle: isMobile ? undefined : 'preserve-3d',
         transition: 'transform 0.1s ease',
+        position: 'relative', // Add a non-static position for scroll offset calculation
       }}
     >
       {childrenWithProps}
-    </motion.div>
+    </div>
   );
 };
 

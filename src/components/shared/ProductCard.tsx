@@ -37,6 +37,20 @@ const ProductCard = ({
     }
   };
 
+  // Determine the proper href for the Learn More button
+  const getLearnMoreHref = () => {
+    if (!categorySlug) return '#';
+    
+    // Special case for hardware-solutions products that have their own pages
+    if (categorySlug === 'hardware-solutions') {
+      if (name?.toLowerCase().includes('laptop')) return '/products/laptops';
+      if (name?.toLowerCase().includes('server')) return '/products/servers';
+      if (name?.toLowerCase().includes('workstation')) return '/products/workstations';
+    }
+    
+    return `/products/${categorySlug}`;
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -77,7 +91,7 @@ const ProductCard = ({
 
         <div className="flex justify-center">
           <AnimatedButton
-            href={categorySlug ? `/products/${categorySlug}` : '#'}
+            href={getLearnMoreHref()}
             variant="outline"
             className="text-sm px-4 py-2 bg-blue-600 text-black border-blue-300 hover:bg-blue-500 font-medium shadow-sm w-full justify-center"
             onClick={handleLearnMoreClick}

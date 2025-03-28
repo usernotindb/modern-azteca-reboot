@@ -5,9 +5,10 @@ import ProductCard from '@/components/shared/ProductCard';
 import ProductsHeader from './ProductsHeader';
 import ProductsShowcase from './ProductsShowcase';
 import { productsList } from './ProductsData';
-import { scrollToElement } from '@/lib/hooks/useScroll';
+import { useNavigate } from 'react-router-dom';
 
 const Products = () => {
+  const navigate = useNavigate();
   const ref = useRef(null);
   const {
     scrollYProgress
@@ -16,11 +17,6 @@ const Products = () => {
     offset: ["start end", "end start"]
   });
   const translateX = useTransform(scrollYProgress, [0, 1], [0, -50]);
-
-  // Helper function to get product ID from name
-  const getProductId = (name: string): string => {
-    return name.toLowerCase().replace(/\s+/g, '-');
-  };
   
   return (
     <section 
@@ -35,7 +31,7 @@ const Products = () => {
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
           style={{ 
-            position: 'relative', // This addresses the framer-motion warning about scroll offset
+            position: 'relative',
             translateX 
           }}
         >
@@ -47,7 +43,11 @@ const Products = () => {
               image={product.image} 
               index={index} 
               variant="home" 
-              onLearnMore={() => scrollToElement(getProductId(product.name), 100)} 
+              onLearnMore={() => {
+                if (product.link) {
+                  navigate(product.link);
+                }
+              }} 
               className="hover:shadow-lg"
             />
           ))}

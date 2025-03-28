@@ -1,9 +1,10 @@
 
-import { useRef, useState } from 'react';
+import { useRef, useState, ReactNode, isValidElement, cloneElement } from 'react';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface CardContainerProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const CardContainer = ({ children }: CardContainerProps) => {
@@ -12,9 +13,10 @@ const CardContainer = ({ children }: CardContainerProps) => {
   const [rotateY, setRotateY] = useState(0);
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
+  const isMobile = useIsMobile();
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || isMobile) return;
     
     const rect = cardRef.current.getBoundingClientRect();
     
@@ -47,17 +49,18 @@ const CardContainer = ({ children }: CardContainerProps) => {
   };
 
   // Clone children and inject the mouseX and mouseY props
-  const childrenWithProps = React.Children.map(children, child => {
-    if (React.isValidElement(child)) {
-      return React.cloneElement(child, { mouseX, mouseY } as any);
+  const childrenWithProps = children as ReactNode[];
+  const clonedChildren = childrenWithProps.map((child, index) => {
+    if (isValidElement(child)) {
+      return cloneElement(child, { mouseX, mouseY, key: index } as any);
     }
     return child;
   });
 
   return (
     <div 
-      className="relative w-full h-[400px] flex items-center justify-center"
-      style={{ perspective: "1200px" }}
+      className="relative w-full h-[400px] md:h-[400px] flex items-center justify-center"
+      style={{ perspective: isMobile ? "none" : "1200px" }}
     >
       {/* Main card container */}
       <motion.div
@@ -66,15 +69,15 @@ const CardContainer = ({ children }: CardContainerProps) => {
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         animate={{
-          rotateX,
-          rotateY,
+          rotateX: isMobile ? 0 : rotateX,
+          rotateY: isMobile ? 0 : rotateY,
         }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
         style={{
-          transformStyle: "preserve-3d",
+          transformStyle: isMobile ? "flat" : "preserve-3d",
         }}
       >
-        {childrenWithProps}
+        {clonedChildren}
       </motion.div>
     </div>
   );

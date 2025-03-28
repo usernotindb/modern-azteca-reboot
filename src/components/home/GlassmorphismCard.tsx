@@ -16,18 +16,10 @@ const GlassmorphismCard = () => {
 
   return (
     <CardContainer>
-      {/* Glass card background with effects */}
       <CardBackground mouseX={0} mouseY={0} />
-      
-      {/* Card content container */}
       <CardContent mouseX={0} mouseY={0}>
-        {/* Center logo */}
         <CenterLogo />
-        
-        {/* Orbiting icons */}
         <OrbitingIcons icons={icons} mouseX={0} />
-        
-        {/* Floating particles */}
         <FloatingParticles />
       </CardContent>
     </CardContainer>

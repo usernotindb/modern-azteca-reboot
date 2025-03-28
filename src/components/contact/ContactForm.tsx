@@ -63,7 +63,7 @@ const ContactForm = () => {
           <AnimatedButton 
             icon={<Send className="h-4 w-4" />} 
             iconPosition="right"
-            className="bg-accent-600 hover:bg-accent-700 text-white py-3"
+            className="bg-blue-600 hover:bg-blue-700 text-white py-3"
           >
             Send Message
           </AnimatedButton>

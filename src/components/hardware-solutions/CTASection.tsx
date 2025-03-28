@@ -22,15 +22,14 @@ const CTASection = () => {
                 <div className="flex flex-wrap gap-4">
                   <AnimatedButton 
                     href="/contact" 
-                    className="bg-yellow-500 hover:bg-yellow-600 text-gray-900"
+                    className="bg-blue-600 hover:bg-blue-700 text-white"
                     withArrow
                   >
                     Schedule a Consultation
                   </AnimatedButton>
                   <AnimatedButton 
                     href="/products" 
-                    variant="outline" 
-                    className="border-white text-white hover:bg-white/10"
+                    className="bg-blue-600 hover:bg-blue-700 text-white"
                   >
                     Back to All Products
                   </AnimatedButton>
@@ -51,7 +50,7 @@ const CTASection = () => {
                     <span className="block text-gray-400 text-sm">or</span>
                     <AnimatedButton 
                       href="/contact" 
-                      className="mt-4 bg-white text-gray-900 hover:bg-gray-100 w-full justify-center"
+                      className="mt-4 bg-blue-600 hover:bg-blue-700 text-white w-full justify-center"
                       icon={<ArrowRight className="h-4 w-4" />}
                       iconPosition="right"
                     >

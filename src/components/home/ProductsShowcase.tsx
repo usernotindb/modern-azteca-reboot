@@ -24,7 +24,7 @@ const ProductsShowcase = () => {
           </p>
           <AnimatedButton 
             href="/products" 
-            className="bg-accent-600 hover:bg-accent-700 text-white"
+            className="bg-blue-600 hover:bg-blue-700 text-white"
           >
             Explore Our Hardware
           </AnimatedButton>

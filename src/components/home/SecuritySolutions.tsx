@@ -51,7 +51,7 @@ const SecuritySolutions = () => {
                 </div>
                 <AnimatedButton 
                   href="/products/anti-virus" 
-                  className="w-full justify-center bg-accent-600 hover:bg-accent-700 text-white"
+                  className="w-full justify-center bg-blue-600 hover:bg-blue-700 text-white"
                 >
                   Learn More
                 </AnimatedButton>
@@ -96,7 +96,7 @@ const SecuritySolutions = () => {
               <div className="p-6 bg-aztec-50">
                 <AnimatedButton 
                   href="/contact" 
-                  className="w-full justify-center bg-yellow-500 hover:bg-yellow-600 text-white"
+                  className="w-full justify-center bg-blue-600 hover:bg-blue-700 text-white"
                 >
                   GET A QUOTE NOW!
                 </AnimatedButton>

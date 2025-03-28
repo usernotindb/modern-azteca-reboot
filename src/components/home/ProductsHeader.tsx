@@ -31,8 +31,7 @@ const ProductsHeader = () => {
         <AnimatedButton 
           href="/products" 
           withArrow 
-          variant="ghost" 
-          className="text-accent-600 hover:text-accent-700 font-medium"
+          className="bg-blue-600 hover:bg-blue-700 text-white font-medium"
         >
           View All Products
         </AnimatedButton>

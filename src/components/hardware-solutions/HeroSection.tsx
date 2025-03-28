@@ -30,14 +30,13 @@ const HeroSection = ({ category }: HeroSectionProps) => {
           <div className="flex flex-wrap justify-center gap-4">
             <AnimatedButton 
               href="/contact" 
-              className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold"
             >
               Get a Quote
             </AnimatedButton>
             <AnimatedButton 
               href="#products" 
-              variant="outline" 
-              className="border-white text-white hover:bg-white/10"
+              className="bg-blue-600 hover:bg-blue-700 text-white"
               icon={<ChevronDown className="h-4 w-4" />}
               iconPosition="right"
             >

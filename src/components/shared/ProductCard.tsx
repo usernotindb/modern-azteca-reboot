@@ -37,18 +37,23 @@ const ProductCard = ({
     }
   };
 
-  // Get the appropriate image source based on category
+  // Get the appropriate image source - prioritizing our new image
   const getImageSource = () => {
+    // Use our new generic product image for home page products
+    if (variant === 'home') {
+      return "/lovable-uploads/fd6981e3-b5e5-4a03-9cd8-38fac8167126.png";
+    }
+    
     // For laptops, use the uploaded laptop image
     if (categorySlug === 'laptops') {
       return "/lovable-uploads/78f56f78-5618-46cc-87a1-bbb19df328bb.png";
     }
-    // For servers, use the new server image
+    // For servers, use the server image
     else if (categorySlug === 'servers') {
       return "/lovable-uploads/9f952ca9-69ce-4ab5-8239-0dbdcdae2c6b.png";
     }
-    // For all other categories, use the provided image
-    return image;
+    // For all other categories, use the provided image or fallback to our new image
+    return image || "/lovable-uploads/fd6981e3-b5e5-4a03-9cd8-38fac8167126.png";
   };
 
   return (

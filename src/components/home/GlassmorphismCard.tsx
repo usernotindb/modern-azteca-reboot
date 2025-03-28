@@ -21,7 +21,7 @@ const GlassmorphismCard = () => {
     { src: "/lovable-uploads/9f23050e-b4e0-417a-bc5f-cf88dd8c3e82.png", label: "Support" },
   ];
 
-  // Add error handling for the 3D transformations
+  // Simplified mouse move handler to avoid animation conflicts
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     try {
       if (isMobile) return;
@@ -30,6 +30,7 @@ const GlassmorphismCard = () => {
       const newMouseX = (e.clientX / window.innerWidth) * 2 - 1;
       const newMouseY = (e.clientY / window.innerHeight) * 2 - 1;
       
+      // Update state with the new values
       setMouseX(newMouseX);
       setMouseY(newMouseY);
     } catch (error) {

@@ -38,7 +38,7 @@ const VideoBackground = () => {
           autoPlay 
           muted 
           loop 
-          playsInline // Add playsInline for better mobile support
+          playsInline 
           className="object-cover h-full w-full"
           poster="/lovable-uploads/6d1b82c7-3784-46ea-9384-d24ef9ad8509.png"
           onError={handleVideoError}

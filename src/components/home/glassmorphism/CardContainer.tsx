@@ -36,9 +36,9 @@ const CardContainer = ({ children, onMouseMove }: CardContainerProps) => {
       const cardCenterX = rect.left + rect.width / 2;
       const cardCenterY = rect.top + rect.height / 2;
       
-      // Calculate rotation based on mouse position
-      const rotateYValue = ((e.clientX - cardCenterX) / (rect.width / 2)) * 5;
-      const rotateXValue = ((e.clientY - cardCenterY) / (rect.height / 2)) * 5;
+      // Calculate rotation based on mouse position (limit max rotation to +/- 5deg)
+      const rotateYValue = Math.max(-5, Math.min(5, ((e.clientX - cardCenterX) / (rect.width / 2)) * 5));
+      const rotateXValue = Math.max(-5, Math.min(5, ((e.clientY - cardCenterY) / (rect.height / 2)) * 5));
       
       // Update rotation state
       setRotateX(-rotateXValue);
@@ -99,12 +99,12 @@ const CardContainer = ({ children, onMouseMove }: CardContainerProps) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
+        // Use a non-animated inline style for the container
         transform: isMobile 
           ? 'none' 
           : `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-        transformStyle: isMobile ? undefined : 'preserve-3d',
         transition: 'transform 0.1s ease',
-        position: 'relative', // Add a non-static position for scroll offset calculation
+        position: 'relative', 
       }}
     >
       {childrenWithProps}

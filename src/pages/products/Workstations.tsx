@@ -13,7 +13,7 @@ const workstations = [
     name: "Design Pro Workstation",
     price: "$1,499",
     description: "High-performance workstation optimized for graphic design, CAD, and creative applications.",
-    image: "/lovable-uploads/881ea460-231f-4a79-9b8a-a49b932665d7.png",
+    image: "/lovable-uploads/628857d0-dac0-42fc-b3e9-4528eee9ef00.png",
     categorySlug: "workstations"
   },
   {
@@ -29,7 +29,7 @@ const workstations = [
     name: "Content Creation Station",
     price: "$5,299",
     description: "Specialized workstation for video editing, animation, and high-end content production.",
-    image: "/lovable-uploads/881ea460-231f-4a79-9b8a-a49b932665d7.png",
+    image: "/lovable-uploads/fd6981e3-b5e5-4a03-9cd8-38fac8167126.png",
     categorySlug: "workstations"
   }
 ];

@@ -56,21 +56,21 @@ export const productCategories: ProductCategory[] = [
         name: "Laptops", 
         price: "Starting at $899",
         description: "Get everything done faster with solid state drives, powerful processors, and sleek designs.",
-        image: "/lovable-uploads/0cc76fb6-7912-43fd-9e88-c94137d92a37.png" 
+        image: "/lovable-uploads/78f56f78-5618-46cc-87a1-bbb19df328bb.png" 
       },
       { 
         id: 202, 
         name: "Servers", 
         price: "Starting at $1,499",
         description: "Operate reliably, manage easily, and scale your business with our server solutions.",
-        image: "/lovable-uploads/9f23050e-b4e0-417a-bc5f-cf88dd8c3e82.png" 
+        image: "/lovable-uploads/9f952ca9-69ce-4ab5-8239-0dbdcdae2c6b.png" 
       },
       { 
         id: 203, 
         name: "Workstations", 
         price: "Starting at $1,299",
         description: "Fully customizable Workstation-class performance for demanding professional applications.",
-        image: "/lovable-uploads/628857d0-dac0-42fc-b3e9-4528eee9ef00.png" 
+        image: "/lovable-uploads/881ea460-231f-4a79-9b8a-a49b932665d7.png" 
       },
     ]
   },
@@ -92,14 +92,14 @@ export const productCategories: ProductCategory[] = [
         name: "Disaster Recovery", 
         price: "Custom pricing",
         description: "Protect your business with our robust backup and disaster recovery solutions.",
-        image: "/lovable-uploads/8d93ccd6-f135-4472-ad9a-677825e40020.png" 
+        image: "/lovable-uploads/15740d59-746e-4979-ae0f-e377879839ee.png" 
       },
       { 
         id: 303, 
         name: "Network Management", 
         price: "Custom pricing",
         description: "Keep your network infrastructure secure, up-to-date and operating at peak performance.",
-        image: "/lovable-uploads/8d93ccd6-f135-4472-ad9a-677825e40020.png" 
+        image: "/lovable-uploads/944ad356-757c-4847-bb03-8e643c5032fc.png" 
       },
     ]
   },

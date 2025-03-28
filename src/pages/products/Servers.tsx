@@ -13,7 +13,7 @@ const servers = [
     name: "Entry-Level Server",
     price: "$2,499",
     description: "Reliable server solution for small businesses with essential performance and storage capabilities.",
-    image: "/lovable-uploads/bec2f6ea-6fb3-4073-9c82-38aea9579aab.png",
+    image: "/lovable-uploads/9f23050e-b4e0-417a-bc5f-cf88dd8c3e82.png",
     categorySlug: "servers"
   },
   {
@@ -21,7 +21,7 @@ const servers = [
     name: "Mid-Range Business Server",
     price: "$4,899",
     description: "Powerful server with expanded storage and processing capabilities for medium-sized businesses.",
-    image: "/lovable-uploads/bec2f6ea-6fb3-4073-9c82-38aea9579aab.png",
+    image: "/lovable-uploads/9f952ca9-69ce-4ab5-8239-0dbdcdae2c6b.png",
     categorySlug: "servers"
   },
   {

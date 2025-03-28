@@ -13,7 +13,7 @@ const laptops = [
     name: "Business Pro Laptop",
     price: "$999",
     description: "High performance laptop designed for business professionals with enhanced security features.",
-    image: "/lovable-uploads/6d1b82c7-3784-46ea-9384-d24ef9ad8509.png",
+    image: "/lovable-uploads/78f56f78-5618-46cc-87a1-bbb19df328bb.png",
     categorySlug: "laptops"
   },
   {
@@ -21,7 +21,7 @@ const laptops = [
     name: "Developer Powerhouse",
     price: "$1,899",
     description: "Maximum performance for developers with extra RAM and storage for intensive tasks.",
-    image: "/lovable-uploads/6d1b82c7-3784-46ea-9384-d24ef9ad8509.png",
+    image: "/lovable-uploads/0cc76fb6-7912-43fd-9e88-c94137d92a37.png",
     categorySlug: "laptops"
   },
   {

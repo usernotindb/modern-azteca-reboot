@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -10,7 +10,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import AnimatedButton from '@/components/ui/AnimatedButton';
+import { Upload, Image as ImageIcon } from 'lucide-react';
+import { toast } from 'sonner';
 
 // Image options for products
 const imageOptions = [
@@ -55,14 +58,69 @@ const ProductImageSelector = ({
 }: ProductImageSelectorProps) => {
   const [selectedImage, setSelectedImage] = useState(currentImage);
   const [open, setOpen] = useState(false);
-
+  const [uploadedImage, setUploadedImage] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  
   const handleImageSelect = (src: string) => {
     setSelectedImage(src);
+    setUploadedImage(null);
+  };
+
+  const handleUploadClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      handleFile(file);
+    }
+  };
+
+  const handleFile = (file: File) => {
+    // Check file type
+    if (!file.type.startsWith('image/')) {
+      toast.error('Please upload an image file');
+      return;
+    }
+
+    // Check file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error('Image must be less than 5MB');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      if (e.target?.result) {
+        setUploadedImage(e.target.result as string);
+        setSelectedImage(e.target.result as string);
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      handleFile(e.dataTransfer.files[0]);
+    }
   };
 
   const handleSave = () => {
-    onImageChange(imageId, selectedImage);
-    setOpen(false);
+    if (selectedImage) {
+      onImageChange(imageId, selectedImage);
+      setOpen(false);
+    }
   };
 
   return (
@@ -82,10 +140,51 @@ const ProductImageSelector = ({
         <DialogHeader>
           <DialogTitle>Select Product Image</DialogTitle>
           <DialogDescription>
-            Choose an image for this product card.
+            Choose an image for this product card or upload your own.
           </DialogDescription>
         </DialogHeader>
+
+        {/* Upload area */}
+        <div 
+          className="border-2 border-dashed border-gray-300 rounded-lg p-4 mb-4 text-center hover:bg-gray-50 transition-colors cursor-pointer"
+          onClick={handleUploadClick}
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+        >
+          <input 
+            type="file" 
+            ref={fileInputRef} 
+            onChange={handleFileChange} 
+            className="hidden" 
+            accept="image/*"
+          />
+          <Upload className="mx-auto h-10 w-10 text-gray-400 mb-2" />
+          <p className="text-sm text-gray-500">
+            <span className="font-semibold">Click to upload</span> or drag and drop
+          </p>
+          <p className="text-xs text-gray-400 mt-1">
+            PNG, JPG or GIF up to 5MB
+          </p>
+        </div>
+
+        {/* Uploaded image preview */}
+        {uploadedImage && (
+          <div className="mb-4">
+            <h3 className="text-sm font-medium mb-2">Uploaded Image:</h3>
+            <div className={`border rounded-md overflow-hidden ${selectedImage === uploadedImage ? 'ring-2 ring-blue-600' : ''}`}>
+              <img 
+                src={uploadedImage} 
+                alt="Uploaded" 
+                className="w-full h-40 object-contain p-2"
+                onClick={() => setSelectedImage(uploadedImage)}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Preset images */}
         <div className="grid grid-cols-2 gap-4 py-4">
+          <h3 className="text-sm font-medium col-span-2">Preset Images:</h3>
           {imageOptions.map((image) => (
             <Card 
               key={image.id} 
@@ -105,6 +204,7 @@ const ProductImageSelector = ({
             </Card>
           ))}
         </div>
+
         <DialogFooter className="sm:justify-between">
           <AnimatedButton
             variant="outline"
@@ -114,6 +214,7 @@ const ProductImageSelector = ({
           </AnimatedButton>
           <AnimatedButton
             onClick={handleSave}
+            disabled={!selectedImage}
           >
             Save Changes
           </AnimatedButton>

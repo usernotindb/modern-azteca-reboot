@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import FadeIn from '@/components/ui/FadeIn';
 import AnimatedButton from '@/components/ui/AnimatedButton';
@@ -11,10 +12,20 @@ interface ProductsShowcaseProps {
 }
 
 const ProductsShowcase = ({ category }: ProductsShowcaseProps) => {
+  const [productImages, setProductImages] = useState<Record<string, string>>({});
+  
   const getIcon = (name: string) => {
     if (name.includes("Laptop")) return <Laptop className="w-8 h-8" />;
     if (name.includes("Server")) return <Server className="w-8 h-8" />;
     return <Cpu className="w-8 h-8" />;
+  };
+
+  // Handle image change for a specific product
+  const handleImageChange = (imageId: string, newImageSrc: string) => {
+    setProductImages(prev => ({
+      ...prev,
+      [imageId]: newImageSrc
+    }));
   };
 
   return (
@@ -30,19 +41,25 @@ const ProductsShowcase = ({ category }: ProductsShowcaseProps) => {
         </FadeIn>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-16">
-          {category.products.map((product, index) => (
-            <ProductCard
-              key={product.id}
-              name={product.name}
-              description={product.description}
-              price={product.price}
-              image={product.image}
-              categorySlug={category.slug}
-              index={index}
-              variant="product"
-              imageId={`category-${category.slug}-product-${index}`} // Add unique ID
-            />
-          ))}
+          {category.products.map((product, index) => {
+            const imageId = `category-${category.slug}-product-${index}`;
+            const currentImage = productImages[imageId] || product.image;
+            
+            return (
+              <ProductCard
+                key={product.id}
+                name={product.name}
+                description={product.description}
+                price={product.price}
+                image={currentImage}
+                categorySlug={category.slug}
+                index={index}
+                variant="product"
+                imageId={imageId}
+                onImageChange={handleImageChange}
+              />
+            );
+          })}
         </div>
       </div>
     </section>

@@ -1,10 +1,23 @@
 
+import { useState } from 'react';
 import Layout from '@/components/layout/Layout';
 import FadeIn from '@/components/ui/FadeIn';
 import ProductCategory from '@/components/products/ProductCategory';
 import { productCategories } from '@/data/productData';
+import { Product } from '@/lib/types/product';
 
 const Products = () => {
+  // State to track all product images across categories
+  const [categoryImages, setCategoryImages] = useState<Record<string, string>>({});
+  
+  // Handle image change for a specific product
+  const handleImageChange = (imageId: string, newImageSrc: string) => {
+    setCategoryImages(prev => ({
+      ...prev,
+      [imageId]: newImageSrc
+    }));
+  };
+
   return (
     <Layout>
       <div className="mt-16 lg:mt-24">
@@ -27,7 +40,9 @@ const Products = () => {
             <ProductCategory 
               key={category.id} 
               category={category} 
-              isFirst={index === 0} 
+              isFirst={index === 0}
+              productImages={categoryImages}
+              onImageChange={handleImageChange}
             />
           ))}
         </div>

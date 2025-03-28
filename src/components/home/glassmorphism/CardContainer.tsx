@@ -1,10 +1,16 @@
 
-import { useRef, useState, ReactNode, isValidElement, cloneElement } from 'react';
+import { useRef, useState, ReactNode, isValidElement, cloneElement, Children } from 'react';
 import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 interface CardContainerProps {
   children: ReactNode;
+}
+
+// Define what props we'll pass to children
+interface ChildProps {
+  mouseX: number;
+  mouseY: number;
 }
 
 const CardContainer = ({ children }: CardContainerProps) => {
@@ -49,10 +55,15 @@ const CardContainer = ({ children }: CardContainerProps) => {
   };
 
   // Clone children and inject the mouseX and mouseY props
-  const childrenWithProps = React.Children.toArray(children);
+  const childrenWithProps = Children.toArray(children);
   const clonedChildren = childrenWithProps.map((child, index) => {
     if (isValidElement(child)) {
-      return cloneElement(child, { mouseX, mouseY, key: index });
+      // Use type assertion to safely pass props
+      return cloneElement(child, { 
+        mouseX, 
+        mouseY, 
+        key: index 
+      } as ChildProps & { key: number });
     }
     return child;
   });

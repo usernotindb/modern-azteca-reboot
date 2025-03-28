@@ -40,17 +40,15 @@ const AnimatedButton = ({
   // Button content with animation
   const buttonContent = (
     <motion.span
-      className="inline-block w-full"
+      className="inline-flex items-center justify-center w-full"
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
       transition={{ duration: 0.2 }}
     >
-      <span className="flex items-center justify-center gap-2">
-        {icon && iconPosition === 'left' && icon}
-        {children}
-        {withArrow && <ArrowRight className="h-4 w-4 ml-1" />}
-        {icon && iconPosition === 'right' && icon}
-      </span>
+      {icon && iconPosition === 'left' && icon}
+      <span>{children}</span>
+      {withArrow && <ArrowRight className="h-4 w-4 ml-1" />}
+      {icon && iconPosition === 'right' && icon}
     </motion.span>
   );
 

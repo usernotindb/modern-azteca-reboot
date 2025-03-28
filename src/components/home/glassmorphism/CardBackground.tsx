@@ -13,12 +13,8 @@ const CardBackground = ({ mouseX, mouseY }: CardBackgroundProps) => {
   return (
     <div 
       className="absolute inset-0 rounded-2xl overflow-hidden bg-blue-600/20 backdrop-blur-[12px] border border-blue-300/30 shadow-xl"
-      style={{
-        transform: isMobile ? "none" : "translateZ(-10px)",
-        backfaceVisibility: "hidden",
-      }}
     >
-      {/* Depth effects and highlights - reduced for better performance */}
+      {/* Depth effects and highlights - simplified without transforms */}
       <div 
         className="absolute inset-0 opacity-20 bg-gradient-to-br from-blue-400/60 via-transparent to-blue-900/60"
       />
@@ -26,12 +22,9 @@ const CardBackground = ({ mouseX, mouseY }: CardBackgroundProps) => {
       {/* Simplified background effect */}
       <div 
         className="absolute inset-0 bg-gradient-radial from-blue-400/30 to-transparent opacity-70"
-        style={{
-          transformStyle: isMobile ? "flat" : "preserve-3d",
-        }}
       />
       
-      {/* Glossy highlight - static on desktop for better performance */}
+      {/* Glossy highlight - static for better performance */}
       <div 
         className="absolute inset-0 bg-gradient-to-t from-transparent via-white/10 to-transparent opacity-40"
       />

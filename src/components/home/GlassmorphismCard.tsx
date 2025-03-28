@@ -21,7 +21,7 @@ const GlassmorphismCard = () => {
     { src: "/lovable-uploads/9f23050e-b4e0-417a-bc5f-cf88dd8c3e82.png", label: "Support" },
   ];
 
-  // Simplified mouse move handler to avoid animation conflicts
+  // Minimal mouse tracking without 3D effects
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     try {
       if (isMobile) return;

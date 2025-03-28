@@ -39,15 +39,12 @@ const OrbitingIcons = ({ icons, mouseX, mouseY }: OrbitingIconsProps) => {
               x,
               y,
               opacity: 1,
-              // Only apply z movement on desktop and simplify the z-value calculation
-              z: isMobile ? 0 : 30,
             }}
             transition={{
               opacity: { duration: 0.5, delay },
             }}
             className="absolute transform -translate-x-1/2 -translate-y-1/2"
             style={{
-              transformStyle: isMobile ? "flat" : "preserve-3d",
               zIndex: 10,
             }}
           >

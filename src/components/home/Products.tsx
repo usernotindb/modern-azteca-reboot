@@ -1,5 +1,5 @@
 
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import ProductCard from '@/components/shared/ProductCard';
 import ProductsHeader from './ProductsHeader';
@@ -23,7 +23,10 @@ const Products = () => {
   };
   
   return (
-    <section ref={ref} className="section-padding bg-white relative overflow-hidden">
+    <section 
+      ref={ref} 
+      className="section-padding bg-white relative overflow-hidden"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <ProductsHeader />
         
@@ -31,7 +34,10 @@ const Products = () => {
         
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          style={{ position: 'relative' }} // Setting position for scroll offset calculation
+          style={{ 
+            position: 'relative', // This addresses the framer-motion warning about scroll offset
+            translateX 
+          }}
         >
           {productsList.map((product, index) => (
             <ProductCard 
@@ -46,8 +52,6 @@ const Products = () => {
             />
           ))}
         </motion.div>
-        
-        {/* Product detail sections that can be scrolled to */}
       </div>
     </section>
   );

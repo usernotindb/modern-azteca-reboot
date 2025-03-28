@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -43,7 +44,6 @@ const OrbitingIcons = ({ icons, mouseX, mouseY }: OrbitingIconsProps) => {
             }}
             transition={{
               opacity: { duration: 0.5, delay },
-              // Remove unnecessary transitions
             }}
             className="absolute transform -translate-x-1/2 -translate-y-1/2"
             style={{

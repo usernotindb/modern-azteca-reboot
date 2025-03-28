@@ -1,11 +1,12 @@
 
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, useInView, useAnimation } from 'framer-motion';
 import HeroContent from './HeroContent';
 import GlassmorphismCard from './GlassmorphismCard';
 import VideoBackground from './VideoBackground';
 import AnimatedParticlesOverlay from './AnimatedParticlesOverlay';
 import ScrollDownIndicator from './ScrollDownIndicator';
+import HeroBackground from './HeroBackground';
 
 const Hero = () => {
   const controls = useAnimation();
@@ -20,10 +21,9 @@ const Hero = () => {
 
   return (
     <section className="relative overflow-hidden min-h-[100vh] flex items-center">
-      {/* Video Background */}
+      {/* Background elements */}
       <VideoBackground />
-
-      {/* Animated particles overlay */}
+      <HeroBackground />
       <AnimatedParticlesOverlay />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10 py-20 relative">

@@ -1,5 +1,5 @@
 
-import { useRef, useState, ReactNode, isValidElement, cloneElement, Children } from 'react';
+import React, { useRef, useState, ReactNode, Children, isValidElement, cloneElement } from 'react';
 import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -55,15 +55,13 @@ const CardContainer = ({ children }: CardContainerProps) => {
   };
 
   // Clone children and inject the mouseX and mouseY props
-  const childrenWithProps = Children.toArray(children);
-  const clonedChildren = childrenWithProps.map((child, index) => {
+  const childrenWithProps = Children.map(children, (child) => {
     if (isValidElement(child)) {
       // Use type assertion to safely pass props
       return cloneElement(child, { 
         mouseX, 
-        mouseY, 
-        key: index 
-      } as ChildProps & { key: number });
+        mouseY 
+      } as ChildProps);
     }
     return child;
   });
@@ -89,7 +87,7 @@ const CardContainer = ({ children }: CardContainerProps) => {
           transformStyle: isMobile ? "flat" : "preserve-3d",
         }}
       >
-        {clonedChildren}
+        {childrenWithProps}
       </motion.div>
     </div>
   );

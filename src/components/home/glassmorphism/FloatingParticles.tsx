@@ -1,37 +1,43 @@
 
+import React from 'react';
 import { motion } from 'framer-motion';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 const FloatingParticles = () => {
-  const isMobile = useIsMobile();
-  // Reduce number of particles significantly for better performance
-  const particleCount = isMobile ? 4 : 8;
-  
+  // Create an array of particles with different positions and animations
+  const particles = Array.from({ length: 15 }).map((_, index) => ({
+    id: index,
+    size: Math.random() * 3 + 1,
+    initialX: Math.random() * 200 - 100,
+    initialY: Math.random() * 200 - 100,
+    delay: Math.random() * 2,
+    duration: 3 + Math.random() * 2
+  }));
+
   return (
     <>
-      {Array.from({ length: particleCount }).map((_, index) => (
+      {particles.map(particle => (
         <motion.div
-          key={`particle-${index}`}
-          className="absolute w-1 h-1 rounded-full bg-white/40"
-          initial={{
-            x: (Math.random() - 0.5) * (isMobile ? 150 : 300), 
-            y: (Math.random() - 0.5) * (isMobile ? 150 : 300),
-            opacity: Math.random() * 0.5 + 0.2,
-            scale: Math.random() * 0.5 + 0.5,
+          key={particle.id}
+          className="absolute rounded-full bg-white/30"
+          style={{
+            width: particle.size,
+            height: particle.size,
           }}
-          animate={{
-            x: (Math.random() - 0.5) * (isMobile ? 150 : 300),
-            y: (Math.random() - 0.5) * (isMobile ? 150 : 300),
-            opacity: [0.2, 0.8, 0.2],
+          initial={{ 
+            x: particle.initialX, 
+            y: particle.initialY,
+            opacity: 0 
+          }}
+          animate={{ 
+            x: [particle.initialX, particle.initialX + (Math.random() * 20 - 10), particle.initialX],
+            y: [particle.initialY, particle.initialY + (Math.random() * 20 - 10), particle.initialY],
+            opacity: [0, 0.8, 0]
           }}
           transition={{
-            // Increase duration for slower, less CPU-intensive animations
-            duration: 15 + Math.random() * 20,
+            duration: particle.duration,
+            delay: particle.delay,
             repeat: Infinity,
-            repeatType: "reverse",
-          }}
-          style={{
-            transformStyle: isMobile ? "flat" : "preserve-3d",
+            repeatType: "loop"
           }}
         />
       ))}

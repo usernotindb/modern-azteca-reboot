@@ -1,4 +1,5 @@
 
+import React, { useState } from 'react';
 import CardContainer from './glassmorphism/CardContainer';
 import CardBackground from './glassmorphism/CardBackground';
 import CardContent from './glassmorphism/CardContent';
@@ -7,6 +8,9 @@ import OrbitingIcons from './glassmorphism/OrbitingIcons';
 import FloatingParticles from './glassmorphism/FloatingParticles';
 
 const GlassmorphismCard = () => {
+  const [mouseX, setMouseX] = useState(0);
+  const [mouseY, setMouseY] = useState(0);
+
   const icons = [
     { src: "/lovable-uploads/74da57e4-5aa3-4a37-aa85-c1c28943253c.png", label: "Cloud" },
     { src: "/lovable-uploads/881ea460-231f-4a79-9b8a-a49b932665d7.png", label: "Hardware" },
@@ -16,10 +20,10 @@ const GlassmorphismCard = () => {
 
   return (
     <CardContainer>
-      <CardBackground mouseX={0} mouseY={0} />
-      <CardContent mouseX={0} mouseY={0}>
+      <CardBackground mouseX={mouseX} mouseY={mouseY} />
+      <CardContent mouseX={mouseX} mouseY={mouseY}>
         <CenterLogo />
-        <OrbitingIcons icons={icons} mouseX={0} mouseY={0} />
+        <OrbitingIcons icons={icons} mouseX={mouseX} mouseY={mouseY} />
         <FloatingParticles />
       </CardContent>
     </CardContainer>

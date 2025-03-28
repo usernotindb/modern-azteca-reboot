@@ -1,5 +1,6 @@
 
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import CardContainer from './glassmorphism/CardContainer';
 import CardBackground from './glassmorphism/CardBackground';
 import CardContent from './glassmorphism/CardContent';

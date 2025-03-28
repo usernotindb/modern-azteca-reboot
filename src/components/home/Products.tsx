@@ -18,6 +18,14 @@ const Products = () => {
   });
   const translateX = useTransform(scrollYProgress, [0, 1], [0, -50]);
   
+  // Handle navigation to the specific product page
+  const handleLearnMore = (productIndex: number) => {
+    const product = productsList[productIndex];
+    if (product && product.link) {
+      navigate(product.link);
+    }
+  };
+  
   return (
     <section 
       ref={ref} 
@@ -43,11 +51,7 @@ const Products = () => {
               image={product.image} 
               index={index} 
               variant="home" 
-              onLearnMore={() => {
-                if (product.link) {
-                  navigate(product.link);
-                }
-              }} 
+              onLearnMore={() => handleLearnMore(index)} 
               className="hover:shadow-lg"
             />
           ))}

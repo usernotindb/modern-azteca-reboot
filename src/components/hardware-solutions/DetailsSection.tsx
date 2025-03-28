@@ -22,7 +22,7 @@ const DetailsSection = ({ category }: DetailsSectionProps) => {
         
         <div className="space-y-16">
           {category.products.map((product) => {
-            // Create ID from product name
+            // Create ID from product name for anchor links
             const productId = product.name.toLowerCase().replace(/\s+/g, '-');
             
             return (

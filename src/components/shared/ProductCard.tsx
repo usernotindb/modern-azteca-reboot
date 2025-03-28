@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import { Product } from '@/lib/types/product';
+import { useNavigate } from 'react-router-dom';
 
 interface ProductCardProps extends Partial<Product> {
   variant?: 'home' | 'product' | 'featured';
@@ -23,6 +24,7 @@ const ProductCard = ({
   onLearnMore,
   className = ''
 }: ProductCardProps) => {
+  const navigate = useNavigate();
   const variantStyles = {
     home: 'p-4 bg-white border border-aztec-50 rounded-lg shadow-sm hover:shadow-md transition-shadow',
     product: 'p-4 bg-white border border-aztec-50 rounded-lg shadow-sm hover:shadow-md transition-shadow',
@@ -93,7 +95,7 @@ const ProductCard = ({
           <AnimatedButton
             href={getLearnMoreHref()}
             variant="outline"
-            className="text-sm px-4 py-2 bg-blue-600 text-black border-blue-300 hover:bg-blue-500 font-medium shadow-sm w-full justify-center"
+            className="text-sm px-4 py-2 bg-blue-600 text-white border-blue-300 hover:bg-blue-500 font-medium shadow-sm w-full justify-center"
             onClick={handleLearnMoreClick}
           >
             Learn More

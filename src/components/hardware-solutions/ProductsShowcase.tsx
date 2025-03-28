@@ -5,16 +5,31 @@ import AnimatedButton from '@/components/ui/AnimatedButton';
 import { ArrowRight, Cpu, Server, Laptop } from 'lucide-react';
 import { ProductCategory } from '@/data/productData';
 import ProductCard from '@/components/shared/ProductCard';
+import { useNavigate } from 'react-router-dom';
 
 interface ProductsShowcaseProps {
   category: ProductCategory;
 }
 
 const ProductsShowcase = ({ category }: ProductsShowcaseProps) => {
+  const navigate = useNavigate();
+  
   const getIcon = (name: string) => {
     if (name.includes("Laptop")) return <Laptop className="w-8 h-8" />;
     if (name.includes("Server")) return <Server className="w-8 h-8" />;
     return <Cpu className="w-8 h-8" />;
+  };
+
+  // Handle navigation to corresponding product page
+  const handleLearnMore = (product: any) => {
+    const productType = product.name.toLowerCase();
+    if (productType.includes('laptop')) {
+      navigate('/products/laptops');
+    } else if (productType.includes('server')) {
+      navigate('/products/servers');
+    } else if (productType.includes('workstation')) {
+      navigate('/products/workstations');
+    }
   };
 
   return (
@@ -40,6 +55,7 @@ const ProductsShowcase = ({ category }: ProductsShowcaseProps) => {
               categorySlug={category.slug}
               index={index}
               variant="product"
+              onLearnMore={() => handleLearnMore(product)}
             />
           ))}
         </div>

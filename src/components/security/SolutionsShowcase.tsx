@@ -11,6 +11,14 @@ interface SolutionsShowcaseProps {
 }
 
 const SolutionsShowcase = ({ category }: SolutionsShowcaseProps) => {
+  const scrollToProductSection = (productName: string) => {
+    const targetId = getProductSectionId(productName);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <section id="solutions" className="py-20 bg-gradient-to-b from-white to-slate-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,11 +75,7 @@ const SolutionsShowcase = ({ category }: SolutionsShowcaseProps) => {
                     iconPosition="right"
                     onClick={(e) => {
                       e.preventDefault();
-                      const targetId = getProductSectionId(product.name);
-                      const targetElement = document.getElementById(targetId);
-                      if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                      }
+                      scrollToProductSection(product.name);
                     }}
                   >
                     Learn More

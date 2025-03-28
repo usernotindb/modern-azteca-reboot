@@ -3,6 +3,7 @@ import ProductCard from '@/components/shared/ProductCard';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import { Product } from '@/lib/types/product';
 import { scrollToElement } from '@/lib/hooks/useScroll';
+import { useNavigate } from 'react-router-dom';
 
 interface ProductCategoryProps {
   category: {
@@ -19,6 +20,8 @@ const ProductCategory = ({
   category,
   isFirst
 }: ProductCategoryProps) => {
+  const navigate = useNavigate();
+  
   // Helper function to get product ID from name
   const getProductId = (name: string): string => {
     return name.toLowerCase().replace(/\s+/g, '-');
@@ -32,6 +35,16 @@ const ProductCategory = ({
       if (product.name.toLowerCase().includes('workstation')) return '/products/workstations';
     }
     return `/products/${category.slug}`;
+  };
+
+  // Handle the learn more action - navigate to specific pages for hardware or scroll for others
+  const handleLearnMore = (product: Product) => {
+    if (category.slug === 'hardware-solutions') {
+      navigate(getProductDetailUrl(product));
+    } else {
+      // Otherwise, scroll to the product section in the current page
+      scrollToElement(getProductId(product.name), 100);
+    }
   };
 
   return (
@@ -53,15 +66,7 @@ const ProductCategory = ({
                 categorySlug={category.slug} 
                 delay={0.1 * productIndex} 
                 variant="product" 
-                onLearnMore={() => {
-                  // If we're viewing the hardware solutions category, redirect to the specific product page
-                  if (category.slug === 'hardware-solutions') {
-                    window.location.href = getProductDetailUrl(product);
-                  } else {
-                    // Otherwise, scroll to the product section in the current page
-                    scrollToElement(getProductId(product.name), 100);
-                  }
-                }} 
+                onLearnMore={() => handleLearnMore(product)} 
               />
             </SlideUpItem>
           ))}

@@ -28,8 +28,8 @@ const CardContainer = ({ children }: CardContainerProps) => {
     const mouseX = e.clientX - centerX;
     const mouseY = e.clientY - centerY;
     
-    // Set maximum rotation (degrees)
-    const maxRotation = 10;
+    // Set maximum rotation (degrees) - reduced for better performance
+    const maxRotation = 8;
     
     // Calculate rotation based on mouse position
     // Normalize the rotation to our max range based on card dimensions
@@ -72,7 +72,8 @@ const CardContainer = ({ children }: CardContainerProps) => {
           rotateX: isMobile ? 0 : rotateX,
           rotateY: isMobile ? 0 : rotateY,
         }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        // Increase stiffness and damping for smoother, less calculation-intensive animations
+        transition={{ type: "spring", stiffness: 200, damping: 25 }}
         style={{
           transformStyle: isMobile ? "flat" : "preserve-3d",
         }}

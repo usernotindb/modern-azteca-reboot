@@ -4,8 +4,8 @@ import { useIsMobile } from '@/hooks/use-mobile';
 
 const FloatingParticles = () => {
   const isMobile = useIsMobile();
-  // Reduce number of particles on mobile
-  const particleCount = isMobile ? 6 : 12;
+  // Reduce number of particles significantly for better performance
+  const particleCount = isMobile ? 4 : 8;
   
   return (
     <>
@@ -23,11 +23,12 @@ const FloatingParticles = () => {
             x: (Math.random() - 0.5) * (isMobile ? 150 : 300),
             y: (Math.random() - 0.5) * (isMobile ? 150 : 300),
             opacity: [0.2, 0.8, 0.2],
-            scale: [1, 1.5, 1],
-            z: isMobile ? 0 : (Math.random() * 50 - 25),
+            // Remove scale animation to reduce calculations
+            z: isMobile ? 0 : (Math.random() * 40 - 20),
           }}
           transition={{
-            duration: 10 + Math.random() * 20,
+            // Increase duration for slower, less CPU-intensive animations
+            duration: 15 + Math.random() * 20,
             repeat: Infinity,
             repeatType: "reverse",
           }}

@@ -32,24 +32,22 @@ const OrbitingIcons = ({ icons, mouseX }: OrbitingIconsProps) => {
               x,
               y,
               opacity: 0,
-              scale: 0.8,
             }}
             animate={{ 
               x,
               y,
               opacity: 1,
-              scale: 1,
-              z: isMobile ? 0 : (40 + (Math.sin(mouseX * 0.01 + index) * 20)),
+              // Only apply z movement on desktop and simplify the z-value calculation
+              z: isMobile ? 0 : 30,
             }}
             transition={{
               opacity: { duration: 0.5, delay },
-              scale: { duration: 0.5, delay },
-              z: { duration: 0.8, ease: "easeOut" }
+              // Remove unnecessary transitions
             }}
             className="absolute transform -translate-x-1/2 -translate-y-1/2"
             style={{
               transformStyle: isMobile ? "flat" : "preserve-3d",
-              zIndex: isMobile ? 10 : (mouseX > x ? 20 : 10),
+              zIndex: 10,
             }}
           >
             <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full bg-white/10 backdrop-blur-md p-2 sm:p-3 flex items-center justify-center border border-white/20 shadow-lg">

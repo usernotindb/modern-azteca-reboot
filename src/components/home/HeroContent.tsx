@@ -66,7 +66,7 @@ const HeroContent = ({ controls, reference }: HeroContentProps) => {
           Explore Our Solutions
         </AnimatedButton>
         
-        <AnimatedButton href="/contact" variant="outline" className="border-blue-200 text-white hover:bg-blue-700">
+        <AnimatedButton href="/contact" className="bg-blue-600 hover:bg-blue-700 text-white">
           Contact Us
         </AnimatedButton>
       </motion.div>

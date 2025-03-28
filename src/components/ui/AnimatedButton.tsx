@@ -40,7 +40,7 @@ const AnimatedButton = ({
   // Button content with animation
   const buttonContent = (
     <motion.div
-      className="flex items-center justify-center w-full gap-1"
+      className="flex items-center justify-center w-full gap-2"
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
       transition={{ duration: 0.2 }}

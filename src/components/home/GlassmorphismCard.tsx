@@ -19,7 +19,7 @@ const GlassmorphismCard = () => {
       <CardBackground mouseX={0} mouseY={0} />
       <CardContent mouseX={0} mouseY={0}>
         <CenterLogo />
-        <OrbitingIcons icons={icons} mouseX={0} />
+        <OrbitingIcons icons={icons} mouseX={0} mouseY={0} />
         <FloatingParticles />
       </CardContent>
     </CardContainer>

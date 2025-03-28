@@ -10,9 +10,10 @@ interface IconConfig {
 interface OrbitingIconsProps {
   icons: IconConfig[];
   mouseX: number;
+  mouseY: number;
 }
 
-const OrbitingIcons = ({ icons, mouseX }: OrbitingIconsProps) => {
+const OrbitingIcons = ({ icons, mouseX, mouseY }: OrbitingIconsProps) => {
   const isMobile = useIsMobile();
   // Calculate smaller radius for mobile
   const radius = isMobile ? 100 : 160; 

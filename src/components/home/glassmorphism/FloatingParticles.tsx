@@ -23,8 +23,6 @@ const FloatingParticles = () => {
             x: (Math.random() - 0.5) * (isMobile ? 150 : 300),
             y: (Math.random() - 0.5) * (isMobile ? 150 : 300),
             opacity: [0.2, 0.8, 0.2],
-            // Remove scale animation to reduce calculations
-            z: isMobile ? 0 : (Math.random() * 40 - 20),
           }}
           transition={{
             // Increase duration for slower, less CPU-intensive animations

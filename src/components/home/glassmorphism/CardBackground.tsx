@@ -20,10 +20,6 @@ const CardBackground = ({ mouseX, mouseY }: CardBackgroundProps) => {
       {/* Depth effects and highlights - reduced for better performance */}
       <div 
         className="absolute inset-0 opacity-20 bg-gradient-to-br from-blue-400/60 via-transparent to-blue-900/60"
-        style={{
-          // Reduce animation sensitivity - only apply on desktop
-          transform: isMobile ? "none" : `translateX(${mouseX * 0.01}px) translateY(${mouseY * 0.01}px)`,
-        }}
       />
       
       {/* Simplified background effect */}
@@ -31,9 +27,6 @@ const CardBackground = ({ mouseX, mouseY }: CardBackgroundProps) => {
         className="absolute inset-0 bg-gradient-radial from-blue-400/30 to-transparent opacity-70"
         style={{
           transformStyle: isMobile ? "flat" : "preserve-3d",
-          // Simplify transform for better performance
-          transform: isMobile ? "none" : `translateZ(15px)`,
-          // Removed dynamic background position for better performance
         }}
       />
       

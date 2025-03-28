@@ -49,10 +49,10 @@ const CardContainer = ({ children }: CardContainerProps) => {
   };
 
   // Clone children and inject the mouseX and mouseY props
-  const childrenWithProps = children as ReactNode[];
+  const childrenWithProps = React.Children.toArray(children);
   const clonedChildren = childrenWithProps.map((child, index) => {
     if (isValidElement(child)) {
-      return cloneElement(child, { mouseX, mouseY, key: index } as any);
+      return cloneElement(child, { mouseX, mouseY, key: index });
     }
     return child;
   });

@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import HeroBackground from './HeroBackground';
@@ -11,6 +11,7 @@ import AnimatedButton from '../ui/AnimatedButton';
 const Hero = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ triggerOnce: true });
+  const contentRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   
   const heroItems = [
@@ -55,10 +56,10 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10 py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7">
-            <HeroContent />
+            <HeroContent controls={controls} reference={contentRef} />
           </div>
           
-          {/* This is the element we're updating to a card style */}
+          {/* Card style element */}
           <div className="lg:col-span-5">
             <div className="hidden lg:block">
               <Card className="bg-white/10 backdrop-blur-lg border border-white/20 shadow-xl overflow-hidden">

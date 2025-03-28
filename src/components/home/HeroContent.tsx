@@ -1,11 +1,11 @@
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimationControls } from 'framer-motion';
 import AnimatedButton from '../ui/AnimatedButton';
 
 interface HeroContentProps {
-  controls: any;
-  reference: React.RefObject<HTMLDivElement>;
+  controls?: AnimationControls;
+  reference?: React.RefObject<HTMLDivElement>;
 }
 
 const HeroContent = ({ controls, reference }: HeroContentProps) => {
@@ -13,7 +13,7 @@ const HeroContent = ({ controls, reference }: HeroContentProps) => {
     <motion.div
       ref={reference}
       initial="hidden"
-      animate={controls}
+      animate={controls || "visible"}
       variants={{
         hidden: { opacity: 0 },
         visible: {

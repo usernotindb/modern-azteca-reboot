@@ -6,7 +6,6 @@ export interface Product {
   description: string;
   image: string;
   categorySlug?: string;
-  imageId?: string; // Add imageId field
 }
 
 export interface ProductCategory {

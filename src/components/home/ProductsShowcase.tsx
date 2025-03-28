@@ -1,29 +1,16 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import AnimatedButton from '../ui/AnimatedButton';
-import ProductImageSelector from '../shared/ProductImageSelector';
 
 const ProductsShowcase = () => {
-  const [showcaseImage, setShowcaseImage] = useState('/lovable-uploads/fd6981e3-b5e5-4a03-9cd8-38fac8167126.png');
-
-  const handleImageChange = (imageId: string, newImageSrc: string) => {
-    setShowcaseImage(newImageSrc);
-  };
-
   return <div className="bg-aztec-50 p-6 rounded-xl mb-16">
       <div className="flex flex-col lg:flex-row items-center">
-        <div className="lg:w-1/2 mb-8 lg:mb-0 relative">
+        <div className="lg:w-1/2 mb-8 lg:mb-0">
           <img 
             alt="Product showcase" 
             className="w-full max-w-2xl mx-auto rounded-lg shadow-lg" 
-            src={showcaseImage}
-            id="showcase-hero-image"
-          />
-          <ProductImageSelector
-            imageId="showcase-hero-image"
-            currentImage={showcaseImage}
-            onImageChange={handleImageChange}
-            className="absolute top-4 right-4"
+            src="/lovable-uploads/fd6981e3-b5e5-4a03-9cd8-38fac8167126.png"
+            id="showcase-hero-image" // Add unique ID
           />
         </div>
         <div className="lg:w-1/2 lg:pl-12">

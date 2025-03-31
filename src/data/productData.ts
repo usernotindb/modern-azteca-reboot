@@ -2,6 +2,8 @@
 import { getImagePath } from '@/config/images';
 import { Product } from '@/lib/types/product';
 
+export { Product }; // Re-export Product type to maintain compatibility
+
 export interface ProductCategory {
   id: number;
   name: string;

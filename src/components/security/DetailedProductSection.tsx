@@ -4,7 +4,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import FadeIn from '@/components/ui/FadeIn';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import { Check } from 'lucide-react';
-import { Product } from '@/data/productData';
+import { ProductCategory } from '@/data/productData';
+import { Product } from '@/lib/types/product';
 import { getProductSectionId } from './securityUtils';
 
 interface DetailedProductSectionProps {

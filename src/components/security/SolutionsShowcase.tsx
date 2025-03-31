@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import FadeIn from '@/components/ui/FadeIn';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import { ArrowRight } from 'lucide-react';
-import { Product, ProductCategory } from '@/data/productData';
+import { ProductCategory } from '@/data/productData';
+import { Product } from '@/lib/types/product';
 import { getSecurityIcon, getProductSectionId } from './securityUtils';
 
 interface SolutionsShowcaseProps {

@@ -1,8 +1,11 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { LOGO_IMAGES } from '@/config/images';
 
 const HeroBackground = () => {
+  const logo = LOGO_IMAGES.mainLogo;
+  
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden">
       {/* Gradient background with Azteca brand color */}
@@ -58,7 +61,7 @@ const HeroBackground = () => {
       <div className="absolute inset-0 bg-gradient-radial from-transparent to-blue-950/50"></div>
       
       {/* Display the Azteca Technology logo */}
-      <div className="absolute inset-0 bg-[url('/lovable-uploads/aafd8b1b-4480-41c4-9f11-0d6862cff6dd.png')] bg-no-repeat bg-contain bg-center opacity-10"></div>
+      <div className={`absolute inset-0 bg-[url('${logo.path}')] bg-no-repeat bg-contain bg-center opacity-10`}></div>
     </div>
   );
 };

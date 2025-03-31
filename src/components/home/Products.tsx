@@ -6,6 +6,7 @@ import ProductsHeader from './ProductsHeader';
 import ProductsShowcase from './ProductsShowcase';
 import { productsList } from './ProductsData';
 import { useNavigate } from 'react-router-dom';
+import { getImagePath } from '@/config/images';
 
 const Products = () => {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ const Products = () => {
               key={product.id} 
               name={product.name} 
               description={product.description} 
-              image={product.image} 
+              imageId={product.imageId}
               index={index} 
               variant="home" 
               onLearnMore={() => handleLearnMore(index)} 

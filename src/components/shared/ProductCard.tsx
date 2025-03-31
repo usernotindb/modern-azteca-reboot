@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import { Product } from '@/lib/types/product';
 import { useNavigate } from 'react-router-dom';
+import { getImagePath } from '@/config/images';
 
 interface ProductCardProps extends Partial<Product> {
   variant?: 'home' | 'product' | 'featured';
@@ -10,13 +11,15 @@ interface ProductCardProps extends Partial<Product> {
   delay?: number;
   onLearnMore?: () => void;
   className?: string;
+  imageId?: string; // Add imageId as an optional prop
 }
 
 const ProductCard = ({
   name,
   description,
   price,
-  image,
+  image, // Keep for backward compatibility
+  imageId, // New prop for image ID
   categorySlug,
   variant = 'product',
   index = 0,
@@ -53,6 +56,9 @@ const ProductCard = ({
     return `/products/${categorySlug}`;
   };
 
+  // Get the image path, prioritizing imageId if provided
+  const imagePath = imageId ? getImagePath(imageId) : image || getImagePath('placeholder');
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -60,10 +66,10 @@ const ProductCard = ({
       transition={{ duration: 0.5, delay: delay + (index * 0.1) }}
       className={`${variantStyles[variant]} ${className}`}
     >
-      {image && (
+      {imagePath && (
         <div className="mb-4 aspect-video overflow-hidden rounded-md">
           <img
-            src={image}
+            src={imagePath}
             alt={name || 'Product image'}
             className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
           />

@@ -1,8 +1,11 @@
 
 import * as React from 'react';
 import { motion } from 'framer-motion';
+import { LOGO_IMAGES } from '@/config/images';
 
 const CenterLogo = () => {
+  const logo = LOGO_IMAGES.mainLogo;
+  
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.5 }}
@@ -11,8 +14,8 @@ const CenterLogo = () => {
       className="relative z-10 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full bg-white/10 backdrop-blur-xl p-5 sm:p-7 flex items-center justify-center border border-white/30 shadow-lg"
     >
       <img 
-        src="/lovable-uploads/aafd8b1b-4480-41c4-9f11-0d6862cff6dd.png" 
-        alt="Azteca Technology Logo" 
+        src={logo.path} 
+        alt={logo.alt} 
         className="w-full h-full object-contain"
       />
     </motion.div>

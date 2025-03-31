@@ -1,11 +1,6 @@
 
-export interface Product {
-  id: number;
-  name: string;
-  price: string;
-  description: string;
-  image: string;
-}
+import { getImagePath } from '@/config/images';
+import { Product } from '@/lib/types/product';
 
 export interface ProductCategory {
   id: number;
@@ -27,21 +22,21 @@ export const productCategories: ProductCategory[] = [
         name: "ATS Tax Software", 
         price: "Contact for pricing",
         description: "Professional tax software for high volume tax businesses with comprehensive features for tax preparation and filing.",
-        image: "/lovable-uploads/628857d0-dac0-42fc-b3e9-4528eee9ef00.png" 
+        imageId: "workstation-design" 
       },
       { 
         id: 102, 
         name: "Office 365", 
         price: "Starting at $149.99/year",
         description: "Work anywhere, anytime, on any device with Microsoft's industry-leading productivity suite.",
-        image: "/lovable-uploads/f9ca7c28-be78-46ba-9cdc-eff03c287cb7.png" 
+        imageId: "icon-dev" 
       },
       { 
         id: 103, 
         name: "Anti-Virus Solutions", 
         price: "$49.99/year",
         description: "Complete protection for your devices with WiFi Security VPN and antivirus protection.",
-        image: "/lovable-uploads/74da57e4-5aa3-4a37-aa85-c1c28943253c.png" 
+        imageId: "icon-cloud" 
       },
     ]
   },
@@ -56,21 +51,21 @@ export const productCategories: ProductCategory[] = [
         name: "Laptops", 
         price: "Starting at $899",
         description: "Get everything done faster with solid state drives, powerful processors, and sleek designs.",
-        image: "/lovable-uploads/78f56f78-5618-46cc-87a1-bbb19df328bb.png" 
+        imageId: "laptop-business-pro" 
       },
       { 
         id: 202, 
         name: "Servers", 
         price: "Starting at $1,499",
         description: "Operate reliably, manage easily, and scale your business with our server solutions.",
-        image: "/lovable-uploads/9f952ca9-69ce-4ab5-8239-0dbdcdae2c6b.png" 
+        imageId: "server-mid-range" 
       },
       { 
         id: 203, 
         name: "Workstations", 
         price: "Starting at $1,299",
         description: "Fully customizable Workstation-class performance for demanding professional applications.",
-        image: "/lovable-uploads/881ea460-231f-4a79-9b8a-a49b932665d7.png" 
+        imageId: "workstation-engineering" 
       },
     ]
   },
@@ -85,21 +80,21 @@ export const productCategories: ProductCategory[] = [
         name: "Managed IT Services", 
         price: "Custom pricing",
         description: "Comprehensive IT management to keep your systems running smoothly and securely.",
-        image: "/lovable-uploads/8d93ccd6-f135-4472-ad9a-677825e40020.png" 
+        imageId: "icon-security" 
       },
       { 
         id: 302, 
         name: "Disaster Recovery", 
         price: "Custom pricing",
         description: "Protect your business with our robust backup and disaster recovery solutions.",
-        image: "/lovable-uploads/15740d59-746e-4979-ae0f-e377879839ee.png" 
+        imageId: "icon-access" 
       },
       { 
         id: 303, 
         name: "Network Management", 
         price: "Custom pricing",
         description: "Keep your network infrastructure secure, up-to-date and operating at peak performance.",
-        image: "/lovable-uploads/944ad356-757c-4847-bb03-8e643c5032fc.png" 
+        imageId: "icon-monitor" 
       },
     ]
   },
@@ -114,21 +109,21 @@ export const productCategories: ProductCategory[] = [
         name: "IP Camera Systems", 
         price: "Custom pricing",
         description: "Expert installation of security camera systems for homes and businesses.",
-        image: "/lovable-uploads/74da57e4-5aa3-4a37-aa85-c1c28943253c.png" 
+        imageId: "icon-cloud" 
       },
       { 
         id: 402, 
         name: "Anti-Virus Protection", 
         price: "$49.99/year",
         description: "Complete protection for your devices with WiFi Security VPN and antivirus protection.",
-        image: "/lovable-uploads/74da57e4-5aa3-4a37-aa85-c1c28943253c.png" 
+        imageId: "icon-cloud" 
       },
       { 
         id: 403, 
         name: "Network Security", 
         price: "Custom pricing",
         description: "Comprehensive network security solutions to protect your business from threats.",
-        image: "/lovable-uploads/8d93ccd6-f135-4472-ad9a-677825e40020.png" 
+        imageId: "icon-security" 
       },
     ]
   }

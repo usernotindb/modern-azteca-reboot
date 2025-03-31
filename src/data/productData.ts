@@ -2,7 +2,7 @@
 import { getImagePath } from '@/config/images';
 import { Product } from '@/lib/types/product';
 
-export { Product }; // Re-export Product type to maintain compatibility
+export type { Product }; // Re-export Product type using 'export type' syntax
 
 export interface ProductCategory {
   id: number;

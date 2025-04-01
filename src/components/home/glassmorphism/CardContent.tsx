@@ -12,19 +12,23 @@ interface CardContentProps {
 const CardContent = ({ mouseX, mouseY, children }: CardContentProps) => {
   const isMobile = useIsMobile();
   
-  // Calculate transform based on mouse position
-  const transformValue = isMobile 
-    ? undefined 
-    : `perspective(1000px) rotateX(${mouseY * 10}deg) rotateY(${-mouseX * 10}deg) translateZ(20px)`;
+  // Calculate rotation values safely
+  const rotateX = isMobile ? 0 : mouseY * 10;
+  const rotateY = isMobile ? 0 : -mouseX * 10;
+  const translateZ = 20;
   
   return (
     <motion.div 
       className="relative h-full w-full p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center"
       style={{
         transformStyle: 'preserve-3d',
-        transform: transformValue,
-        transition: 'transform 0.1s ease-out'
       }}
+      animate={{
+        rotateX: rotateX,
+        rotateY: rotateY,
+        z: translateZ,
+      }}
+      transition={{ duration: 0.1, ease: "easeOut" }}
     >
       {children}
     </motion.div>

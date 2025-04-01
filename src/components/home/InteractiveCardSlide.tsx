@@ -63,9 +63,6 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
       animate={{ 
         opacity: isActive ? 1 : 0.5,
         scale: isActive ? 1 : 0.85,
-        rotateX: rotateX,
-        rotateY: rotateY,
-        x: isActive ? 0 : 0
       }}
       transition={{ 
         duration: isHovering ? 0.1 : 0.4, 
@@ -156,7 +153,7 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
           initial={{ opacity: 0 }}
           animate={{ 
             opacity: isHovering ? 0.6 : 0,
-            background: `linear-gradient(${125 + rotateY * 5}deg, transparent, rgba(255, 255, 255, 0.2), transparent)`
+            backgroundImage: `linear-gradient(${125 + rotateY * 5}deg, transparent, rgba(255, 255, 255, 0.2), transparent)`
           }}
           transition={{ duration: 0.2 }}
         />

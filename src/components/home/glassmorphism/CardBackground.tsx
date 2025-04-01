@@ -29,15 +29,19 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
   const inactiveBoxShadow = '0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)';
   const hoverBoxShadow = '0 25px 30px -5px rgba(0,0,0,0.3), 0 15px 15px -5px rgba(0,0,0,0.15), 0 0 20px 4px rgba(59,130,246,0.4)';
   
+  // Calculate rotation values safely
+  const rotateX = isMobile ? 0 : mouseY * 10; 
+  const rotateY = isMobile ? 0 : -mouseX * 10;
+  
   return (
     <motion.div 
       className="absolute inset-0 rounded-2xl overflow-hidden bg-blue-600/20 backdrop-blur-[12px] border border-blue-300/30 shadow-xl"
       style={{
         transformStyle: 'preserve-3d',
-        transform: `rotateX(${mouseY * 10}deg) rotateY(${-mouseX * 10}deg)`,
       }}
-      initial={{ boxShadow: inactiveBoxShadow }}
       animate={{
+        rotateX: rotateX,
+        rotateY: rotateY,
         boxShadow: isActive 
           ? (Math.abs(mouseX) > 0.1 || Math.abs(mouseY) > 0.1 ? hoverBoxShadow : activeBoxShadow) 
           : inactiveBoxShadow

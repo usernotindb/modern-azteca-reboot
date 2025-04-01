@@ -59,7 +59,12 @@ const GlassmorphismCardCarousel = () => {
   };
 
   // Mouse-based navigation - drag to slide
-  const handleDrag = (e: React.MouseEvent, dragX: number) => {
+  // Fix the type error by properly typing the event parameter
+  const handleDrag = (
+    // Using a more generic type for the event and properly casting it
+    e: React.MouseEvent | MouseEvent | TouchEvent | PointerEvent, 
+    dragX: number
+  ) => {
     if (isMobile || !isMouseActive) return;
     
     if (Math.abs(dragX) > 50) {
@@ -94,7 +99,7 @@ const GlassmorphismCardCarousel = () => {
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={0.1}
-                onDragEnd={(e, info) => handleDrag(e as React.MouseEvent, info.offset.x)}
+                onDragEnd={(e, info) => handleDrag(e, info.offset.x)}
               >
                 <div className="w-full aspect-square rounded-2xl overflow-hidden shadow-xl">
                   <InteractiveCardSlide

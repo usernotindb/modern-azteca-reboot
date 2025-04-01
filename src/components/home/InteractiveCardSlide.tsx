@@ -2,42 +2,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CarouselItem } from '@/data/carouselData';
-import CardBackground from './glassmorphism/CardBackground';
-import OrbitingIcons from './glassmorphism/OrbitingIcons';
 
 interface InteractiveCardSlideProps {
   item: CarouselItem;
   isActive: boolean;
-  mouseX: number;
-  mouseY: number;
-  direction?: 'left' | 'right' | null;
 }
 
-const InteractiveCardSlide = ({ item, isActive, mouseX, mouseY, direction }: InteractiveCardSlideProps) => {
-  // 3D Transform values based on mouse position
-  const rotateX = isActive ? mouseY * -10 : 0; // Invert Y for natural tilt
-  const rotateY = isActive ? mouseX * 10 : 0;
-  
-  // Avoid using translateZ in the transform string as it can cause issues with framer-motion
-  const transformStyle = isActive 
-    ? `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
-    : 'perspective(1000px)';
-
+const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => {
   return (
-    <div 
-      className="relative w-full h-full aspect-square transform-gpu"
-      style={{
-        transform: transformStyle,
-        transition: 'transform 0.3s ease'
+    <motion.div 
+      className="relative w-full h-full aspect-square rounded-2xl overflow-hidden"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ 
+        opacity: isActive ? 1 : 0.7,
+        scale: isActive ? 1 : 0.9,
       }}
+      transition={{ duration: 0.4 }}
     >
-      {/* Glassmorphism background with interactive tilt */}
-      <CardBackground 
-        mouseX={mouseX} 
-        mouseY={mouseY}
-        isActive={isActive}
-        direction={direction} 
-      />
+      {/* Card background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/80 via-blue-700/70 to-blue-900/90 backdrop-blur-lg border border-blue-300/30 rounded-2xl shadow-xl" />
       
       {/* Content layer */}
       <div className="absolute inset-0 p-6 flex flex-col items-center z-10">
@@ -45,13 +28,12 @@ const InteractiveCardSlide = ({ item, isActive, mouseX, mouseY, direction }: Int
         <h3 className="text-xl font-bold text-white mb-4 text-center">{item.title}</h3>
         
         {/* Main image */}
-        <div className="relative w-24 h-24 mb-4">
+        <div className="relative w-28 h-28 mb-6">
           <motion.div
-            className="w-full h-full rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center p-2"
+            className="w-full h-full rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center p-3"
             animate={{
-              scale: isActive ? 1.1 : 0.9,
-              opacity: isActive ? 1 : 0.7,
-              y: isActive ? -5 : 0,
+              scale: isActive ? 1.05 : 0.95,
+              opacity: isActive ? 1 : 0.8,
             }}
             transition={{ duration: 0.4 }}
           >
@@ -64,14 +46,14 @@ const InteractiveCardSlide = ({ item, isActive, mouseX, mouseY, direction }: Int
         </div>
         
         {/* Key points */}
-        <ul className="text-white/90 text-sm space-y-2 list-disc pl-6">
+        <ul className="text-white/90 text-sm space-y-2 list-disc pl-5">
           {item.keyPoints.map((point, idx) => (
             <motion.li 
               key={idx}
-              initial={{ opacity: 0, x: -10 }}
+              initial={{ opacity: 0, x: -5 }}
               animate={{ 
-                opacity: isActive ? 1 : 0.5, 
-                x: isActive ? 0 : -5
+                opacity: isActive ? 1 : 0.6, 
+                x: 0
               }}
               transition={{ 
                 duration: 0.3,
@@ -82,18 +64,8 @@ const InteractiveCardSlide = ({ item, isActive, mouseX, mouseY, direction }: Int
             </motion.li>
           ))}
         </ul>
-        
-        {/* Orbiting icons */}
-        <div className="absolute inset-0 -z-10">
-          <OrbitingIcons 
-            iconIds={item.iconIds} 
-            mouseX={mouseX} 
-            mouseY={mouseY}
-            isActive={isActive}
-          />
-        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -24,15 +24,18 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
   // Determine direction-based styling
   const directionOffset = direction === 'left' ? -5 : direction === 'right' ? 5 : 0;
   
+  // Define boxShadow values to avoid animation issues
+  const activeBoxShadow = '0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1), 0 0 15px 2px rgba(59,130,246,0.3)';
+  const inactiveBoxShadow = '0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)';
+  
   return (
     <motion.div 
       className="absolute inset-0 rounded-2xl overflow-hidden bg-blue-600/20 backdrop-blur-[12px] border border-blue-300/30 shadow-xl"
+      initial={{ boxShadow: inactiveBoxShadow }}
       animate={{
-        boxShadow: isActive 
-          ? '0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1), 0 0 15px 2px rgba(59,130,246,0.3)' 
-          : '0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)',
-        transition: { duration: 0.3 }
+        boxShadow: isActive ? activeBoxShadow : inactiveBoxShadow
       }}
+      transition={{ duration: 0.3 }}
     >
       {/* Depth effects and highlights - dynamic with mouse */}
       <div 
@@ -64,6 +67,7 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
         animate={{
           opacity: isActive ? 0.8 : 0.4,
         }}
+        transition={{ duration: 0.3 }}
       />
       
       {/* Direction-based highlight */}
@@ -72,12 +76,14 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
           className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-transparent opacity-0"
           initial={{ opacity: 0 }}
           animate={{ 
-            opacity: direction === 'left' ? 0.3 : 0,
+            opacity: direction === 'left' ? 0.3 : direction === 'right' ? 0.3 : 0
+          }}
+          transition={{ duration: 0.3 }}
+          style={{
             background: direction === 'left' 
               ? 'linear-gradient(to right, rgba(59, 130, 246, 0.3), transparent)'
               : 'linear-gradient(to left, rgba(59, 130, 246, 0.3), transparent)'
           }}
-          transition={{ duration: 0.3 }}
         />
       )}
     </motion.div>

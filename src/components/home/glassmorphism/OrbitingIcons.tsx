@@ -38,8 +38,6 @@ const OrbitingIcons = ({ iconIds, mouseX, mouseY, isActive = false }: OrbitingIc
           <motion.div
             key={index}
             initial={{ 
-              x,
-              y,
               opacity: 0,
             }}
             animate={{ 
@@ -47,7 +45,7 @@ const OrbitingIcons = ({ iconIds, mouseX, mouseY, isActive = false }: OrbitingIc
               y,
               opacity: isActive ? 1 : 0.7,
               scale: isActive ? 1.1 : 0.95,
-              // Remove the problematic z property that's causing animation issues
+              // No z property
             }}
             transition={{
               opacity: { duration: 0.5, delay },
@@ -59,7 +57,7 @@ const OrbitingIcons = ({ iconIds, mouseX, mouseY, isActive = false }: OrbitingIc
             style={{
               left: "50%",
               top: "50%",
-              zIndex: 10, // Use static zIndex instead of animating it
+              zIndex: 10, // Static zIndex only
             }}
           >
             <div className={`w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full backdrop-blur-md p-2 sm:p-3 flex items-center justify-center border shadow-lg transition-all duration-300 ${isActive ? 'bg-blue-500/30 border-blue-300/40 shadow-blue-500/20' : 'bg-white/10 border-white/20'}`}>

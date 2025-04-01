@@ -24,16 +24,23 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
   // Determine direction-based styling
   const directionOffset = direction === 'left' ? -5 : direction === 'right' ? 5 : 0;
   
-  // Define boxShadow values to avoid animation issues
+  // Define boxShadow values for better 3D effect
   const activeBoxShadow = '0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1), 0 0 15px 2px rgba(59,130,246,0.3)';
   const inactiveBoxShadow = '0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)';
+  const hoverBoxShadow = '0 25px 30px -5px rgba(0,0,0,0.3), 0 15px 15px -5px rgba(0,0,0,0.15), 0 0 20px 4px rgba(59,130,246,0.4)';
   
   return (
     <motion.div 
       className="absolute inset-0 rounded-2xl overflow-hidden bg-blue-600/20 backdrop-blur-[12px] border border-blue-300/30 shadow-xl"
+      style={{
+        transformStyle: 'preserve-3d',
+        transform: `rotateX(${mouseY * 10}deg) rotateY(${-mouseX * 10}deg)`,
+      }}
       initial={{ boxShadow: inactiveBoxShadow }}
       animate={{
-        boxShadow: isActive ? activeBoxShadow : inactiveBoxShadow
+        boxShadow: isActive 
+          ? (Math.abs(mouseX) > 0.1 || Math.abs(mouseY) > 0.1 ? hoverBoxShadow : activeBoxShadow) 
+          : inactiveBoxShadow
       }}
       transition={{ duration: 0.3 }}
     >
@@ -42,7 +49,8 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
         className="absolute inset-0 opacity-30 bg-gradient-to-br from-blue-400/60 via-transparent to-blue-900/60"
         style={{
           backgroundPosition: `${gradientX}% ${gradientY}%`,
-          transition: 'background-position 0.2s ease-out'
+          transition: 'background-position 0.2s ease-out',
+          transform: 'translateZ(10px)',
         }}
       />
       
@@ -52,7 +60,8 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
         style={{
           backgroundPosition: `${50 + directionOffset}% ${50 + (mouseY * 10)}%`,
           backgroundSize: isActive ? '150% 150%' : '120% 120%',
-          transition: 'all 0.3s ease-out'
+          transition: 'all 0.3s ease-out',
+          transform: 'translateZ(20px)',
         }}
       />
       
@@ -62,7 +71,8 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
         style={{
           backgroundPosition: `${shineX}% ${shineY}%`,
           backgroundSize: '200% 200%',
-          transition: 'background-position 0.2s ease-out'
+          transition: 'background-position 0.2s ease-out',
+          transform: 'translateZ(30px)',
         }}
         animate={{
           opacity: isActive ? 0.8 : 0.4,
@@ -82,7 +92,8 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
           style={{
             background: direction === 'left' 
               ? 'linear-gradient(to right, rgba(59, 130, 246, 0.3), transparent)'
-              : 'linear-gradient(to left, rgba(59, 130, 246, 0.3), transparent)'
+              : 'linear-gradient(to left, rgba(59, 130, 246, 0.3), transparent)',
+            transform: 'translateZ(15px)',
           }}
         />
       )}

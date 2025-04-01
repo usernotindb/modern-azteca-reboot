@@ -60,13 +60,15 @@ const GlassmorphismCardCarousel = () => {
         opts={{
           align: "center",
           loop: true,
+          skipSnaps: false,
+          containScroll: "keepSnaps"
         }}
         className="w-full"
         onSlideChange={handleCarouselChange}
       >
-        <CarouselContent>
+        <CarouselContent className="-ml-1">
           {carouselItems.map((item, index) => (
-            <CarouselItem key={item.id} className="w-full flex justify-center">
+            <CarouselItem key={item.id} className="pl-1 flex justify-center">
               <motion.div 
                 className="w-full transition-all duration-500"
                 style={{

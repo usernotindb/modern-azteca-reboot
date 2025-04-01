@@ -14,8 +14,9 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
       className="relative w-full h-full aspect-square rounded-2xl overflow-hidden"
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ 
-        opacity: isActive ? 1 : 0.7,
-        scale: isActive ? 1 : 0.9,
+        opacity: isActive ? 1 : 0.5,
+        scale: isActive ? 1 : 0.85,
+        x: isActive ? 0 : 0
       }}
       transition={{ duration: 0.4 }}
     >
@@ -52,7 +53,7 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
               key={idx}
               initial={{ opacity: 0, x: -5 }}
               animate={{ 
-                opacity: isActive ? 1 : 0.6, 
+                opacity: isActive ? 1 : 0.7, 
                 x: 0
               }}
               transition={{ 

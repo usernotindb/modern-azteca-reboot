@@ -62,7 +62,7 @@ const HeroContent = ({ controls, reference }: HeroContentProps) => {
         }}
         className="flex flex-col sm:flex-row gap-4"
       >
-        <AnimatedButton href="/services" withArrow className="bg-blue-600 hover:bg-blue-700 text-white">
+        <AnimatedButton href="/products" withArrow className="bg-blue-600 hover:bg-blue-700 text-white">
           Explore Our Solutions
         </AnimatedButton>
         

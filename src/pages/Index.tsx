@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import Hero from '@/components/home/Hero';
-import About from '@/components/home/About';
 import Products from '@/components/home/Products';
 import Contact from '@/components/home/Contact';
 import ITServices from '@/components/home/ITServices';
@@ -71,7 +70,6 @@ const Index = () => {
         <Products />
         <ITServices />
         <SecuritySolutions />
-        <About />
         
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">

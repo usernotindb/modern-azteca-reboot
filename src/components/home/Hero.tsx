@@ -33,7 +33,7 @@ const Hero = () => {
             <HeroContent controls={controls} reference={ref} />
           </div>
           
-          {/* Right column: 3D Glassmorphism Card Carousel */}
+          {/* Right column: Interactive 3D Card Carousel */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}

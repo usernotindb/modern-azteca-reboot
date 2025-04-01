@@ -1,5 +1,5 @@
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
   Carousel,
@@ -8,82 +8,76 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel";
-import CardContainer from './glassmorphism/CardContainer';
-import CardBackground from './glassmorphism/CardBackground';
-import CardContent from './glassmorphism/CardContent';
-import CenterLogo from './glassmorphism/CenterLogo';
-import OrbitingIcons from './glassmorphism/OrbitingIcons';
-import FloatingParticles from './glassmorphism/FloatingParticles';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Card, CardContent as ShadcnCardContent } from "@/components/ui/card";
-import { cn } from '@/lib/utils';
-import { ICON_IMAGES } from '@/config/images';
+import { carouselItems } from '@/data/carouselData';
+import InteractiveCardSlide from './InteractiveCardSlide';
 
-interface CardData {
-  title: string;
-  iconIds: string[];
-}
-
-const GlassmorphismCard = ({ iconIds, active }: { iconIds: string[]; active: boolean }) => {
+const GlassmorphismCardCarousel = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
+  const [isMouseActive, setIsMouseActive] = useState(false);
   const isMobile = useIsMobile();
+  
+  const handleCarouselChange = (index: number) => {
+    setActiveIndex(index);
+  };
 
+  // Handle mouse movement for interactive effects
   const handleMouseMove = (e: React.MouseEvent) => {
+    if (isMobile) return;
+    
     try {
-      if (isMobile) return;
-      
-      // Calculate mouse position relative to the window
-      const newMouseX = (e.clientX / window.innerWidth) * 2 - 1;
-      const newMouseY = (e.clientY / window.innerHeight) * 2 - 1;
-      
-      setMouseX(newMouseX);
-      setMouseY(newMouseY);
+      // Calculate mouse position relative to the carousel container
+      if (carouselRef.current) {
+        const rect = carouselRef.current.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width * 2 - 1;
+        const y = (e.clientY - rect.top) / rect.height * 2 - 1;
+        
+        setMouseX(x);
+        setMouseY(y);
+        setIsMouseActive(true);
+      }
     } catch (error) {
-      console.error("Mouse move error:", error);
+      console.error("Mouse tracking error:", error);
       setMouseX(0);
       setMouseY(0);
     }
   };
 
-  return (
-    <CardContainer onMouseMove={handleMouseMove}>
-      <CardBackground mouseX={mouseX} mouseY={mouseY} />
-      <CardContent mouseX={mouseX} mouseY={mouseY}>
-        <CenterLogo />
-        <OrbitingIcons iconIds={iconIds} mouseX={mouseX} mouseY={mouseY} />
-        <FloatingParticles />
-      </CardContent>
-    </CardContainer>
-  );
-};
+  // Reset mouse position when mouse leaves the carousel
+  const handleMouseLeave = () => {
+    setIsMouseActive(false);
+    // Smoothly reset position
+    setTimeout(() => {
+      if (!isMouseActive) {
+        setMouseX(0);
+        setMouseY(0);
+      }
+    }, 500);
+  };
 
-const GlassmorphismCardCarousel = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
-  
-  // Card data
-  const cardsData: CardData[] = [
-    {
-      title: "IT Infrastructure",
-      iconIds: ['icon-cloud', 'icon-hardware', 'icon-security', 'icon-support']
-    },
-    {
-      title: "Software Solutions",
-      iconIds: ['icon-software', 'icon-apps', 'icon-dev', 'icon-web']
-    },
-    {
-      title: "Security Solutions",
-      iconIds: ['icon-security', 'icon-protection', 'icon-access', 'icon-monitor']
+  // Mouse-based navigation - drag to slide
+  const handleDrag = (e: React.MouseEvent, dragX: number) => {
+    if (isMobile || !isMouseActive) return;
+    
+    if (Math.abs(dragX) > 50) {
+      if (dragX > 0 && activeIndex > 0) {
+        setActiveIndex(activeIndex - 1);
+      } else if (dragX < 0 && activeIndex < carouselItems.length - 1) {
+        setActiveIndex(activeIndex + 1);
+      }
     }
-  ];
-
-  const handleCarouselChange = (index: number) => {
-    setActiveIndex(index);
   };
 
   return (
-    <div className="relative max-w-md mx-auto">
+    <div 
+      ref={carouselRef} 
+      className="relative max-w-md mx-auto"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       <Carousel
         opts={{
           align: "center",
@@ -93,17 +87,27 @@ const GlassmorphismCardCarousel = () => {
         onSlideChange={handleCarouselChange}
       >
         <CarouselContent>
-          {cardsData.map((card, index) => (
-            <CarouselItem key={index} className="w-full flex justify-center">
-              <div className={cn("w-full transition-opacity duration-300", activeIndex === index ? "opacity-100" : "opacity-30")}>
-                <GlassmorphismCard 
-                  iconIds={card.iconIds} 
-                  active={activeIndex === index} 
-                />
-              </div>
-              <div className="absolute bottom-[-50px] left-0 right-0 text-center">
-                <h3 className="text-xl text-white font-semibold">{card.title}</h3>
-              </div>
+          {carouselItems.map((item, index) => (
+            <CarouselItem key={item.id} className="w-full flex justify-center">
+              <motion.div 
+                className={`w-full transition-all duration-500 ${activeIndex === index ? "scale-100 opacity-100" : "scale-90 opacity-40"}`}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.1}
+                onDragEnd={(e, info) => handleDrag(e as React.MouseEvent, info.offset.x)}
+              >
+                <div className="w-full aspect-square rounded-2xl overflow-hidden shadow-xl">
+                  <InteractiveCardSlide
+                    item={item}
+                    isActive={activeIndex === index}
+                    mouseX={mouseX}
+                    mouseY={mouseY}
+                  />
+                </div>
+                <div className="absolute bottom-[-50px] left-0 right-0 text-center">
+                  <h3 className="text-xl text-white font-semibold">{item.title}</h3>
+                </div>
+              </motion.div>
             </CarouselItem>
           ))}
         </CarouselContent>

@@ -17,15 +17,17 @@ const InteractiveCardSlide = ({ item, isActive, mouseX, mouseY, direction }: Int
   // 3D Transform values based on mouse position
   const rotateX = isActive ? mouseY * -10 : 0; // Invert Y for natural tilt
   const rotateY = isActive ? mouseX * 10 : 0;
-  const translateZ = isActive ? 50 : 0;
+  
+  // Avoid using translateZ in the transform string as it can cause issues with framer-motion
+  const transformStyle = isActive 
+    ? `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
+    : 'perspective(1000px)';
 
   return (
     <div 
       className="relative w-full h-full aspect-square transform-gpu"
       style={{
-        transform: isActive 
-          ? `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`
-          : 'perspective(1000px)',
+        transform: transformStyle,
         transition: 'transform 0.3s ease'
       }}
     >
@@ -69,10 +71,12 @@ const InteractiveCardSlide = ({ item, isActive, mouseX, mouseY, direction }: Int
               initial={{ opacity: 0, x: -10 }}
               animate={{ 
                 opacity: isActive ? 1 : 0.5, 
-                x: isActive ? 0 : -5,
-                transition: { delay: isActive ? idx * 0.1 : 0 }
+                x: isActive ? 0 : -5
               }}
-              transition={{ duration: 0.3 }}
+              transition={{ 
+                duration: 0.3,
+                delay: isActive ? idx * 0.1 : 0 
+              }}
             >
               {point}
             </motion.li>

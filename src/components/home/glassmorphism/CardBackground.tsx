@@ -1,34 +1,86 @@
 
 import * as React from 'react';
+import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 interface CardBackgroundProps {
   mouseX: number;
   mouseY: number;
+  isActive?: boolean;
+  direction?: 'left' | 'right' | null;
 }
 
-const CardBackground = ({ mouseX, mouseY }: CardBackgroundProps) => {
+const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundProps) => {
   const isMobile = useIsMobile();
   
+  // Calculate dynamic gradient position based on mouse
+  const gradientX = 50 + (mouseX * 15);
+  const gradientY = 50 + (mouseY * 15);
+  
+  // Calculate shine position based on mouse
+  const shineX = 50 + (mouseX * 25);
+  const shineY = 50 + (mouseY * 25);
+  
+  // Determine direction-based styling
+  const directionOffset = direction === 'left' ? -5 : direction === 'right' ? 5 : 0;
+  
   return (
-    <div 
+    <motion.div 
       className="absolute inset-0 rounded-2xl overflow-hidden bg-blue-600/20 backdrop-blur-[12px] border border-blue-300/30 shadow-xl"
+      animate={{
+        boxShadow: isActive 
+          ? '0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1), 0 0 15px 2px rgba(59,130,246,0.3)' 
+          : '0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)',
+        transition: { duration: 0.3 }
+      }}
     >
-      {/* Depth effects and highlights - simplified without transforms */}
+      {/* Depth effects and highlights - dynamic with mouse */}
       <div 
-        className="absolute inset-0 opacity-20 bg-gradient-to-br from-blue-400/60 via-transparent to-blue-900/60"
+        className="absolute inset-0 opacity-30 bg-gradient-to-br from-blue-400/60 via-transparent to-blue-900/60"
+        style={{
+          backgroundPosition: `${gradientX}% ${gradientY}%`,
+          transition: 'background-position 0.2s ease-out'
+        }}
       />
       
-      {/* Simplified background effect */}
+      {/* Dynamic radial gradient effect */}
       <div 
-        className="absolute inset-0 bg-gradient-radial from-blue-400/30 to-transparent opacity-70"
+        className="absolute inset-0 bg-gradient-radial from-blue-400/40 to-transparent opacity-80"
+        style={{
+          backgroundPosition: `${50 + directionOffset}% ${50 + (mouseY * 10)}%`,
+          backgroundSize: isActive ? '150% 150%' : '120% 120%',
+          transition: 'all 0.3s ease-out'
+        }}
       />
       
-      {/* Glossy highlight - static for better performance */}
-      <div 
-        className="absolute inset-0 bg-gradient-to-t from-transparent via-white/10 to-transparent opacity-40"
+      {/* Glossy highlight - dynamic with mouse */}
+      <motion.div 
+        className="absolute inset-0 bg-gradient-to-t from-transparent via-white/15 to-transparent opacity-60"
+        style={{
+          backgroundPosition: `${shineX}% ${shineY}%`,
+          backgroundSize: '200% 200%',
+          transition: 'background-position 0.2s ease-out'
+        }}
+        animate={{
+          opacity: isActive ? 0.8 : 0.4,
+        }}
       />
-    </div>
+      
+      {/* Direction-based highlight */}
+      {direction && (
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-transparent opacity-0"
+          initial={{ opacity: 0 }}
+          animate={{ 
+            opacity: direction === 'left' ? 0.3 : 0,
+            background: direction === 'left' 
+              ? 'linear-gradient(to right, rgba(59, 130, 246, 0.3), transparent)'
+              : 'linear-gradient(to left, rgba(59, 130, 246, 0.3), transparent)'
+          }}
+          transition={{ duration: 0.3 }}
+        />
+      )}
+    </motion.div>
   );
 };
 

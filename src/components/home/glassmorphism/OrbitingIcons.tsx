@@ -7,9 +7,11 @@ import { getImage } from '@/config/images';
 interface OrbitingIconsProps {
   iconIds: string[];
   isActive?: boolean;
+  mouseX?: number;
+  mouseY?: number;
 }
 
-const OrbitingIcons = ({ iconIds, isActive = false }: OrbitingIconsProps) => {
+const OrbitingIcons = ({ iconIds, isActive = false, mouseX = 0, mouseY = 0 }: OrbitingIconsProps) => {
   const isMobile = useIsMobile();
   // Calculate dynamic radius based on active state
   const baseRadius = isMobile ? 100 : 160;

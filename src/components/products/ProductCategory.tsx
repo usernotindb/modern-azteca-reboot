@@ -69,19 +69,22 @@ const ProductCategory = ({
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
           {category.products.map((product, productIndex) => (
-            <SlideUpItem key={product.id} id={getProductId(product.name)}>
-              <ProductCard 
-                name={product.name} 
-                price={product.price} 
-                description={product.description} 
-                image={product.image}
-                imageId={product.imageId}
-                categorySlug={category.slug}
-                link={product.link}
-                delay={0.1 * productIndex} 
-                variant="product" 
-                onLearnMore={() => handleLearnMore(product)} 
-              />
+            <SlideUpItem key={product.id} className="relative">
+              {/* We wrap the product card in a div with the ID for anchor navigation */}
+              <div id={getProductId(product.name)}>
+                <ProductCard 
+                  name={product.name} 
+                  price={product.price} 
+                  description={product.description} 
+                  image={product.image}
+                  imageId={product.imageId}
+                  categorySlug={category.slug}
+                  link={product.link}
+                  delay={0.1 * productIndex} 
+                  variant="product" 
+                  onLearnMore={() => handleLearnMore(product)} 
+                />
+              </div>
             </SlideUpItem>
           ))}
         </div>

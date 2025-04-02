@@ -15,7 +15,6 @@ const CardContent = ({ mouseX, mouseY, children }: CardContentProps) => {
   // Calculate rotation values safely
   const rotateX = isMobile ? 0 : mouseY * 10;
   const rotateY = isMobile ? 0 : -mouseX * 10;
-  const translateZ = 20;
   
   return (
     <motion.div 
@@ -24,9 +23,9 @@ const CardContent = ({ mouseX, mouseY, children }: CardContentProps) => {
         transformStyle: 'preserve-3d',
       }}
       animate={{
-        rotateX: rotateX,
-        rotateY: rotateY,
-        z: translateZ,
+        rotateX,
+        rotateY,
+        translateZ: 20,
       }}
       transition={{ duration: 0.1, ease: "easeOut" }}
     >

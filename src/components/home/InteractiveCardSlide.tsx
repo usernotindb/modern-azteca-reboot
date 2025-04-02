@@ -90,7 +90,7 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
         animate={{
           rotateX: rotateX * 0.5,
           rotateY: rotateY * 0.5,
-          z: 20,
+          translateZ: 20, // Use translateZ instead of z
         }}
         transition={{ 
           duration: isHovering ? 0.1 : 0.4, 
@@ -109,7 +109,7 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
               opacity: isActive ? 1 : 0.8,
               rotateX: rotateX * -0.3, // Counter rotation for floating effect
               rotateY: rotateY * -0.3,
-              z: 30,
+              translateZ: 30, // Use translateZ instead of z
             }}
             transition={{ 
               duration: isHovering ? 0.1 : 0.4, 
@@ -133,7 +133,7 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
               animate={{ 
                 opacity: isActive ? 1 : 0.7, 
                 x: 0,
-                z: 10 + idx * 5, // Stagger depth for 3D effect
+                translateZ: 10 + idx * 5, // Use translateZ instead of z
               }}
               transition={{ 
                 duration: 0.3,

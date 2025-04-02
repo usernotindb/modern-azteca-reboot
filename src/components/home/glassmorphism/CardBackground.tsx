@@ -40,8 +40,8 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
         transformStyle: 'preserve-3d',
       }}
       animate={{
-        rotateX: rotateX,
-        rotateY: rotateY,
+        rotateX,
+        rotateY,
         boxShadow: isActive 
           ? (Math.abs(mouseX) > 0.1 || Math.abs(mouseY) > 0.1 ? hoverBoxShadow : activeBoxShadow) 
           : inactiveBoxShadow

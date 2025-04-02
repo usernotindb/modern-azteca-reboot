@@ -28,7 +28,7 @@ const CardContent = ({ mouseX, mouseY, children }: CardContentProps) => {
       }}
       transition={{ duration: 0.1, ease: "easeOut" }}
     >
-      <div style={{ transform: 'translateZ(20px)' }}>
+      <div className="relative" style={{ transform: 'translateZ(20px)' }}>
         {children}
       </div>
     </motion.div>

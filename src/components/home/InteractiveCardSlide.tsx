@@ -54,10 +54,9 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
   
   return (
     <motion.div 
-      className="relative w-full h-full aspect-square rounded-2xl overflow-hidden cursor-pointer preserve-3d"
+      className="relative w-full h-full aspect-square rounded-2xl overflow-hidden cursor-pointer"
       style={{
         perspective: '1200px',
-        transformStyle: 'preserve-3d',
       }}
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ 

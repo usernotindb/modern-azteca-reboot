@@ -54,7 +54,6 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
         style={{
           backgroundPosition: `${gradientX}% ${gradientY}%`,
           transition: 'background-position 0.2s ease-out',
-          transform: 'translateZ(10px)',
         }}
       />
       
@@ -65,7 +64,6 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
           background: `radial-gradient(circle at ${50 + directionOffset}% ${50 + (mouseY * 10)}%, rgba(59, 130, 246, 0.4), transparent)`,
           backgroundSize: isActive ? '150% 150%' : '120% 120%',
           transition: 'all 0.3s ease-out',
-          transform: 'translateZ(20px)',
         }}
       />
       
@@ -76,7 +74,6 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
           backgroundPosition: `${shineX}% ${shineY}%`,
           backgroundSize: '200% 200%',
           transition: 'background-position 0.2s ease-out',
-          transform: 'translateZ(30px)',
         }}
         animate={{
           opacity: isActive ? 0.8 : 0.4,
@@ -97,7 +94,6 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
             background: direction === 'left' 
               ? 'linear-gradient(to right, rgba(59, 130, 246, 0.3), transparent)'
               : 'linear-gradient(to left, rgba(59, 130, 246, 0.3), transparent)',
-            transform: 'translateZ(15px)',
           }}
         />
       )}

@@ -8,7 +8,6 @@ import CenterLogo from './glassmorphism/CenterLogo';
 import OrbitingIcons from './glassmorphism/OrbitingIcons';
 import FloatingParticles from './glassmorphism/FloatingParticles';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { ICON_IMAGES } from '@/config/images';
 
 const GlassmorphismCard = () => {
   const [mouseX, setMouseX] = useState(0);

@@ -1,6 +1,7 @@
 
 import * as React from 'react';
 import { useState, useEffect } from 'react';
+import { getImagePath } from '@/config/images';
 
 const VideoBackground = () => {
   const [videoError, setVideoError] = useState(false);
@@ -40,7 +41,7 @@ const VideoBackground = () => {
           loop 
           playsInline 
           className="object-cover h-full w-full"
-          poster="/lovable-uploads/6d1b82c7-3784-46ea-9384-d24ef9ad8509.png"
+          poster={getImagePath('bg-mountain')}
           onError={handleVideoError}
           onLoadedData={handleVideoLoad}
         >
@@ -50,7 +51,7 @@ const VideoBackground = () => {
       ) : (
         <div 
           className="w-full h-full bg-cover bg-center" 
-          style={{ backgroundImage: 'url("/lovable-uploads/6d1b82c7-3784-46ea-9384-d24ef9ad8509.png")' }}
+          style={{ backgroundImage: `url("${getImagePath('bg-mountain')}")` }}
           aria-label="Background image"
         ></div>
       )}

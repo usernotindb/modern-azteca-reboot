@@ -13,7 +13,7 @@ export const carouselItems: CarouselItem[] = [
   {
     id: "ats-software",
     title: "ATS Software",
-    image: getImagePath("workstation-design"),
+    image: getImagePath("icon-software"),
     keyPoints: [
       "Professional tax preparation",
       "High-volume processing",
@@ -32,7 +32,7 @@ export const carouselItems: CarouselItem[] = [
       "Enterprise servers",
       "Custom configurations"
     ],
-    iconIds: ['icon-hardware', 'icon-support', 'icon-security', 'icon-monitor']
+    iconIds: ['icon-hardware', 'icon-server', 'icon-security', 'icon-monitor']
   },
   {
     id: "it-support",
@@ -61,7 +61,7 @@ export const carouselItems: CarouselItem[] = [
   {
     id: "office-essentials",
     title: "Office Essentials",
-    image: getImagePath("icon-apps"),
+    image: getImagePath("icon-software"),
     keyPoints: [
       "Productivity software suites",
       "Document management",

@@ -1,4 +1,3 @@
-
 /**
  * Centralized image configuration file
  * This allows each image to be referenced by a unique ID

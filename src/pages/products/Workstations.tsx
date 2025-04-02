@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
@@ -6,6 +7,7 @@ import FadeIn from '@/components/ui/FadeIn';
 import SlideUp, { SlideUpItem } from '@/components/ui/SlideUp';
 import { Monitor, PenTool, FileVideo, Database } from 'lucide-react';
 import AnimatedButton from '@/components/ui/AnimatedButton';
+import { getImagePath } from '@/config/images';
 
 const workstations = [
   {
@@ -13,7 +15,7 @@ const workstations = [
     name: "Design Pro Workstation",
     price: "$1,499",
     description: "High-performance workstation optimized for graphic design, CAD, and creative applications.",
-    image: "/lovable-uploads/628857d0-dac0-42fc-b3e9-4528eee9ef00.png",
+    imageId: "workstation-design",
     categorySlug: "workstations"
   },
   {
@@ -21,7 +23,7 @@ const workstations = [
     name: "Engineering Powerhouse",
     price: "$4,999",
     description: "Maximum compute power for engineering simulations, 3D modeling, and computational tasks.",
-    image: "/lovable-uploads/881ea460-231f-4a79-9b8a-a49b932665d7.png",
+    imageId: "workstation-engineering",
     categorySlug: "workstations"
   },
   {
@@ -29,7 +31,7 @@ const workstations = [
     name: "Content Creation Station",
     price: "$5,299",
     description: "Specialized workstation for video editing, animation, and high-end content production.",
-    image: "/lovable-uploads/fd6981e3-b5e5-4a03-9cd8-38fac8167126.png",
+    imageId: "workstation-content",
     categorySlug: "workstations"
   }
 ];
@@ -128,7 +130,7 @@ const WorkstationsPage = () => {
                       name={workstation.name}
                       price={workstation.price}
                       description={workstation.description}
-                      image={workstation.image}
+                      imageId={workstation.imageId}
                       categorySlug={workstation.categorySlug}
                     />
                   </SlideUpItem>

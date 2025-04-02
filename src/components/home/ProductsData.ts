@@ -21,14 +21,14 @@ export const productsList: Product[] = [
     id: 2,
     name: "Servers",
     description: "Operate reliably, manage easily, and scale your business. Ideal for growing businesses with remote offices focused on collaboration and file sharing.",
-    imageId: "icon-apps",
+    imageId: "server-mid-range",
     link: "/products/servers"
   },
   {
     id: 3,
     name: "Work Stations",
     description: "Fully customizable Workstation-class performance and affordability in a new, small form factor design. Featuring optional next generation graphics and Intel® processors.",
-    imageId: "icon-hardware",
+    imageId: "workstation-engineering",
     link: "/products/workstations"
   }
 ];

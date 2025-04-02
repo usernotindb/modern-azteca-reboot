@@ -1,6 +1,7 @@
 
 import React from 'react';
 import AnimatedButton from '../ui/AnimatedButton';
+import { getImagePath } from '@/config/images';
 
 const ProductsShowcase = () => {
   return (
@@ -10,7 +11,7 @@ const ProductsShowcase = () => {
           <img 
             alt="Product showcase" 
             className="w-full max-w-2xl mx-auto rounded-lg shadow-lg" 
-            src="/lovable-uploads/be83f2fe-6c46-44a5-8294-16247227c695.png" 
+            src={getImagePath('product-showcase')} 
           />
         </div>
         <div className="lg:w-1/2 lg:pl-12">

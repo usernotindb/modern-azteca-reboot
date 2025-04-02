@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
@@ -6,6 +7,7 @@ import FadeIn from '@/components/ui/FadeIn';
 import SlideUp, { SlideUpItem } from '@/components/ui/SlideUp';
 import { Laptop, Cpu, Battery, Zap } from 'lucide-react';
 import AnimatedButton from '@/components/ui/AnimatedButton';
+import { getImagePath } from '@/config/images';
 
 const laptops = [
   {
@@ -13,7 +15,7 @@ const laptops = [
     name: "Business Pro Laptop",
     price: "$999",
     description: "High performance laptop designed for business professionals with enhanced security features.",
-    image: "/lovable-uploads/78f56f78-5618-46cc-87a1-bbb19df328bb.png",
+    imageId: "laptop-business-pro",
     categorySlug: "laptops"
   },
   {
@@ -21,7 +23,7 @@ const laptops = [
     name: "Developer Powerhouse",
     price: "$1,899",
     description: "Maximum performance for developers with extra RAM and storage for intensive tasks.",
-    image: "/lovable-uploads/0cc76fb6-7912-43fd-9e88-c94137d92a37.png",
+    imageId: "laptop-developer",
     categorySlug: "laptops"
   },
   {
@@ -29,7 +31,7 @@ const laptops = [
     name: "Executive Ultrabook",
     price: "$1,599",
     description: "Ultra-thin, lightweight design with premium build quality and long battery life.",
-    image: "/lovable-uploads/6d1b82c7-3784-46ea-9384-d24ef9ad8509.png",
+    imageId: "laptop-executive",
     categorySlug: "laptops"
   }
 ];
@@ -54,7 +56,7 @@ const LaptopsPage = () => {
         {/* Hero Section */}
         <section className="relative py-20 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-800 to-blue-900 -z-10"></div>
-          <div className="absolute inset-0 opacity-20 bg-[url('/lovable-uploads/6d1b82c7-3784-46ea-9384-d24ef9ad8509.png')] bg-no-repeat bg-cover bg-center mix-blend-overlay"></div>
+          <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1500&auto=format')] bg-no-repeat bg-cover bg-center mix-blend-overlay"></div>
           
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto text-center">
@@ -128,7 +130,7 @@ const LaptopsPage = () => {
                       name={laptop.name}
                       price={laptop.price}
                       description={laptop.description}
-                      image={laptop.image}
+                      imageId={laptop.imageId}
                       categorySlug={laptop.categorySlug}
                     />
                   </SlideUpItem>

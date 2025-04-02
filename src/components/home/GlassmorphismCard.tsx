@@ -21,7 +21,7 @@ const GlassmorphismCard = () => {
     'icon-support',
   ];
 
-  // Minimal mouse tracking without 3D effects
+  // Minimal mouse tracking with limited values to prevent animation issues
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     try {
       if (isMobile) return;
@@ -30,9 +30,9 @@ const GlassmorphismCard = () => {
       const newMouseX = (e.clientX / window.innerWidth) * 2 - 1;
       const newMouseY = (e.clientY / window.innerHeight) * 2 - 1;
       
-      // Update state with the new values - limit to prevent extreme rotations
-      setMouseX(Math.max(-0.5, Math.min(0.5, newMouseX)));
-      setMouseY(Math.max(-0.5, Math.min(0.5, newMouseY)));
+      // Update state with the new values - strict limiting to prevent extreme rotations
+      setMouseX(Math.max(-0.3, Math.min(0.3, newMouseX)));
+      setMouseY(Math.max(-0.3, Math.min(0.3, newMouseY)));
     } catch (error) {
       console.error("Mouse move error:", error);
       // Set default values if an error occurs

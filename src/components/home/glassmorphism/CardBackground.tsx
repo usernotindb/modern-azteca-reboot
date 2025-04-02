@@ -13,13 +13,13 @@ interface CardBackgroundProps {
 const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundProps) => {
   const isMobile = useIsMobile();
   
-  // Calculate dynamic gradient position based on mouse
-  const gradientX = 50 + (mouseX * 15);
-  const gradientY = 50 + (mouseY * 15);
+  // Calculate dynamic gradient position based on mouse - using smaller multiplier
+  const gradientX = 50 + (mouseX * 10);
+  const gradientY = 50 + (mouseY * 10);
   
   // Calculate shine position based on mouse
-  const shineX = 50 + (mouseX * 25);
-  const shineY = 50 + (mouseY * 25);
+  const shineX = 50 + (mouseX * 20);
+  const shineY = 50 + (mouseY * 20);
   
   // Determine direction-based styling
   const directionOffset = direction === 'left' ? -5 : direction === 'right' ? 5 : 0;
@@ -29,9 +29,9 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
   const inactiveBoxShadow = '0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)';
   const hoverBoxShadow = '0 25px 30px -5px rgba(0,0,0,0.3), 0 15px 15px -5px rgba(0,0,0,0.15), 0 0 20px 4px rgba(59,130,246,0.4)';
   
-  // Calculate rotation values safely
-  const rotateX = isMobile ? 0 : mouseY * 10; 
-  const rotateY = isMobile ? 0 : -mouseX * 10;
+  // Calculate rotation values safely - reduced multiplier for gentler effect
+  const rotateX = isMobile ? 0 : mouseY * 5; 
+  const rotateY = isMobile ? 0 : -mouseX * 5;
   
   return (
     <motion.div 
@@ -40,6 +40,7 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
         transformStyle: 'preserve-3d',
       }}
       animate={{
+        // Only animate individual transform properties
         rotateX,
         rotateY,
         boxShadow: isActive 
@@ -48,12 +49,12 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
       }}
       transition={{ duration: 0.3 }}
     >
-      {/* Depth effects and highlights - dynamic with mouse */}
+      {/* Use explicit style objects for non-transform properties */}
       <div 
         className="absolute inset-0 opacity-30 bg-gradient-to-br from-blue-400/60 via-transparent to-blue-900/60"
         style={{
           backgroundPosition: `${gradientX}% ${gradientY}%`,
-          transition: 'background-position 0.2s ease-out',
+          transition: 'background-position 0.3s ease-out',
         }}
       />
       
@@ -69,11 +70,11 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
       
       {/* Glossy highlight - dynamic with mouse */}
       <motion.div 
-        className="absolute inset-0 bg-gradient-to-t from-transparent via-white/15 to-transparent opacity-60"
+        className="absolute inset-0 bg-gradient-to-t from-transparent via-white/15 to-transparent"
         style={{
           backgroundPosition: `${shineX}% ${shineY}%`,
           backgroundSize: '200% 200%',
-          transition: 'background-position 0.2s ease-out',
+          transition: 'background-position 0.3s ease-out',
         }}
         animate={{
           opacity: isActive ? 0.8 : 0.4,

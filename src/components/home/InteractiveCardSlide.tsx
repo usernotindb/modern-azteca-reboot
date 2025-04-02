@@ -35,8 +35,8 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    // Limit rotation range to ±5 degrees for smoother effect
-    const maxRotation = 5;
+    // Limit rotation range to ±3 degrees for smoother effect
+    const maxRotation = 3;
     const rotateYValue = ((x - centerX) / centerX) * maxRotation;
     const rotateXValue = ((centerY - y) / centerY) * maxRotation;
     
@@ -62,22 +62,20 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
       animate={{ 
         opacity: isActive ? 1 : 0.5,
         scale: isActive ? 1 : 0.85,
-        rotateX: rotateX * 0.65,
-        rotateY: rotateY * 0.65,
       }}
       transition={{ 
-        duration: isHovering ? 0.1 : 0.4, 
+        duration: 0.4, 
         ease: "easeOut" 
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Card background with 3D effect */}
+      {/* Card background with 3D effect - separate the transforms */}
       <motion.div 
         className="absolute inset-0 bg-gradient-to-br from-blue-600/80 via-blue-700/70 to-blue-900/90 backdrop-blur-lg border border-blue-300/30 rounded-2xl shadow-xl"
         animate={{
-          rotateX: rotateX * 0.65,
-          rotateY: rotateY * 0.65,
+          rotateX, 
+          rotateY
         }}
         transition={{ 
           duration: isHovering ? 0.1 : 0.4, 
@@ -97,11 +95,9 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
             animate={{
               scale: isActive ? (isHovering ? 1.1 : 1.05) : 0.95,
               opacity: isActive ? 1 : 0.8,
-              rotateX: rotateX * -0.3, // Counter rotation for floating effect
-              rotateY: rotateY * -0.3,
             }}
             transition={{ 
-              duration: isHovering ? 0.1 : 0.4, 
+              duration: 0.3, 
               ease: "easeOut" 
             }}
           >

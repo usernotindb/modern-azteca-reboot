@@ -33,9 +33,9 @@ const CardContainer = ({ children, onMouseMove }: CardContainerProps) => {
       const newMouseX = (e.clientX / window.innerWidth) * 2 - 1;
       const newMouseY = (e.clientY / window.innerHeight) * 2 - 1;
       
-      // Limit the range of values
-      setMouseX(Math.max(-0.5, Math.min(0.5, newMouseX)));
-      setMouseY(Math.max(-0.5, Math.min(0.5, newMouseY)));
+      // Strictly limit the range of values to prevent animation errors
+      setMouseX(Math.max(-0.3, Math.min(0.3, newMouseX)));
+      setMouseY(Math.max(-0.3, Math.min(0.3, newMouseY)));
       
       // Call the onMouseMove prop if provided
       if (onMouseMove) {
@@ -81,8 +81,8 @@ const CardContainer = ({ children, onMouseMove }: CardContainerProps) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ 
-        perspective: '1000px',
-        transformStyle: 'preserve-3d'
+        // Set perspective on container only, not its children
+        perspective: '1200px',
       }}
     >
       {childrenWithProps}

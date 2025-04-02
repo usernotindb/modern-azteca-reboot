@@ -63,6 +63,8 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
       animate={{ 
         opacity: isActive ? 1 : 0.5,
         scale: isActive ? 1 : 0.85,
+        rotateX: rotateX * 0.65,
+        rotateY: rotateY * 0.65,
       }}
       transition={{ 
         duration: isHovering ? 0.1 : 0.4, 
@@ -85,18 +87,7 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
       />
       
       {/* Content layer with slight offset for depth */}
-      <motion.div 
-        className="absolute inset-0 p-6 flex flex-col items-center z-10"
-        animate={{
-          rotateX: rotateX * 0.5,
-          rotateY: rotateY * 0.5,
-          translateZ: 20, // Use translateZ instead of z
-        }}
-        transition={{ 
-          duration: isHovering ? 0.1 : 0.4, 
-          ease: "easeOut" 
-        }}
-      >
+      <div className="absolute inset-0 p-6 flex flex-col items-center z-10" style={{ transform: 'translateZ(20px)' }}>
         {/* Card title */}
         <h3 className="text-xl font-bold text-white mb-4 text-center">{item.title}</h3>
         
@@ -109,12 +100,12 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
               opacity: isActive ? 1 : 0.8,
               rotateX: rotateX * -0.3, // Counter rotation for floating effect
               rotateY: rotateY * -0.3,
-              translateZ: 30, // Use translateZ instead of z
             }}
             transition={{ 
               duration: isHovering ? 0.1 : 0.4, 
               ease: "easeOut" 
             }}
+            style={{ transform: 'translateZ(30px)' }}
           >
             <img 
               src={item.image} 
@@ -133,29 +124,31 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
               animate={{ 
                 opacity: isActive ? 1 : 0.7, 
                 x: 0,
-                translateZ: 10 + idx * 5, // Use translateZ instead of z
               }}
               transition={{ 
                 duration: 0.3,
                 delay: isActive ? idx * 0.1 : 0 
               }}
+              style={{ transform: `translateZ(${10 + idx * 5}px)` }}
             >
               {point}
             </motion.li>
           ))}
         </ul>
-      </motion.div>
+      </div>
       
       {/* Shine effect on hover */}
       {isActive && (
         <motion.div 
-          className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0"
+          className="absolute inset-0 opacity-0"
           initial={{ opacity: 0 }}
           animate={{ 
             opacity: isHovering ? 0.6 : 0,
-            backgroundImage: `linear-gradient(${125 + rotateY * 5}deg, transparent, rgba(255, 255, 255, 0.2), transparent)`
           }}
           transition={{ duration: 0.2 }}
+          style={{
+            background: `linear-gradient(${125 + rotateY * 5}deg, transparent, rgba(255, 255, 255, 0.2), transparent)`,
+          }}
         />
       )}
     </motion.div>

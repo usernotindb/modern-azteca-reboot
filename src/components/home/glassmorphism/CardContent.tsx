@@ -25,11 +25,12 @@ const CardContent = ({ mouseX, mouseY, children }: CardContentProps) => {
       animate={{
         rotateX,
         rotateY,
-        translateZ: 20,
       }}
       transition={{ duration: 0.1, ease: "easeOut" }}
     >
-      {children}
+      <div style={{ transform: 'translateZ(20px)' }}>
+        {children}
+      </div>
     </motion.div>
   );
 };

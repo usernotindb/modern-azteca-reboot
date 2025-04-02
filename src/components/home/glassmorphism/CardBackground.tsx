@@ -60,9 +60,9 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
       
       {/* Dynamic radial gradient effect */}
       <div 
-        className="absolute inset-0 bg-gradient-radial from-blue-400/40 to-transparent opacity-80"
+        className="absolute inset-0 opacity-80"
         style={{
-          backgroundPosition: `${50 + directionOffset}% ${50 + (mouseY * 10)}%`,
+          background: `radial-gradient(circle at ${50 + directionOffset}% ${50 + (mouseY * 10)}%, rgba(59, 130, 246, 0.4), transparent)`,
           backgroundSize: isActive ? '150% 150%' : '120% 120%',
           transition: 'all 0.3s ease-out',
           transform: 'translateZ(20px)',
@@ -87,7 +87,7 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
       {/* Direction-based highlight */}
       {direction && (
         <motion.div 
-          className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-transparent opacity-0"
+          className="absolute inset-0 opacity-0"
           initial={{ opacity: 0 }}
           animate={{ 
             opacity: direction === 'left' ? 0.3 : direction === 'right' ? 0.3 : 0

@@ -6,7 +6,7 @@ export interface Product {
   name: string;
   description: string;
   imageId: string;
-  link?: string;
+  link: string;
 }
 
 export const productsList: Product[] = [

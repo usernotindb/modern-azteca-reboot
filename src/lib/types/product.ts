@@ -8,4 +8,5 @@ export interface Product {
   imageId?: string; // New field for image ID
   categorySlug?: string;
   features?: string[];
+  link?: string; // Adding link field for navigation
 }

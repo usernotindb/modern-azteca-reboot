@@ -22,28 +22,40 @@ const ProductCategory = ({
 }: ProductCategoryProps) => {
   const navigate = useNavigate();
   
-  // Helper function to get product ID from name
+  // Helper function to get product ID from name for anchors
   const getProductId = (name: string): string => {
     return name.toLowerCase().replace(/\s+/g, '-');
   };
 
-  // Helper function to get the product detail page URL
-  const getProductDetailUrl = (product: Product) => {
-    if (category.slug === 'hardware-solutions') {
-      if (product.name.toLowerCase().includes('laptop')) return '/products/laptops';
-      if (product.name.toLowerCase().includes('server')) return '/products/servers';
-      if (product.name.toLowerCase().includes('workstation')) return '/products/workstations';
-    }
-    return `/products/${category.slug}`;
-  };
-
-  // Handle the learn more action - navigate to specific pages for hardware or scroll for others
+  // Handle the learn more action - use link if available or create appropriate navigation
   const handleLearnMore = (product: Product) => {
-    if (category.slug === 'hardware-solutions') {
-      navigate(getProductDetailUrl(product));
+    // If the product has a link property, use it
+    if (product.link) {
+      // Check if the link contains a hash for anchor scrolling
+      if (product.link.includes('#')) {
+        const [path, anchor] = product.link.split('#');
+        
+        // If we're already on the correct page, just scroll
+        if (window.location.pathname === path) {
+          scrollToElement(anchor, 100);
+        } else {
+          // Otherwise navigate to the page and then scroll
+          navigate(product.link);
+        }
+      } else {
+        // Simple navigation to a page without anchors
+        navigate(product.link);
+      }
     } else {
-      // Otherwise, scroll to the product section in the current page
-      scrollToElement(getProductId(product.name), 100);
+      // Legacy fallback behavior
+      if (category.slug === 'hardware-solutions') {
+        if (product.name.toLowerCase().includes('laptop')) navigate('/products/laptops');
+        else if (product.name.toLowerCase().includes('server')) navigate('/products/servers');
+        else if (product.name.toLowerCase().includes('workstation')) navigate('/products/workstations');
+      } else {
+        // Otherwise, scroll to the product section in the current page
+        scrollToElement(getProductId(product.name), 100);
+      }
     }
   };
 
@@ -57,13 +69,15 @@ const ProductCategory = ({
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
           {category.products.map((product, productIndex) => (
-            <SlideUpItem key={product.id}>
+            <SlideUpItem key={product.id} id={getProductId(product.name)}>
               <ProductCard 
                 name={product.name} 
                 price={product.price} 
                 description={product.description} 
-                image={product.image} 
-                categorySlug={category.slug} 
+                image={product.image}
+                imageId={product.imageId}
+                categorySlug={category.slug}
+                link={product.link}
                 delay={0.1 * productIndex} 
                 variant="product" 
                 onLearnMore={() => handleLearnMore(product)} 

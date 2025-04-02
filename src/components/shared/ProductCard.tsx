@@ -11,16 +11,16 @@ interface ProductCardProps extends Partial<Product> {
   delay?: number;
   onLearnMore?: () => void;
   className?: string;
-  imageId?: string; // Add imageId as an optional prop
 }
 
 const ProductCard = ({
   name,
   description,
   price,
-  image, // Keep for backward compatibility
-  imageId, // New prop for image ID
+  image,
+  imageId,
   categorySlug,
+  link,
   variant = 'product',
   index = 0,
   delay = 0,
@@ -42,8 +42,9 @@ const ProductCard = ({
     }
   };
 
-  // Determine the proper href for the Learn More button
+  // Determine the proper href for the Learn More button - prioritize link field if available
   const getLearnMoreHref = () => {
+    if (link) return link;
     if (!categorySlug) return '#';
     
     // Special case for hardware-solutions products that have their own pages

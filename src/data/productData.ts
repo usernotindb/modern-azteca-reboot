@@ -24,21 +24,24 @@ export const productCategories: ProductCategory[] = [
         name: "ATS Tax Software", 
         price: "Contact for pricing",
         description: "Professional tax software for high volume tax businesses with comprehensive features for tax preparation and filing.",
-        imageId: "workstation-design" 
+        imageId: "workstation-design",
+        link: "/products/software-solutions#ats-tax-software"
       },
       { 
         id: 102, 
         name: "Office 365", 
         price: "Starting at $149.99/year",
         description: "Work anywhere, anytime, on any device with Microsoft's industry-leading productivity suite.",
-        imageId: "icon-dev" 
+        imageId: "icon-dev",
+        link: "/products/software-solutions#office-365"
       },
       { 
         id: 103, 
         name: "Anti-Virus Solutions", 
         price: "$49.99/year",
         description: "Complete protection for your devices with WiFi Security VPN and antivirus protection.",
-        imageId: "icon-cloud" 
+        imageId: "icon-cloud",
+        link: "/products/software-solutions#anti-virus-solutions"
       },
     ]
   },
@@ -53,21 +56,24 @@ export const productCategories: ProductCategory[] = [
         name: "Laptops", 
         price: "Starting at $899",
         description: "Get everything done faster with solid state drives, powerful processors, and sleek designs.",
-        imageId: "laptop-business-pro" 
+        imageId: "laptop-business-pro",
+        link: "/products/laptops"
       },
       { 
         id: 202, 
         name: "Servers", 
         price: "Starting at $1,499",
         description: "Operate reliably, manage easily, and scale your business with our server solutions.",
-        imageId: "server-mid-range" 
+        imageId: "server-mid-range",
+        link: "/products/servers"
       },
       { 
         id: 203, 
         name: "Workstations", 
         price: "Starting at $1,299",
         description: "Fully customizable Workstation-class performance for demanding professional applications.",
-        imageId: "workstation-engineering" 
+        imageId: "workstation-engineering",
+        link: "/products/workstations"
       },
     ]
   },
@@ -82,21 +88,24 @@ export const productCategories: ProductCategory[] = [
         name: "Managed IT Services", 
         price: "Custom pricing",
         description: "Comprehensive IT management to keep your systems running smoothly and securely.",
-        imageId: "icon-security" 
+        imageId: "icon-security",
+        link: "/products/it-services#managed-it-services"
       },
       { 
         id: 302, 
         name: "Disaster Recovery", 
         price: "Custom pricing",
         description: "Protect your business with our robust backup and disaster recovery solutions.",
-        imageId: "icon-access" 
+        imageId: "icon-access",
+        link: "/products/it-services#disaster-recovery"
       },
       { 
         id: 303, 
         name: "Network Management", 
         price: "Custom pricing",
         description: "Keep your network infrastructure secure, up-to-date and operating at peak performance.",
-        imageId: "icon-monitor" 
+        imageId: "icon-monitor",
+        link: "/products/it-services#network-management"
       },
     ]
   },
@@ -111,21 +120,24 @@ export const productCategories: ProductCategory[] = [
         name: "IP Camera Systems", 
         price: "Custom pricing",
         description: "Expert installation of security camera systems for homes and businesses.",
-        imageId: "icon-cloud" 
+        imageId: "icon-cloud",
+        link: "/products/security-solutions#ip-camera-systems"
       },
       { 
         id: 402, 
         name: "Anti-Virus Protection", 
         price: "$49.99/year",
         description: "Complete protection for your devices with WiFi Security VPN and antivirus protection.",
-        imageId: "icon-cloud" 
+        imageId: "icon-cloud",
+        link: "/products/security-solutions#anti-virus-protection"
       },
       { 
         id: 403, 
         name: "Network Security", 
         price: "Custom pricing",
         description: "Comprehensive network security solutions to protect your business from threats.",
-        imageId: "icon-security" 
+        imageId: "icon-security",
+        link: "/products/security-solutions#network-security"
       },
     ]
   }

@@ -20,15 +20,20 @@ const ProductsShowcase = ({ category }: ProductsShowcaseProps) => {
     return <Cpu className="w-8 h-8" />;
   };
 
-  // Handle navigation to corresponding product page
+  // Handle navigation using the product's link property
   const handleLearnMore = (product: any) => {
-    const productType = product.name.toLowerCase();
-    if (productType.includes('laptop')) {
-      navigate('/products/laptops');
-    } else if (productType.includes('server')) {
-      navigate('/products/servers');
-    } else if (productType.includes('workstation')) {
-      navigate('/products/workstations');
+    if (product.link) {
+      navigate(product.link);
+    } else {
+      // Fallback to the legacy behavior if link is not available
+      const productType = product.name.toLowerCase();
+      if (productType.includes('laptop')) {
+        navigate('/products/laptops');
+      } else if (productType.includes('server')) {
+        navigate('/products/servers');
+      } else if (productType.includes('workstation')) {
+        navigate('/products/workstations');
+      }
     }
   };
 
@@ -52,6 +57,8 @@ const ProductsShowcase = ({ category }: ProductsShowcaseProps) => {
               description={product.description}
               price={product.price}
               image={product.image}
+              imageId={product.imageId}
+              link={product.link}
               categorySlug={category.slug}
               index={index}
               variant="product"

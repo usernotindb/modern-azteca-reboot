@@ -19,7 +19,7 @@ const Products = () => {
   });
   const translateX = useTransform(scrollYProgress, [0, 1], [0, -50]);
   
-  // Handle navigation to the specific product page
+  // Handle navigation to the specific product page using the link property
   const handleLearnMore = (productIndex: number) => {
     const product = productsList[productIndex];
     if (product && product.link) {
@@ -50,6 +50,7 @@ const Products = () => {
               name={product.name} 
               description={product.description} 
               imageId={product.imageId}
+              link={product.link}
               index={index} 
               variant="home" 
               onLearnMore={() => handleLearnMore(index)} 

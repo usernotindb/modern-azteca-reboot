@@ -35,8 +35,8 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    // Limit rotation range to ±10 degrees
-    const maxRotation = 10;
+    // Limit rotation range to ±5 degrees for smoother effect
+    const maxRotation = 5;
     const rotateYValue = ((x - centerX) / centerX) * maxRotation;
     const rotateXValue = ((centerY - y) / centerY) * maxRotation;
     
@@ -85,8 +85,8 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
         }}
       />
       
-      {/* Content layer with slight offset for depth */}
-      <div className="absolute inset-0 p-6 flex flex-col items-center z-10" style={{ transform: 'translateZ(20px)' }}>
+      {/* Content layer */}
+      <div className="absolute inset-0 p-6 flex flex-col items-center z-10">
         {/* Card title */}
         <h3 className="text-xl font-bold text-white mb-4 text-center">{item.title}</h3>
         
@@ -104,7 +104,6 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
               duration: isHovering ? 0.1 : 0.4, 
               ease: "easeOut" 
             }}
-            style={{ transform: 'translateZ(30px)' }}
           >
             <img 
               src={item.image} 
@@ -128,7 +127,6 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
                 duration: 0.3,
                 delay: isActive ? idx * 0.1 : 0 
               }}
-              style={{ transform: `translateZ(${10 + idx * 5}px)` }}
             >
               {point}
             </motion.li>

@@ -35,7 +35,7 @@ const CardBackground = ({ mouseX, mouseY, isActive, direction }: CardBackgroundP
   
   return (
     <motion.div 
-      className="absolute inset-0 rounded-2xl overflow-hidden bg-blue-600/20 backdrop-blur-[12px] border border-blue-300/30 shadow-xl"
+      className="absolute inset-0 rounded-2xl overflow-hidden bg-blue-600/20 backdrop-blur-[12px] border border-blue-300/30"
       style={{
         transformStyle: 'preserve-3d',
       }}

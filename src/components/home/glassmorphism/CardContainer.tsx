@@ -16,11 +16,9 @@ interface ChildProps {
 
 const CardContainer = ({ children, onMouseMove }: CardContainerProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
-  const isMobile = useIsMobile();
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
+  const isMobile = useIsMobile();
 
   // Handle mouse movement to calculate position only, not for transforms
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -34,8 +32,10 @@ const CardContainer = ({ children, onMouseMove }: CardContainerProps) => {
       // Only calculate mouse position relative to the window for children
       const newMouseX = (e.clientX / window.innerWidth) * 2 - 1;
       const newMouseY = (e.clientY / window.innerHeight) * 2 - 1;
-      setMouseX(newMouseX);
-      setMouseY(newMouseY);
+      
+      // Limit the range of values
+      setMouseX(Math.max(-0.5, Math.min(0.5, newMouseX)));
+      setMouseY(Math.max(-0.5, Math.min(0.5, newMouseY)));
       
       // Call the onMouseMove prop if provided
       if (onMouseMove) {
@@ -77,10 +77,13 @@ const CardContainer = ({ children, onMouseMove }: CardContainerProps) => {
   return (
     <div
       ref={cardRef}
-      className="relative w-full aspect-square max-w-md mx-auto bg-transparent"
+      className="relative w-full aspect-square max-w-md mx-auto"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{ position: 'relative' }}
+      style={{ 
+        perspective: '1000px',
+        transformStyle: 'preserve-3d'
+      }}
     >
       {childrenWithProps}
     </div>

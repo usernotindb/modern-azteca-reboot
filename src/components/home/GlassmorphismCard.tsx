@@ -30,9 +30,9 @@ const GlassmorphismCard = () => {
       const newMouseX = (e.clientX / window.innerWidth) * 2 - 1;
       const newMouseY = (e.clientY / window.innerHeight) * 2 - 1;
       
-      // Update state with the new values
-      setMouseX(newMouseX);
-      setMouseY(newMouseY);
+      // Update state with the new values - limit to prevent extreme rotations
+      setMouseX(Math.max(-0.5, Math.min(0.5, newMouseX)));
+      setMouseY(Math.max(-0.5, Math.min(0.5, newMouseY)));
     } catch (error) {
       console.error("Mouse move error:", error);
       // Set default values if an error occurs

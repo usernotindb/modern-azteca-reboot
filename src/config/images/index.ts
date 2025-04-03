@@ -6,14 +6,15 @@
  * and re-exported from this central index file for easier usage
  */
 
-import { ImageConfig, PLACEHOLDER_IMAGE } from './types';
+import { PLACEHOLDER_IMAGE } from './types';
 import { LOGO_IMAGES } from './logoImages';
 import { PRODUCT_IMAGES } from './productImages';
 import { ICON_IMAGES } from './iconImages';
 import { BACKGROUND_IMAGES } from './backgroundImages';
 
 // Re-export everything for backward compatibility
-export { ImageConfig, PLACEHOLDER_IMAGE } from './types';
+export type { ImageConfig } from './types';
+export { PLACEHOLDER_IMAGE } from './types';
 export { LOGO_IMAGES } from './logoImages';
 export { PRODUCT_IMAGES } from './productImages';
 export { ICON_IMAGES } from './iconImages';
@@ -51,3 +52,6 @@ export function getImage(id: string): ImageConfig {
   }
   return image;
 }
+
+// Need to import the type for the utility functions to work
+import type { ImageConfig } from './types';

@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView, useAnimation } from 'framer-motion';
 import HeroContent from './HeroContent';
-import GlassmorphismCardCarousel from './GlassmorphismCardCarousel';
+import DimensionalShowcase from './DimensionalShowcase';
 import VideoBackground from './VideoBackground';
 import AnimatedParticlesOverlay from './AnimatedParticlesOverlay';
 import ScrollDownIndicator from './ScrollDownIndicator';
@@ -33,14 +33,14 @@ const Hero = () => {
             <HeroContent controls={controls} reference={ref} />
           </div>
           
-          {/* Right column: Interactive Card Carousel */}
+          {/* Right column: Interactive Dimensional Showcase (replaces the card carousel) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             className="relative hidden lg:block"
           >
-            <GlassmorphismCardCarousel />
+            <DimensionalShowcase />
           </motion.div>
         </div>
       </div>

@@ -41,7 +41,7 @@ const VideoBackground = () => {
           loop 
           playsInline 
           className="object-cover h-full w-full"
-          poster={getImagePath('bg-mountain')}
+          poster={getImagePath('azteca-bg')}
           onError={handleVideoError}
           onLoadedData={handleVideoLoad}
         >
@@ -51,7 +51,7 @@ const VideoBackground = () => {
       ) : (
         <div 
           className="w-full h-full bg-cover bg-center" 
-          style={{ backgroundImage: `url("${getImagePath('bg-mountain')}")` }}
+          style={{ backgroundImage: `url("${getImagePath('azteca-bg')}")` }}
           aria-label="Background image"
         ></div>
       )}

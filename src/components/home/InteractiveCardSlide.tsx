@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { CarouselItem } from '@/data/carouselData';
+import { BACKGROUND_IMAGES } from '@/config/images';
 
 interface InteractiveCardSlideProps {
   item: CarouselItem;
@@ -12,6 +13,7 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
+  const backgroundImage = BACKGROUND_IMAGES.aztecaBg;
 
   // Reset rotation when slide becomes inactive
   useEffect(() => {
@@ -72,7 +74,7 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
     >
       {/* Card background with 3D effect - separate the transforms */}
       <motion.div 
-        className="absolute inset-0 bg-gradient-to-br from-blue-600/80 via-blue-700/70 to-blue-900/90 backdrop-blur-lg border border-blue-300/30 rounded-2xl shadow-xl"
+        className="absolute inset-0 backdrop-blur-lg border border-blue-300/30 rounded-2xl shadow-xl overflow-hidden"
         animate={{
           rotateX, 
           rotateY
@@ -81,7 +83,16 @@ const InteractiveCardSlide = ({ item, isActive }: InteractiveCardSlideProps) => 
           duration: isHovering ? 0.1 : 0.4, 
           ease: "easeOut" 
         }}
-      />
+      >
+        {/* Background image with overlay */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-50"
+          style={{ backgroundImage: `url("${backgroundImage.path}")` }}
+        ></div>
+        
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/80 via-blue-700/70 to-blue-900/90"></div>
+      </motion.div>
       
       {/* Content layer */}
       <div className="absolute inset-0 p-6 flex flex-col items-center z-10">

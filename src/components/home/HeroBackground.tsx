@@ -1,15 +1,22 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { LOGO_IMAGES } from '@/config/images';
+import { LOGO_IMAGES, BACKGROUND_IMAGES } from '@/config/images';
 
 const HeroBackground = () => {
   const logo = LOGO_IMAGES.mainLogo;
+  const backgroundImage = BACKGROUND_IMAGES.aztecaBg;
   
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden">
       {/* Gradient background with Azteca brand color */}
       <div className="absolute inset-0 bg-gradient-to-b from-blue-600 via-blue-700 to-blue-900"></div>
+      
+      {/* Background image overlay with low opacity */}
+      <div 
+        className="absolute inset-0 opacity-25 bg-cover bg-center mix-blend-overlay"
+        style={{ backgroundImage: `url("${backgroundImage.path}")` }}
+      ></div>
       
       {/* Digital circuit pattern overlay */}
       <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff33_1px,transparent_1px)] bg-[size:20px_20px] mix-blend-overlay"></div>

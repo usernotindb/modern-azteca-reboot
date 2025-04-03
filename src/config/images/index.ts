@@ -10,12 +10,14 @@ import { ImageConfig, PLACEHOLDER_IMAGE } from './types';
 import { LOGO_IMAGES } from './logoImages';
 import { PRODUCT_IMAGES } from './productImages';
 import { ICON_IMAGES } from './iconImages';
+import { BACKGROUND_IMAGES } from './backgroundImages';
 
 // Re-export everything for backward compatibility
 export { ImageConfig, PLACEHOLDER_IMAGE } from './types';
 export { LOGO_IMAGES } from './logoImages';
 export { PRODUCT_IMAGES } from './productImages';
 export { ICON_IMAGES } from './iconImages';
+export { BACKGROUND_IMAGES } from './backgroundImages';
 
 // Utility function to get an image by ID from any category
 export function getImageById(id: string): ImageConfig | undefined {
@@ -23,7 +25,8 @@ export function getImageById(id: string): ImageConfig | undefined {
   const allImages = {
     ...LOGO_IMAGES,
     ...PRODUCT_IMAGES,
-    ...ICON_IMAGES
+    ...ICON_IMAGES,
+    ...BACKGROUND_IMAGES
   };
   
   return allImages[id] || undefined;

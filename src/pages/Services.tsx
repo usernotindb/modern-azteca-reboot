@@ -1,7 +1,6 @@
 
 import { motion } from 'framer-motion';
 import PageLayout from '@/components/layout/PageLayout';
-import PageContent from '@/components/layout/PageContent';
 import Section from '@/components/layout/Section';
 import ContentCard from '@/components/ui/ContentCard';
 import AnimatedButton from '@/components/ui/AnimatedButton';

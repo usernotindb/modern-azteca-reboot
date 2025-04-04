@@ -2,8 +2,8 @@
 import { motion } from 'framer-motion';
 import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
-import ContentCard from '@/components/ui/ContentCard';
 import { Clock, Users, Award, Target } from 'lucide-react';
+import ValueCard from '@/components/about/ValueCard';
 
 const About = () => {
   const values = [
@@ -99,14 +99,13 @@ const About = () => {
       <Section background="light" title="Our Values" label="What We Stand For" centered>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {values.map((value, index) => (
-            <ContentCard 
+            <ValueCard 
               key={value.title} 
               title={value.title} 
               icon={value.icon}
-              delay={0.1 * index}
-            >
-              <p>{value.description}</p>
-            </ContentCard>
+              description={value.description}
+              index={index}
+            />
           ))}
         </div>
       </Section>

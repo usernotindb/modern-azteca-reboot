@@ -34,7 +34,7 @@ const Index = () => {
         <section id="stats" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <StatCard number="15+" label="Years of Experience" icon={<Clock className="w-6 h-6 text-blue-500" />} />
+              <StatCard number="20+" label="Years of Experience" icon={<Clock className="w-6 h-6 text-blue-500" />} />
               <StatCard number="500+" label="Satisfied Clients" icon={<Users className="w-6 h-6 text-blue-500" />} />
               <StatCard number="1000+" label="Projects Completed" icon={<Check className="w-6 h-6 text-blue-500" />} />
               <StatCard number="25+" label="Industry Awards" icon={<Award className="w-6 h-6 text-blue-500" />} />

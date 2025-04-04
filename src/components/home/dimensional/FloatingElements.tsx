@@ -3,13 +3,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 interface FloatingElementsProps {
-  count: number;
   activeIndex: number;
   mousePosition: { x: number; y: number };
 }
 
-const FloatingElements = ({ count, activeIndex, mousePosition }: FloatingElementsProps) => {
+const FloatingElements = ({ activeIndex, mousePosition }: FloatingElementsProps) => {
   // Generate an array of elements with different properties
+  const count = 20; // Default count of floating elements
   const elements = React.useMemo(() => {
     return Array.from({ length: count }).map((_, i) => {
       // Create deterministic but varying properties based on index and active slide
@@ -27,7 +27,7 @@ const FloatingElements = ({ count, activeIndex, mousePosition }: FloatingElement
         hue: (activeIndex * 40 + i * 15) % 360 // Color variation
       };
     });
-  }, [count, activeIndex]);
+  }, [activeIndex]);
   
   // Render different element types based on the type value
   const renderElement = (element: typeof elements[0]) => {

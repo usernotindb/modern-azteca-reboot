@@ -1,27 +1,22 @@
 
 import React, { useState } from 'react';
-import { motion, MotionValue, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { CarouselItem } from '@/data/carouselData';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 interface BiomorphicCardProps {
   item: CarouselItem;
-  mouseX: MotionValue<number>;
-  mouseY: MotionValue<number>;
+  mousePosition: { x: number; y: number };
 }
 
-const BiomorphicCard = ({ item, mouseX, mouseY }: BiomorphicCardProps) => {
+const BiomorphicCard = ({ item, mousePosition }: BiomorphicCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const isMobile = useIsMobile();
   
-  // Dynamic transform values based on mouse position
-  const cardRotateX = useTransform(mouseY, [-300, 300], [5, -5]);
-  const cardRotateY = useTransform(mouseX, [-300, 300], [-5, 5]);
-  const contentTranslateZ = useTransform(
-    mouseX, 
-    [-300, 300], 
-    [10, 30]
-  );
+  // Calculate rotation and transform values based on mouse position
+  const cardRotateX = mousePosition.y * 0.01;
+  const cardRotateY = mousePosition.x * 0.01;
+  const contentTranslateZ = Math.abs(mousePosition.x * 0.05) + 10;
   
   // Wave animation for the background
   const wavePath = (amplitude: number, frequency: number, phase: number) => {

@@ -1,12 +1,11 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { carouselItems } from '@/data/carouselData';
 import MorphingShape from './dimensional/MorphingShape';
 import FloatingElements from './dimensional/FloatingElements';
 import BiomorphicCard from './dimensional/BiomorphicCard';
 import GenerativeBackground from './dimensional/GenerativeBackground';
-import GlassmorphismCard from './GlassmorphismCard';
 
 const DimensionalShowcase = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);

@@ -1,14 +1,12 @@
 
 import React, { useRef, useEffect } from 'react';
-import { motion, MotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 interface GenerativeBackgroundProps {
-  mouseX: MotionValue<number>;
-  mouseY: MotionValue<number>;
   activeIndex: number;
 }
 
-const GenerativeBackground = ({ mouseX, mouseY, activeIndex }: GenerativeBackgroundProps) => {
+const GenerativeBackground = ({ activeIndex }: GenerativeBackgroundProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
   // Generate dynamic background effect
@@ -136,9 +134,17 @@ const GenerativeBackground = ({ mouseX, mouseY, activeIndex }: GenerativeBackgro
       {/* Dynamic spotlight effect */}
       <motion.div
         className="absolute w-[500px] h-[500px] rounded-full bg-blue-400/10 blur-3xl"
+        animate={{
+          x: [-100, 100, -100],
+          y: [-100, 100, -100],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut"
+        }}
         style={{
-          x: mouseX,
-          y: mouseY,
           translateX: "-50%",
           translateY: "-50%",
         }}

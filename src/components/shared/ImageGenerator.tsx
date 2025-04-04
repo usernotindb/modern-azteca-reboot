@@ -43,7 +43,7 @@ const ImageGenerator: React.FC<ImageGeneratorProps> = ({
       toast({
         title: "Image generated",
         description: "Your new image is now ready",
-        variant: "success"
+        variant: "default"
       });
     } catch (error) {
       console.error("Error generating image:", error);

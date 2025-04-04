@@ -45,7 +45,8 @@ const VideoBackground = () => {
           onError={handleVideoError}
           onLoadedData={handleVideoLoad}
         >
-          <source src="https://static.videezy.com/system/resources/previews/000/042/194/original/business19.mp4" type="video/mp4" />
+          <source src="https://cdn.dribbble.com/uploads/39894/original/965d8ad0e0c441d68b1438cee84598b1.mp4" type="video/mp4" />
+          <source src="https://player.vimeo.com/external/330421951.sd.mp4?s=306c65c776a8b592363f5f2739d23a28504212fb&profile_id=164&oauth2_token_id=57447761" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       ) : (

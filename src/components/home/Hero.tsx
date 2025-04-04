@@ -1,12 +1,15 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView, useAnimation } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import HeroContent from './HeroContent';
 import DimensionalShowcase from './DimensionalShowcase';
 import VideoBackground from './VideoBackground';
 import AnimatedParticlesOverlay from './AnimatedParticlesOverlay';
 import ScrollDownIndicator from './ScrollDownIndicator';
 import HeroBackground from './HeroBackground';
+import { Button } from '@/components/ui/button';
+import { ImageIcon } from 'lucide-react';
 
 const Hero = () => {
   const controls = useAnimation();
@@ -43,6 +46,21 @@ const Hero = () => {
             <DimensionalShowcase />
           </motion.div>
         </div>
+      </div>
+      
+      {/* Admin image generator button - floating in corner */}
+      <div className="absolute bottom-20 right-8 z-50">
+        <Button 
+          variant="secondary" 
+          size="sm" 
+          className="rounded-full shadow-lg p-3 bg-blue-600 text-white hover:bg-blue-700"
+          asChild
+        >
+          <Link to="/admin/image-generator" title="AI Image Generator">
+            <ImageIcon className="h-5 w-5" />
+            <span className="sr-only">AI Image Generator</span>
+          </Link>
+        </Button>
       </div>
       
       {/* Down arrow animated */}

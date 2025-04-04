@@ -20,6 +20,8 @@ import LaptopsPage from "./pages/products/Laptops";
 import ServersPage from "./pages/products/Servers";
 import WorkstationsPage from "./pages/products/Workstations";
 
+import ImageGeneratorPage from "./pages/admin/ImageGeneratorPage";
+
 import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
 import TermsOfService from "./pages/legal/TermsOfService";
 import CookiePolicy from "./pages/legal/CookiePolicy";
@@ -48,6 +50,9 @@ const App = () => (
             
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            
+            {/* Admin routes */}
+            <Route path="/admin/image-generator" element={<ImageGeneratorPage />} />
             
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />

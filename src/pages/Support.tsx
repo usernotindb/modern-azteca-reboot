@@ -19,14 +19,14 @@ const Support = () => {
       icon: <Link size={24} />,
       title: "TeamViewer",
       description: "Fast and secure remote access solution that allows our technicians to view and control your computer.",
-      link: "https://www.teamviewer.com/en-us/download/",
+      link: "https://download.teamviewer.com/download/TeamViewerQS_x64.exe",
       buttonText: "Download TeamViewer"
     },
     {
       icon: <Link size={24} />,
       title: "LogMeIn",
       description: "Reliable remote desktop software that provides secure access to your computer from anywhere.",
-      link: "https://www.logmein.com/downloads",
+      link: "https://secure.logmein.com/i?l=en&c=00_binmfp9cvpog8bl9lsttqa37qkujwlebifil7",
       buttonText: "Download LogMeIn"
     }
   ];

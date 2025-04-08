@@ -51,7 +51,7 @@ const VideoBackground = () => {
       ) : (
         <div 
           className="w-full h-full bg-cover bg-center" 
-          style={{ backgroundImage: `url("${getImagePath('azteca-bg')}")` }}
+          style={{ backgroundImage: `url("${getImagePath('azteca-Bg')}")` }}
           aria-label="Background image"
         ></div>
       )}

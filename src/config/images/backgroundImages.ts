@@ -14,7 +14,7 @@ export const BACKGROUND_IMAGES: Record<string, ImageConfig> = {
   },
   aztecaBg: {
     id: 'azteca-bg',
-    path: "/lovable-uploads/7e4d2e7f-7fab-4dcb-97e8-b2868f66a3e7.png",
+    path: "/lovable-uploads/ezgif-5b59843ec79df7.webp",
     alt: "Azteca Technology Background",
     category: 'background',
     context: 'Company main background'

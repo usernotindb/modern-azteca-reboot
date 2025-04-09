@@ -24,15 +24,15 @@ export const productCategories: ProductCategory[] = [
         name: "ATS Tax Software", 
         price: "Contact for pricing",
         description: "Professional tax software for high volume tax businesses with comprehensive features for tax preparation and filing.",
-        imageId: "icon-software",
+        imageId: "softwareIcon",
         link: "/products/software-solutions#ats-tax-software"
       },
       { 
         id: 102, 
         name: "Office 365", 
-        price: "Starting at $149.99/year",
+        price: "Starting at $179/year",
         description: "Work anywhere, anytime, on any device with Microsoft's industry-leading productivity suite.",
-        imageId: "icon-apps",
+        imageId: "office365Icon",
         link: "/products/software-solutions#office-365"
       },
       { 
@@ -40,7 +40,7 @@ export const productCategories: ProductCategory[] = [
         name: "Anti-Virus Solutions", 
         price: "$49.99/year",
         description: "Complete protection for your devices with WiFi Security VPN and antivirus protection.",
-        imageId: "icon-security",
+        imageId: "webrootIcon",
         link: "/products/software-solutions#anti-virus-solutions"
       },
     ]
@@ -54,25 +54,25 @@ export const productCategories: ProductCategory[] = [
       { 
         id: 201, 
         name: "Laptops", 
-        price: "Starting at $899",
+        price: "Starting at $999",
         description: "Get everything done faster with solid state drives, powerful processors, and sleek designs.",
-        imageId: "laptop-business-pro",
+        imageId: "laptopsIcon",
         link: "/products/laptops"
       },
       { 
         id: 202, 
         name: "Servers", 
-        price: "Starting at $1,499",
+        price: "Starting at $1,699",
         description: "Operate reliably, manage easily, and scale your business with our server solutions.",
-        imageId: "server-mid-range",
+        imageId: "serverIcon",
         link: "/products/servers"
       },
       { 
         id: 203, 
         name: "Workstations", 
-        price: "Starting at $1,299",
+        price: "Starting at $1,499",
         description: "Fully customizable Workstation-class performance for demanding professional applications.",
-        imageId: "workstation-engineering",
+        imageId: "workstationsIcon",
         link: "/products/workstations"
       },
     ]
@@ -88,7 +88,7 @@ export const productCategories: ProductCategory[] = [
         name: "Managed IT Services", 
         price: "Custom pricing",
         description: "Comprehensive IT management to keep your systems running smoothly and securely.",
-        imageId: "icon-support",
+        imageId: "managedItIcon",
         link: "/products/it-services#managed-it-services"
       },
       { 
@@ -128,7 +128,7 @@ export const productCategories: ProductCategory[] = [
         name: "Anti-Virus Protection", 
         price: "$49.99/year",
         description: "Complete protection for your devices with WiFi Security VPN and antivirus protection.",
-        imageId: "icon-protection",
+        imageId: "webrootIcon",
         link: "/products/security-solutions#anti-virus-protection"
       },
       { 

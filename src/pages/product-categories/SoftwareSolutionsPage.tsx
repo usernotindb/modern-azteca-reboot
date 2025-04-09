@@ -6,6 +6,7 @@ import FadeIn from '@/components/ui/FadeIn';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import { productCategories } from '@/data/productData';
 import { ChevronDown, ArrowRight, Check } from 'lucide-react';
+import { getImagePath } from '@/config/images';
 
 const SoftwareSolutionsPage = () => {
   const softwareCategory = productCategories.find(category => category.slug === 'software-solutions');
@@ -85,7 +86,7 @@ const SoftwareSolutionsPage = () => {
               >
                 <div className="aspect-video bg-blue-50 relative">
                   <img 
-                    src={product.image} 
+                    src={product.imageId ? getImagePath(product.imageId) : product.image} 
                     alt={product.name} 
                     className="w-full h-full object-cover"
                   />

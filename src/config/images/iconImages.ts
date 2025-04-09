@@ -35,10 +35,10 @@ export const ICON_IMAGES: Record<string, ImageConfig> = {
   },
   softwareIcon: {
     id: 'icon-software',
-    path: "/lovable-uploads/6d1b82c7-3784-46ea-9384-d24ef9ad8509.png",
-    alt: "Software",
+    path: "/lovable-uploads/atssoftware.png",
+    alt: "ATS Tax Software",
     category: 'icon',
-    context: 'Software icon'
+    context: 'Tax software icon'
   },
   appsIcon: {
     id: 'icon-apps',
@@ -46,6 +46,20 @@ export const ICON_IMAGES: Record<string, ImageConfig> = {
     alt: "Applications",
     category: 'icon',
     context: 'Applications icon'
+  },
+  office365Icon: {
+    id: 'icon-office365',
+    path: "/lovable-uploads/office365_new.png",
+    alt: "Office 365",
+    category: 'icon',
+    context: 'Office 365 productivity suite icon'
+  },
+  laptopsIcon: {
+    id: 'icon-laptops',
+    path: "/lovable-uploads/laptops.png",
+    alt: "Business Laptops",
+    category: 'icon',
+    context: 'Laptops icon'
   },
   devIcon: {
     id: 'icon-dev',
@@ -81,5 +95,33 @@ export const ICON_IMAGES: Record<string, ImageConfig> = {
     alt: "Data Protection",
     category: 'icon',
     context: 'Data protection icon'
+  },
+  managedItIcon: {
+    id: 'icon-managed-it',
+    path: "/lovable-uploads/managed_it.jpg",
+    alt: "Managed IT Services",
+    category: 'icon',
+    context: 'Managed IT services icon'
+  },
+  webrootIcon: {
+    id: 'icon-webroot',
+    path: "/lovable-uploads/Webroot.png",
+    alt: "Webroot Security",
+    category: 'icon',
+    context: 'Webroot security icon'
+  },
+  serverIcon: {
+    id: 'icon-server',
+    path: "/lovable-uploads/servers.png",
+    alt: "Server Solutions",
+    category: 'icon',
+    context: 'Server solutions icon'
+  },
+  workstationsIcon: {
+    id: 'icon-workstations',
+    path: "/lovable-uploads/Workstations.png",
+    alt: "Workstations",
+    category: 'icon',
+    context: 'Workstations icon'
   }
 };

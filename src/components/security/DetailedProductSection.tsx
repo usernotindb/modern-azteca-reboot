@@ -7,6 +7,7 @@ import { Check } from 'lucide-react';
 import { ProductCategory } from '@/data/productData';
 import { Product } from '@/lib/types/product';
 import { getProductSectionId } from './securityUtils';
+import { getImagePath } from '@/config/images';
 
 interface DetailedProductSectionProps {
   products: Product[];
@@ -95,7 +96,7 @@ const DetailedProductSection = ({ products }: DetailedProductSectionProps) => {
                   <div className="p-4 bg-gradient-to-br from-purple-100 to-slate-100 rounded-xl shadow-xl relative overflow-hidden">
                     <div className="aspect-square relative rounded-lg overflow-hidden border-4 border-white shadow-inner">
                       <img 
-                        src={product.image} 
+                        src={product.imageId ? getImagePath(product.imageId) : product.image} 
                         alt={product.name} 
                         className="w-full h-full object-cover"
                       />

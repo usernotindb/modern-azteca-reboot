@@ -88,7 +88,7 @@ export const productCategories: ProductCategory[] = [
         name: "Managed IT Services", 
         price: "Custom pricing",
         description: "Comprehensive IT management to keep your systems running smoothly and securely.",
-        imageId: "managedItIcon",
+        imageId: "managed-it-services",
         link: "/products/it-services#managed-it-services"
       },
       { 

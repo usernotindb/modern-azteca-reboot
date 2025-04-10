@@ -70,19 +70,19 @@ const Index = () => {
               <ServiceCard 
                 title="IT Infrastructure" 
                 description="Build robust networks, server systems, and cloud infrastructure tailored to your business needs." 
-                image="/lovable-uploads/881ea460-231f-4a79-9b8a-a49b932665d7.png" 
+                image="/lovable-uploads/managed-it-services.png" 
                 link="/products/hardware-solutions" 
               />
               <ServiceCard 
                 title="Software Solutions" 
                 description="Custom software development, enterprise applications, and digital workspace solutions." 
-                image="/lovable-uploads/6d1b82c7-3784-46ea-9384-d24ef9ad8509.png" 
+                image="/lovable-uploads/software-solutions.png" 
                 link="/products/software-solutions" 
               />
               <ServiceCard 
                 title="Cybersecurity" 
-                description="Protect your business with comprehensive security assessments, monitoring, and threat response." 
-                image="/lovable-uploads/8d93ccd6-f135-4472-ad9a-677825e40020.png" 
+                description="Safeguard your business with security assessments, monitoring, & response.." 
+                image="/lovable-uploads/cybersecurity.png" 
                 link="/products/security-solutions" 
               />
             </div>

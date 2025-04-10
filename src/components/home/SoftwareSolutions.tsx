@@ -1,18 +1,22 @@
+
 import { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import FadeIn from '@/components/ui/FadeIn';
+
 const SoftwareSolutions = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
     triggerOnce: true
   });
+
   useEffect(() => {
     if (inView) {
       controls.start('visible');
     }
   }, [controls, inView]);
+
   const fadeInVariants = {
     hidden: {
       opacity: 0,
@@ -27,6 +31,7 @@ const SoftwareSolutions = () => {
       }
     }
   };
+
   return <section className="relative py-24 overflow-hidden">
       {/* Section Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-blue-100 -z-10"></div>
@@ -35,9 +40,11 @@ const SoftwareSolutions = () => {
         {/* Section Heading */}
         <FadeIn direction="up" duration={0.8}>
           <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
-              Our Software Solutions
-            </h2>
+            <img 
+              src="/lovable-uploads/atssoftware.png" 
+              alt="Azteca Tax Software" 
+              className="max-h-24 mx-auto mb-4"
+            />
             <p className="text-blue-600 text-lg">
               Empowering your business with cutting-edge software solutions tailored to your unique needs.
             </p>
@@ -50,9 +57,9 @@ const SoftwareSolutions = () => {
             {/* Background gradients */}
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-600"></div>
             
-            {/* Azteca logo image as background */}
+            {/* Azteca Tax Software image as background */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <img src="/lovable-uploads/6d1b82c7-3784-46ea-9384-d24ef9ad8509.png" alt="Azteca Technology Background" className="w-full h-full object-cover" />
+              <img src="/lovable-uploads/atssoftware.png" alt="Azteca Tax Software" className="w-full h-full object-cover opacity-20" />
             </div>
             
             {/* Overlay for better text readability */}
@@ -68,7 +75,7 @@ const SoftwareSolutions = () => {
             <FadeIn delay={0.1} direction="up">
               <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
                 <h4 className="text-xl font-semibold text-blue-800 mb-2">The Best Tax Software in the Industry</h4>
-                <p className="text-blue-600">Use ATS (Azteca Tax Systems) stands out as the best tax software in the industry due to its comprehensive solutions, user-friendly interface, and dedicated support tailored to meet the needs of tax professionals</p>
+                <p className="text-blue-600">Use ATS (Azteca Tax Systems) stands out as the best tax software in the industry due to its comprehensive solutions, user-friendly interface, and dedicated support tailored to meet the needs of tax professionals</p>
               </div>
             </FadeIn>
             
@@ -76,7 +83,7 @@ const SoftwareSolutions = () => {
             <FadeIn delay={0.2} direction="up">
               <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
                 <h4 className="text-xl font-semibold text-blue-800 mb-2">IT Must have!!</h4>
-                <p className="text-blue-600">We’re not just another IT tech company—we’re your partner in success. With a wide range of tailored solutions and unwavering support, we ensure your business is empowered with cutting-edge technology, backed by a team that’s always here to help you thrive.</p>
+                <p className="text-blue-600">We're not just another IT tech company—we're your partner in success. With a wide range of tailored solutions and unwavering support, we ensure your business is empowered with cutting-edge technology, backed by a team that's always here to help you thrive.</p>
               </div>
             </FadeIn>
             
@@ -92,4 +99,5 @@ const SoftwareSolutions = () => {
       </div>
     </section>;
 };
+
 export default SoftwareSolutions;

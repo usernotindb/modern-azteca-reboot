@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -36,13 +35,9 @@ const SoftwareSolutions = () => {
         {/* Section Heading */}
         <FadeIn direction="up" duration={0.8}>
           <div className="text-center">
-            <div className="flex justify-center mb-4">
-              <img 
-                src="/lovable-uploads/atssoftware.png" 
-                alt="ATS Software Solutions" 
-                className="h-16 md:h-20 object-contain"
-              />
-            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+              Our Software Solutions
+            </h2>
             <p className="text-blue-600 text-lg">
               Empowering your business with cutting-edge software solutions tailored to your unique needs.
             </p>

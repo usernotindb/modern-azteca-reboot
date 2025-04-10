@@ -1,22 +1,18 @@
-
 import { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import FadeIn from '@/components/ui/FadeIn';
-
 const SoftwareSolutions = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
     triggerOnce: true
   });
-
   useEffect(() => {
     if (inView) {
       controls.start('visible');
     }
   }, [controls, inView]);
-
   const fadeInVariants = {
     hidden: {
       opacity: 0,
@@ -31,7 +27,6 @@ const SoftwareSolutions = () => {
       }
     }
   };
-
   return <section className="relative py-24 overflow-hidden">
       {/* Section Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-blue-100 -z-10"></div>
@@ -40,11 +35,7 @@ const SoftwareSolutions = () => {
         {/* Section Heading */}
         <FadeIn direction="up" duration={0.8}>
           <div className="text-center">
-            <img 
-              src="/lovable-uploads/atssoftware.png" 
-              alt="Azteca Tax Software" 
-              className="max-h-24 mx-auto mb-4"
-            />
+            <img alt="Azteca Tax Software" className="max-h-24 mx-auto mb-4" src="/lovable-uploads/f439636a-074a-4347-a970-49f0859cb349.png" />
             <p className="text-blue-600 text-lg">
               Empowering your business with cutting-edge software solutions tailored to your unique needs.
             </p>
@@ -99,5 +90,4 @@ const SoftwareSolutions = () => {
       </div>
     </section>;
 };
-
 export default SoftwareSolutions;

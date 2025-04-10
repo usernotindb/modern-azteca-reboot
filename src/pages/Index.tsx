@@ -13,6 +13,7 @@ import { Check, Award, Clock, Users } from 'lucide-react';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import StatCard from '@/components/home/StatCard';
 import ServiceCard from '@/components/home/ServiceCard';
+import { Toaster } from '@/components/ui/toaster';
 
 const Index = () => {
   const controls = useAnimation();
@@ -121,6 +122,9 @@ const Index = () => {
         
         <Contact />
       </motion.div>
+      
+      {/* Add Toaster component for displaying notifications */}
+      <Toaster />
     </Layout>
   );
 };

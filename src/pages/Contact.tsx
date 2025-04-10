@@ -6,6 +6,7 @@ import ContactCard3D from '@/components/contact/ContactCard3D';
 import GlassContactForm from '@/components/contact/GlassContactForm';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Toaster } from '@/components/ui/toaster';
 
 const Contact = () => {
   return (
@@ -98,6 +99,9 @@ const Contact = () => {
           ></iframe>
         </div>
       </GradientBackground>
+      
+      {/* Add Toaster component for displaying notifications */}
+      <Toaster />
     </Layout>
   );
 };

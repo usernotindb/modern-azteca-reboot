@@ -7,14 +7,14 @@ import { ImageConfig } from './types';
 export const BACKGROUND_IMAGES: Record<string, ImageConfig> = {
   bgMountain: {
     id: 'bg-mountain',
-    path: "/lovable-uploads/aafd8b1b-4480-41c4-9f11-0d6862cff6dd.png",
+    path: "/lovable-uploads/managed_it.jpg",
     alt: "Mountain Background",
     category: 'background',
     context: 'Hero section background'
   },
   aztecaBg: {
     id: 'azteca-bg',
-    path: "/lovable-uploads/main-background.webp",
+    path: "/lovable-uploads/mainbackground.webp",
     alt: "Azteca Technology Background",
     category: 'background',
     context: 'Company main background'

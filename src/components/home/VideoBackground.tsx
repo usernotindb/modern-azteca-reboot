@@ -8,14 +8,19 @@ const VideoBackground = () => {
   const [isLoading, setIsLoading] = useState(true);
   
   // Handle video load errors
-  const handleVideoError = () => {
-    console.log("Video failed to load, displaying fallback image");
+  const handleVideoError = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
+    console.error("Video failed to load:", e);
+    const video = e.target as HTMLVideoElement;
+    console.log("Video source:", video.currentSrc);
     setVideoError(true);
     setIsLoading(false);
   };
   
   // Handle video load success
-  const handleVideoLoad = () => {
+  const handleVideoLoad = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
+    console.log("Video loaded successfully");
+    const video = e.target as HTMLVideoElement;
+    console.log("Video source:", video.currentSrc);
     setIsLoading(false);
   };
   
@@ -33,20 +38,21 @@ const VideoBackground = () => {
   }, [isLoading]);
   
   return (
-    <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 w-full h-full">
       {!videoError ? (
         <video 
           autoPlay 
           muted 
           loop 
           playsInline 
-          className="object-cover h-full w-full"
+          preload="metadata"
+          className="object-cover w-full h-full"
           poster={getImagePath('azteca-Bg')}
           onError={handleVideoError}
           onLoadedData={handleVideoLoad}
         >
-          <source src="/public/lovable-uploads/ezgif-5b59843ec79df7.webp" type="video/webp" />
-                 Your browser does not support the video tag.
+          <source src="/lovable-uploads/loopvideo.webm" type="video/webm" />
+          Your browser does not support the video tag.
         </video>
       ) : (
         <div 

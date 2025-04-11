@@ -44,7 +44,7 @@ const Support = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              src="/lovable-uploads/9f952ca9-69ce-4ab5-8239-0dbdcdae2c6b.png" 
+              src="/lovable-uploads/remote-support.png" 
               alt="Remote Support" 
               className="w-full h-auto rounded-lg shadow-lg"
             />

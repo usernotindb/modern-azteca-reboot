@@ -1,7 +1,9 @@
+
 import express from 'express';
 import path from 'path';
 import compression from 'compression';
 import { fileURLToPath } from 'url';
+import contactApi from './src/api/contactApi.js';
 
 // Get __dirname equivalent in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -12,6 +14,12 @@ const PORT = process.env.PORT || 3235;
 
 // Enable compression for all responses
 app.use(compression());
+
+// Parse JSON request body
+app.use(express.json());
+
+// API routes
+app.use('/api', contactApi);
 
 // Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, 'dist')));

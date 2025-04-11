@@ -5,6 +5,7 @@ import AnimatedButton from '@/components/ui/AnimatedButton';
 import FadeIn from '@/components/ui/FadeIn';
 import { z } from 'zod';
 import { toast } from '@/hooks/use-toast';
+import { submitContactForm } from '@/lib/api';
 
 // Define validation schema with Zod
 const contactFormSchema = z.object({
@@ -70,8 +71,8 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate an API call - in a real app, you would connect this to a backend service
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Send data to the server API
+      await submitContactForm(formState);
       
       // Show success message
       toast({
@@ -91,7 +92,7 @@ const ContactForm = () => {
       // Show error message
       toast({
         title: "Error sending message",
-        description: "There was a problem sending your message. Please try again later.",
+        description: error instanceof Error ? error.message : "There was a problem sending your message. Please try again later.",
         variant: "destructive",
       });
       console.error("Form submission error:", error);

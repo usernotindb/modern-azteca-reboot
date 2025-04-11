@@ -11,7 +11,7 @@ import { Toaster } from '@/components/ui/toaster';
 const Contact = () => {
   return (
     <Layout>
-      <GradientBackground className="mt-16 lg:mt-24 min-h-[calc(100vh-64px)]">
+      <GradientBackground className="mt-16 lg:mt-2 min-h-[calc(100vh-64px)]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="max-w-4xl mx-auto text-center">
             <span className="inline-block px-4 py-1.5 mb-4 rounded-full bg-accent-50 text-accent-600 text-sm font-medium">

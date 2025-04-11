@@ -21,7 +21,7 @@ const PageLayout = ({
 }: PageLayoutProps) => {
   return (
     <Layout>
-      <div className="mt-16 lg:mt-24">
+      <div className="mt-4 lg:mt-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="max-w-4xl mx-auto text-center">
             <span className="inline-block px-4 py-1.5 mb-4 rounded-full bg-accent-50 text-accent-600 text-sm font-medium">

@@ -125,7 +125,7 @@ const Support = () => {
         </div>
         
         <div className="text-center mt-12">
-          <AnimatedButton href="/contact" className="bg-white text-blue-900 hover:bg-yellow-400">
+          <AnimatedButton href="/contact" className="bg-white  text-black-900 hover:bg-white-400">
             Schedule a Support Session
           </AnimatedButton>
         </div>

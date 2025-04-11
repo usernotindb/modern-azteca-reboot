@@ -71,8 +71,13 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Send data to the server API
-      await submitContactForm(formState);
+      // Send data to the server API with explicit required properties
+      await submitContactForm({
+        name: formState.name,
+        email: formState.email,
+        subject: formState.subject,
+        message: formState.message
+      });
       
       // Show success message
       toast({

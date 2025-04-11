@@ -1,6 +1,7 @@
 
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Computer, Link as LinkIcon } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -74,6 +75,41 @@ const Footer = () => {
         
         <div className="flex flex-col md:flex-row justify-between items-center text-aztec-400 text-sm">
           <p>&copy; {currentYear} Azteca Technology. All rights reserved.</p>
+          
+          {/* Quick Support Links */}
+          <div className="flex items-center space-x-4 my-4 md:my-0 order-first md:order-none">
+            <span className="text-aztec-300">Quick Support:</span>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <SupportLink 
+                    href="https://download.teamviewer.com/download/TeamViewerQS_x64.exe" 
+                    icon={<Computer size={16} />} 
+                    label="TeamViewer"
+                  />
+                </TooltipTrigger>
+                <TooltipContent side="top">
+                  <p>Download TeamViewer</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <SupportLink 
+                    href="https://secure.logmein.com/i?l=en&c=00_binmfp9cvpog8bl9lsttqa37qkujwlebifil7" 
+                    icon={<LinkIcon size={16} />} 
+                    label="LogMeIn"
+                  />
+                </TooltipTrigger>
+                <TooltipContent side="top">
+                  <p>Access LogMeIn</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
+          
           <div className="flex space-x-4 mt-4 md:mt-0">
             <Link to="/privacy-policy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>
             <Link to="/terms-of-service" className="hover:text-blue-400 transition-colors">Terms of Service</Link>
@@ -99,6 +135,18 @@ const SocialLink = ({ href, icon }: { href: string; icon: React.ReactNode }) => 
     target="_blank" 
     rel="noopener noreferrer" 
     className="bg-aztec-800 hover:bg-blue-600 h-8 w-8 rounded-full flex items-center justify-center transition-colors"
+  >
+    {icon}
+  </a>
+);
+
+const SupportLink = ({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) => (
+  <a 
+    href={href} 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    aria-label={label}
+    className="bg-aztec-800 hover:bg-blue-600 h-7 w-7 rounded-full flex items-center justify-center transition-colors"
   >
     {icon}
   </a>

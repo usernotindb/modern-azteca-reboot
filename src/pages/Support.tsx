@@ -37,7 +37,7 @@ const Support = () => {
       subtitle="Get immediate technical assistance from our experienced technicians."
     >
       <Section background="white">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
           <div>
             <motion.img 
               initial={{ opacity: 0, x: -20 }}
@@ -125,7 +125,7 @@ const Support = () => {
         </div>
         
         <div className="text-center mt-12">
-          <AnimatedButton href="/contact" className="bg-white  text-black-900 hover:bg-white-400">
+          <AnimatedButton href="/contact" className="bg-black  text-white-900 hover:bg-red-400">
             Schedule a Support Session
           </AnimatedButton>
         </div>

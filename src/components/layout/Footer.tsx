@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="text-white bg-aztec-900">
       <div 
-        className="container mx-auto px-4 py-12"
+        className="container mx-auto px-2 py-2"
         style={{
           backgroundImage: `url('/lovable-uploads/footer.png')`,
           backgroundSize: 'cover',
@@ -20,22 +20,16 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Column 1: Company Info */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Azteca Technology</h3>
-            <p className="text-aztec-300 mb-4">
+            <h3 className="text-xl font-bold mb-5">Azteca Technology</h3>
+            <p className="text-aztec-100 mb-6">
               Your trusted partner for comprehensive IT solutions, providing hardware, software, and services for businesses of all sizes.
             </p>
-            <div className="flex space-x-4">
-              <SocialLink href="https://facebook.com" icon={<Facebook size={18} />} />
-              <SocialLink href="https://twitter.com" icon={<Twitter size={18} />} />
-              <SocialLink href="https://linkedin.com" icon={<Linkedin size={18} />} />
-              <SocialLink href="https://instagram.com" icon={<Instagram size={18} />} />
-            </div>
           </div>
           
           {/* Column 2: Products */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Products</h3>
-            <ul className="space-y-2">
+            <h3 className="text-xl font-bold mb-5">Products</h3>
+            <ul className="space-y-1.5">
               <FooterLink href="/products/software-solutions" text="Software Solutions" />
               <FooterLink href="/products/hardware-solutions" text="Hardware Solutions" />
               <FooterLink href="/products/laptops" text="Laptops" />
@@ -48,8 +42,8 @@ const Footer = () => {
           
           {/* Column 3: Company */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Company</h3>
-            <ul className="space-y-2">
+            <h3 className="text-xl font-bold mb-5">Company</h3>
+            <ul className="space-y-1.5">
               <FooterLink href="/about" text="About Us" />
               <FooterLink href="/services" text="Services" />
               <FooterLink href="/contact" text="Contact" />
@@ -61,21 +55,26 @@ const Footer = () => {
           
           {/* Column 4: Contact */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Contact Us</h3>
-            <ul className="space-y-3">
+            <h3 className="text-xl font-bold mb-5">Contact Us</h3>
+            <ul className="space-y-1">
               <li className="flex items-start">
                 <MapPin className="mr-3 h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
-                <span className="text-aztec-300">3111 Tustin St, Suite 235<br />Orange, CA 92865</span>
+                <span className="text-aztec-50">3111 Tustin St, Suite 235<br />Orange, CA 92865</span>
               </li>
               <li className="flex items-center">
                 <Phone className="mr-3 h-5 w-5 text-blue-400 flex-shrink-0" />
-                <span className="text-aztec-300">(714) 363-0006</span>
+                <span className="text-aztec-50">(714) 363-0006</span>
               </li>
               <li className="flex items-center">
                 <Mail className="mr-3 h-5 w-5 text-blue-400 flex-shrink-0" />
-                <span className="text-aztec-300">hello@aztecas.com</span>
+                <span className="text-aztec-50">hello@aztecas.com</span>
               </li>
             </ul>
+            <div className="flex space-x-6">
+              <SocialLink href="https://www.facebook.com/aztecatechnology" icon={<Facebook size={18} />} />
+              <SocialLink href="https://x.com/aztecatech" icon={<Twitter size={18} />} />
+              <SocialLink href="https://www.instagram.com/aztecatechnology/" icon={<Instagram size={18} />} />
+            </div>
           </div>
         </div>
       </div>
@@ -133,7 +132,7 @@ const Footer = () => {
 
 const FooterLink = ({ href, text }: { href: string; text: string }) => (
   <li>
-    <Link to={href} className="text-aztec-300 hover:text-white transition-colors">
+    <Link to={href} className="text-aztec-300 hover:text-blue transition-colors">
       {text}
     </Link>
   </li>

@@ -29,14 +29,14 @@ const SoftwareSolutions = () => {
   };
   return <section className="relative py-24 overflow-hidden">
       {/* Section Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-blue-100 -z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-500 to-blue-100 -z-20"></div>
       
       <div className="container mx-auto px-4">
         {/* Section Heading */}
         <FadeIn direction="up" duration={0.8}>
           <div className="text-center">
             <img alt="Azteca Tax Software" className="max-h-24 mx-auto mb-4" src="/lovable-uploads/f439636a-074a-4347-a970-49f0859cb349.png" />
-            <p className="text-blue-600 text-lg">
+            <p className="text-white-900 text-lg -mt-1">
               Empowering your business with cutting-edge software solutions tailored to your unique needs.
             </p>
           </div>
@@ -46,15 +46,15 @@ const SoftwareSolutions = () => {
           {/* Main feature box with gradient background */}
           <div className="relative rounded-2xl overflow-hidden shadow-xl h-[500px] md:h-[600px]">
             {/* Background gradients */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-blue-100"></div>
             
             {/* Azteca Tax Software image as background */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <img src="/lovable-uploads/atssoftware.png" alt="Azteca Tax Software" className="w-full h-full object-cover opacity-20" />
+              <img src="/lovable-uploads/atssoftware.png" alt="Azteca Tax Software" className="w-full h-full object-cover opacity-80" />
             </div>
             
             {/* Overlay for better text readability */}
-            <div className="absolute inset-0 bg-blue-900/30"></div>
+            <div className="absolute inset-1 bg-blue-6000/30"></div>
             
             {/* Content inside the main feature box */}
             

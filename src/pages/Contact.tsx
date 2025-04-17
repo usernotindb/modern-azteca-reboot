@@ -1,10 +1,8 @@
-
 import Layout from '@/components/layout/Layout';
 import FadeIn from '@/components/ui/FadeIn';
 import GradientBackground from '@/components/ui/GradientBackground';
-import ContactCard3D from '@/components/contact/ContactCard3D';
 import GlassContactForm from '@/components/contact/GlassContactForm';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import ContactInfo from '@/components/contact/ContactInfo';
 import { motion } from 'framer-motion';
 import { Toaster } from '@/components/ui/toaster';
 
@@ -26,57 +24,11 @@ const Contact = () => {
           </FadeIn>
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Contact Cards */}
-            <FadeIn direction="up" className="space-y-8">
-              <div>
-                <h2 className="text-2xl font-bold text-aztec-900 mb-6">Contact Information</h2>
-                <p className="text-aztec-600 mb-12">
-                  Feel free to reach out to us. We're here to help and answer any questions you might have.
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-1 gap-6">
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                >
-                  <ContactCard3D
-                    icon={<Mail className="h-6 w-6" />}
-                    title="Email Us"
-                    content="info@aztecas.com"
-                    href="mailto:info@aztecas.com"
-                  />
-                </motion.div>
-                
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                  <ContactCard3D
-                    icon={<Phone className="h-6 w-6" />}
-                    title="Call Us"
-                    content="714-363-0006"
-                    href="tel:+17143630006"
-                  />
-                </motion.div>
-                
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                >
-                  <ContactCard3D
-                    icon={<MapPin className="h-6 w-6" />}
-                    title="Visit Us"
-                    content="3111 Tustin St, Suite 235, Orange, CA 92865"
-                    href="https://maps.google.com/?q=3111+Tustin+St+Suite+235+Orange+CA+92865"
-                  />
-                </motion.div>
-              </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-4 py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Contact Information */}
+            <FadeIn direction="up">
+              <ContactInfo />
             </FadeIn>
             
             {/* Contact Form */}

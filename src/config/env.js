@@ -7,11 +7,11 @@
 
 // SMTP Configuration
 export const SMTP_CONFIG = {
-  host: process.env.SMTP_HOST || 'smtp.example.com',
+  host: process.env.SMTP_HOST || 'smtp.gmail.com',
   port: parseInt(process.env.SMTP_PORT || '587', 10),
   secure: process.env.SMTP_SECURE === 'true',
-  user: process.env.SMTP_USER || 'user@example.com',
-  pass: process.env.SMTP_PASS || 'password',
+  user: process.env.SMTP_USER || 'aztecabks@gmail.com',
+  pass: process.env.SMTP_PASS || 'zcdcsnvugnefipze',
 };
 
 // Email Configuration

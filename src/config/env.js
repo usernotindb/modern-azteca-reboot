@@ -1,4 +1,11 @@
 
+import dotenv from 'dotenv';
+import dotenvDecrypt from 'dotenv-decrypt';
+
+// Load and decrypt environment variables
+dotenv.config();
+dotenvDecrypt();
+
 /**
  * Environment variables configuration
  * This file provides fallback values for development
@@ -11,7 +18,7 @@ export const SMTP_CONFIG = {
   port: parseInt(process.env.SMTP_PORT || '587', 10),
   secure: process.env.SMTP_SECURE === 'true',
   user: process.env.SMTP_USER || 'aztecabks@gmail.com',
-  pass: process.env.SMTP_PASS || 'zcdcsnvugnefipze',
+  pass: process.env.SMTP_PASS || 'ENCRYPTED_SMTP_PASS',
 };
 
 // Email Configuration

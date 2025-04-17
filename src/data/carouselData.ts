@@ -20,7 +20,7 @@ export const carouselItems: CarouselItem[] = [
       "Secure client data management",
       "Automated compliance checks"
     ],
-    iconIds: ['icon-software', 'icon-dev', 'icon-cloud', 'icon-web']
+    iconIds: ['Calculator', 'FileText', 'Lock', 'CheckSquare']
   },
   {
     id: "premium-hardware",
@@ -32,7 +32,7 @@ export const carouselItems: CarouselItem[] = [
       "Enterprise servers",
       "Custom configurations"
     ],
-    iconIds: ['icon-hardware', 'icon-server', 'icon-security', 'icon-monitor']
+    iconIds: ['Laptop', 'Server', 'HardDrive', 'Settings']
   },
   {
     id: "it-support",
@@ -44,7 +44,7 @@ export const carouselItems: CarouselItem[] = [
       "Network maintenance",
       "System optimization"
     ],
-    iconIds: ['icon-support', 'icon-monitor', 'icon-cloud', 'icon-access']
+    iconIds: ['Headset', 'Wrench', 'Network', 'Activity']
   },
   {
     id: "ip-security-cameras",
@@ -56,7 +56,7 @@ export const carouselItems: CarouselItem[] = [
       "Motion detection",
       "Cloud storage options"
     ],
-    iconIds: ['icon-security', 'icon-protection', 'icon-monitor', 'icon-access']
+    iconIds: ['Camera', 'Wifi', 'Cloud', 'Shield']
   },
   {
     id: "office-essentials",
@@ -68,6 +68,6 @@ export const carouselItems: CarouselItem[] = [
       "Collaboration tools",
       "Business communication systems"
     ],
-    iconIds: ['icon-software', 'icon-apps', 'icon-web', 'icon-cloud']
+    iconIds: ['Briefcase', 'FileText', 'Users', 'MessageSquare']
   }
 ];

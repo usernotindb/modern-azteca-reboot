@@ -93,7 +93,6 @@ const Index = () => {
         <SoftwareSolutions />
         <Products />
         <ITServices />
-        <SecuritySolutions />
         
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">

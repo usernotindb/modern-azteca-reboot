@@ -9,9 +9,9 @@ const ProductsShowcase = () => {
       <div className="flex flex-col lg:flex-row items-center">
         <div className="lg:w-1/2 mb-8 lg:mb-0">
           <img 
-            alt="Product showcase" 
+            alt="Premium Hardware Solutions Showcase" 
             className="w-full max-w-2xl mx-auto rounded-lg shadow-lg" 
-            src={getImagePath('product-showcase')} 
+            src="/lovable-uploads/hardwarev1.png" 
           />
         </div>
         <div className="lg:w-1/2 lg:pl-12">

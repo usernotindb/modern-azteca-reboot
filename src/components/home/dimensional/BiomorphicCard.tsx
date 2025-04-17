@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CarouselItem } from '@/data/carouselData';
 import { useIsMobile } from '@/hooks/use-mobile';
+import DynamicLucideIcon from '@/components/ui/DynamicLucideIcon';
 
 interface BiomorphicCardProps {
   item: CarouselItem;
@@ -124,10 +125,10 @@ const BiomorphicCard = ({ item, mousePosition }: BiomorphicCardProps) => {
             }}
             transition={{ duration: 0.3 }}
           >
-            <img 
-              src={item.image} 
-              alt={item.title} 
-              className="w-full h-full object-contain drop-shadow-lg" 
+            {/* Use the first icon from iconIds */} 
+            <DynamicLucideIcon 
+              name={item.iconIds[0]} 
+              className="w-16 h-16 text-white drop-shadow-lg" 
             />
           </motion.div>
         </motion.div>

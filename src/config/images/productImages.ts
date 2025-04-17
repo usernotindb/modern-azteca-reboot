@@ -5,6 +5,29 @@ import { ImageConfig } from './types';
  * Product images
  */
 export const PRODUCT_IMAGES: Record<string, ImageConfig> = {
+  // Specific product models below
+  laptops: {
+    id: 'laptops',
+    path: "/lovable-uploads/laptops.png",
+    alt: "Laptops Category",
+    category: 'product',
+    context: 'General Laptops Category Image'
+  },
+  servers: {
+    id: 'servers',
+    path: "/lovable-uploads/servers.png",
+    alt: "Servers Category",
+    category: 'product',
+    context: 'General Servers Category Image'
+  },
+  Workstations: { // Note: Case matches imageId used in productData.ts
+    id: 'Workstations',
+    path: "/lovable-uploads/Workstations.png",
+    alt: "Workstations Category",
+    category: 'product',
+    context: 'General Workstations Category Image'
+  },
+  // Specific product models below
   laptop1: {
     id: 'laptop-business-pro',
     path: "/lovable-uploads/laptop-business-pro.png",

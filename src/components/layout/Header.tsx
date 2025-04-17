@@ -2,8 +2,9 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Computer, Link as LinkIcon } from 'lucide-react'; // Import Computer and LinkIcon
 import { useScroll } from '@/lib/hooks/useScroll';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"; // Import Tooltip components
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -29,34 +30,79 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-2xl font-bold text-aztec-900"
-            >
-              AZTECAS
-            </motion.div>
-          </Link>
+          <div className="flex-shrink-0">
+            <Link to="/" className="flex items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-2xl font-bold text-aztec-900"
+              >
+                AZTECAS
+              </motion.div>
+            </Link>
+          </div>
 
-          {/* Desktop Navigation */}
-          <motion.nav
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="hidden md:flex space-x-8"
-          >
-            {navLinks.map((link, index) => (
-              <NavLink 
-                key={link.href} 
-                href={link.href} 
-                label={link.label}
-                active={location.pathname === link.href}
-                delay={0.1 + index * 0.05}
-              />
-            ))}
-          </motion.nav>
+          {/* Centered Desktop Navigation */}
+          <div className="hidden md:flex flex-1 justify-center">
+            <motion.nav
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="flex space-x-8"
+            >
+              {navLinks.map((link, index) => (
+                <NavLink 
+                  key={link.href} 
+                  href={link.href} 
+                  label={link.label}
+                  active={location.pathname === link.href}
+                  delay={0.1 + index * 0.05}
+                />
+              ))}
+            </motion.nav>
+          </div>
+
+          {/* Quick Support Links (Desktop) */}
+          <div className="hidden md:flex items-center space-x-4">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <a 
+                    href="https://download.teamviewer.com/download/TeamViewerQS_x64.exe" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label="Download TeamViewer QuickSupport"
+                    className="text-aztec-700 hover:text-accent-600 transition-colors p-1 rounded-full hover:bg-gray-100"
+                  >
+                    <Computer size={20} />
+                  </a>
+                </TooltipTrigger>
+                <TooltipContent side="bottom">
+                  <p>TeamViewer QuickSupport</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <a 
+                    href="https://secure.logmein.com/i?l=en&c=00_binmfp9cvpog8bl9lsttqa37qkujwlebifil7" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label="Access LogMeIn Rescue"
+                    className="text-aztec-700 hover:text-accent-600 transition-colors p-1 rounded-full hover:bg-gray-100"
+                  >
+                    <LinkIcon size={20} />
+                  </a>
+                </TooltipTrigger>
+                <TooltipContent side="bottom">
+                  <p>LogMeIn Rescue</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
 
           {/* Mobile Menu Button */}
           <motion.div

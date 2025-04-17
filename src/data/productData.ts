@@ -56,7 +56,7 @@ export const productCategories: ProductCategory[] = [
         name: "Laptops", 
         price: "Starting at $999",
         description: "Get everything done faster with solid state drives, powerful processors, and sleek designs.",
-        imageId: "laptopsIcon",
+        imageId: "laptops",
         link: "/products/laptops"
       },
       { 
@@ -64,7 +64,7 @@ export const productCategories: ProductCategory[] = [
         name: "Servers", 
         price: "Starting at $1,699",
         description: "Operate reliably, manage easily, and scale your business with our server solutions.",
-        imageId: "serverIcon",
+        imageId: "servers",
         link: "/products/servers"
       },
       { 
@@ -72,7 +72,7 @@ export const productCategories: ProductCategory[] = [
         name: "Workstations", 
         price: "Starting at $1,499",
         description: "Fully customizable Workstation-class performance for demanding professional applications.",
-        imageId: "workstationsIcon",
+        imageId: "Workstations",
         link: "/products/workstations"
       },
     ]

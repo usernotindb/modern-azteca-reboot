@@ -7,8 +7,16 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-aztec-900 text-white">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="text-white bg-aztec-900">
+      <div 
+        className="container mx-auto px-4 py-12"
+        style={{
+          backgroundImage: `url('/lovable-uploads/footer.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top', // Adjust position to focus on the top part
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Column 1: Company Info */}
           <div>
@@ -70,9 +78,11 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        
-        <hr className="border-aztec-700 my-8" />
-        
+      </div>
+      
+      {/* Separator and Bottom Section */}
+      <div className="container mx-auto px-4 pb-8">
+        <hr className="border-aztec-700 mb-8" />
         <div className="flex flex-col md:flex-row justify-between items-center text-aztec-400 text-sm">
           <p>&copy; {currentYear} Azteca Technology. All rights reserved.</p>
           

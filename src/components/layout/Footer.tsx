@@ -12,9 +12,11 @@ const Footer = () => {
         className="container mx-auto px-2 py-2"
         style={{
           backgroundImage: `url('/lovable-uploads/footer.png')`,
-          backgroundSize: 'contain',
+          backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
+          maxWidth: '100%',
+          height: 'auto',
         }}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

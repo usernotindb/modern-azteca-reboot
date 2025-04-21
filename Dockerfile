@@ -14,9 +14,7 @@ FROM node:18-alpine as production
 
 WORKDIR /app
 
-COPY --from=build /app/package.json ./
-COPY --from=build /app/bun.lockb ./
-RUN bun install --production
+COPY --from=build /app/node_modules ./node_modules
 
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/server.js ./

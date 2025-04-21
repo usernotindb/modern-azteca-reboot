@@ -4,21 +4,23 @@ FROM node:18-alpine as build
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci
+COPY bun.lockb ./
+RUN bun install
 
 COPY . .
-RUN npm run build
+RUN bun run build
 
 FROM node:18-alpine as production
 
 WORKDIR /app
 
 COPY --from=build /app/package.json ./
-COPY --from=build /app/package-lock.json ./
-RUN npm ci --omit=dev
+COPY --from=build /app/bun.lockb ./
+RUN bun install --production
 
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/server.js ./
+COPY --from=build /app/src ./src # Copy src directory for server imports
 
 EXPOSE 3235
 

@@ -4,7 +4,7 @@ name: aztecas-website
 type: web
 env:
   - NODE_ENV=production
-buildCommand: rm -rf node_modules bun.lockb && bun install --frozen-lockfile && bun run build
+buildCommand: rm -rf node_modules bun.lockb && bun install && bun run build
 startCommand: node server.js
 port: 3235
 resources:

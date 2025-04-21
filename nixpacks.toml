@@ -1,11 +1,11 @@
 [phases.setup]
-nixPkgs = ["nodejs", "nodejs.pkgs.npm"]
+nixPkgs = ["nodejs", "bun"]
 
 [phases.install]
-cmds = ["npm ci"]
+cmds = ["bun install --frozen-lockfile"]
 
 [phases.build]
-cmds = ["npm run build"]
+cmds = ["bun run build"]
 
 [start]
 cmd = "node server.js"

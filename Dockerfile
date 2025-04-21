@@ -15,7 +15,6 @@ FROM node:18-alpine as production
 WORKDIR /app
 
 COPY --from=build /app/node_modules ./node_modules
-
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/server.js ./
 COPY --from=build /app/src ./src # Copy src directory for server imports

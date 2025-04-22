@@ -1,10 +1,9 @@
 
 import dotenv from 'dotenv';
-import dotenvDecrypt from 'dotenv-decrypt';
 
-// Load and decrypt environment variables
+// Load environment variables
+// dotenvx should handle decryption automatically if configured
 dotenv.config();
-dotenvDecrypt();
 
 /**
  * Environment variables configuration

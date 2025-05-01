@@ -11,23 +11,10 @@ const HardwareSolutionsPage = () => {
   
   if (!hardwareCategory) return null;
   
-  // Map the products to the format expected by ProductsShowcase
-  const showcaseProducts = hardwareCategory.products.map(product => ({
-    id: String(product.id),
-    name: product.name,
-    description: product.description,
-    imageUrl: product.image || '',
-    slug: product.slug || ''
-  }));
-  
   return (
     <Layout>
       <HeroSection category={hardwareCategory} />
-      <ProductsShowcase 
-        title={`${hardwareCategory.name} Showcase`} 
-        description="Explore our range of hardware solutions"
-        products={showcaseProducts}
-      />
+      <ProductsShowcase category={hardwareCategory} />
       <DetailsSection category={hardwareCategory} />
       <CTASection />
     </Layout>

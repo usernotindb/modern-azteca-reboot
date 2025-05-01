@@ -73,15 +73,15 @@ const ProductCategory = ({
               {/* We wrap the product card in a div with the ID for anchor navigation */}
               <div id={getProductId(product.name)}>
                 <ProductCard 
-                  key={product.id}
-                  name={product.name}
-                  description={product.shortDescription || product.description}
+                  name={product.name} 
+                  price={product.price} 
+                  description={product.description} 
+                  image={product.image}
                   imageId={product.imageId}
-                  categorySlug={category}
-                  price={product.price}
-                  link={`/products/${product.slug || ''}`}
-                  variant="default"
-                  index={productIndex}
+                  categorySlug={category.slug}
+                  link={product.link}
+                  delay={0.1 * productIndex} 
+                  variant="product" 
                   onLearnMore={() => handleLearnMore(product)} 
                 />
               </div>

@@ -20,11 +20,11 @@ const Layout = ({ children }: LayoutProps) => {
   useScrollToTopOnMount();
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen max-w-full overflow-hidden">
       <Header />
       
-      <main className={`flex-grow ${isMobile ? 'pt-16' : 'pt-20'}`}>
-        <div className="w-full max-w-full overflow-x-hidden">
+      <main className={`flex-grow w-full ${isMobile ? 'pt-16' : 'pt-20'}`}>
+        <div className="w-full mx-auto">
           {children}
         </div>
       </main>

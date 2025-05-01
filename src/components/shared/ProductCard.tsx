@@ -65,7 +65,7 @@ const ProductCard = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: delay + (index * 0.1) }}
-      className={`${variantStyles[variant]} ${className}`}
+      className={`${variantStyles[variant]} ${className} w-full`}
     >
       {imagePath && (
         <div className="mb-4 aspect-video overflow-hidden rounded-md">
@@ -73,6 +73,7 @@ const ProductCard = ({
             src={imagePath}
             alt={name || 'Product image'}
             className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
+            loading="lazy"
           />
         </div>
       )}

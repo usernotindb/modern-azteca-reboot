@@ -1,17 +1,17 @@
 
 import React from 'react';
 import AnimatedButton from '../ui/AnimatedButton';
-import { getImagePath } from '@/config/images';
 
 const ProductsShowcase = () => {
   return (
-    <div className="bg-aztec-50 p-6 rounded-xl mb-16">
+    <div className="bg-aztec-50 p-6 rounded-xl mb-16 max-w-full">
       <div className="flex flex-col lg:flex-row items-center">
-        <div className="lg:w-1/2 mb-8 lg:mb-0">
+        <div className="lg:w-1/2 mb-8 lg:mb-0 w-full">
           <img 
             alt="Premium Hardware Solutions Showcase" 
-            className="w-full max-w-2xl mx-auto rounded-lg shadow-lg" 
-            src="/lovable-uploads/hardwarev1.png" 
+            className="w-full h-auto max-w-2xl mx-auto rounded-lg shadow-lg"
+            src="/lovable-uploads/hardwarev1.png"
+            loading="lazy" 
           />
         </div>
         <div className="lg:w-1/2 lg:pl-12">

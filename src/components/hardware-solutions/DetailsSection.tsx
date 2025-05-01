@@ -9,7 +9,7 @@ interface DetailsSectionProps {
 
 const DetailsSection = ({ category }: DetailsSectionProps) => {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-50 overflow-x-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
@@ -28,19 +28,20 @@ const DetailsSection = ({ category }: DetailsSectionProps) => {
             return (
               <div key={product.id} id={productId} className="bg-white rounded-xl shadow-md overflow-hidden">
                 <div className="flex flex-col lg:flex-row">
-                  <div className="lg:w-1/3">
-                    <div className="h-full">
+                  <div className="lg:w-1/3 w-full">
+                    <div className="h-full max-h-80 lg:max-h-full">
                       <img 
                         src={product.image} 
                         alt={product.name} 
                         className="w-full h-full object-cover object-center"
+                        loading="lazy"
                       />
                     </div>
                   </div>
                   
                   <div className="lg:w-2/3 p-8">
-                    <div className="flex justify-between items-start mb-4">
-                      <h3 className="text-2xl font-bold text-gray-900">
+                    <div className="flex flex-col sm:flex-row justify-between items-start mb-4">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2 sm:mb-0">
                         {product.name}
                       </h3>
                       {product.price && (

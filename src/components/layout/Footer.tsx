@@ -9,16 +9,18 @@ const Footer = () => {
   const isMobile = useIsMobile();
   
   return (
-    <footer className="text-white bg-aztec-900">
+    <footer className="text-white bg-aztec-900 w-full overflow-hidden">
       <div 
-        className="relative w-full bg-cover bg-center bg-no-repeat py-12 px-4 sm:py-16 md:px-6"
+        className="relative w-full py-12 px-4 sm:py-16 md:px-6 bg-no-repeat"
         style={{
           backgroundImage: `url('/lovable-uploads/footer.png')`,
-          backgroundSize: isMobile ? 'cover' : '100% auto',
-          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundPosition: isMobile ? 'center center' : 'center top',
+          backgroundRepeat: 'no-repeat',
+          maxWidth: '100%'
         }}
       >
-        <div className="container mx-auto">
+        <div className="container mx-auto px-0 sm:px-4">
           <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 gap-x-8">
             {/* Column 1: Company Info */}
             <div className="max-w-xs">

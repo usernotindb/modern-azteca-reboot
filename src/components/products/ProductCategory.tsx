@@ -79,7 +79,7 @@ const ProductCategory = ({
                   imageId={product.imageId}
                   categorySlug={category}
                   price={product.price}
-                  link={`/products/${product.slug}`}
+                  link={`/products/${product.slug || ''}`}
                   variant="default"
                   index={productIndex}
                   onLearnMore={() => handleLearnMore(product)} 

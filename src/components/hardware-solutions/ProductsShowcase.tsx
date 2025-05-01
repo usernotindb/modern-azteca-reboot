@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { ProductCard } from '@/components/shared/ProductCard';
+import ProductCard from '@/components/shared/ProductCard';
 
 interface Product {
   id: string;

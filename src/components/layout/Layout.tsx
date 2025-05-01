@@ -6,6 +6,7 @@ import Header from './Header';
 import Footer from './Footer';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 import { useScrollToTopOnMount } from '@/lib/hooks/useScroll';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface LayoutProps {
   children: ReactNode;
@@ -13,6 +14,7 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
+  const isMobile = useIsMobile();
   
   // Scroll to top on route change
   useScrollToTopOnMount();
@@ -21,8 +23,10 @@ const Layout = ({ children }: LayoutProps) => {
     <div className="flex flex-col min-h-screen">
       <Header />
       
-      <main className="flex-grow pt-16 md:pt-20">
-        {children}
+      <main className={`flex-grow ${isMobile ? 'pt-16' : 'pt-20'}`}>
+        <div className="w-full max-w-full overflow-x-hidden">
+          {children}
+        </div>
       </main>
       
       <Footer />

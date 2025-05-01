@@ -59,11 +59,14 @@
   
   html {
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
   }
   
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+    width: 100%;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -71,15 +74,15 @@
   }
   
   h1 {
-    @apply text-4xl font-bold md:text-5xl lg:text-6xl;
+    @apply text-3xl font-bold md:text-4xl lg:text-5xl;
   }
   
   h2 {
-    @apply text-3xl font-semibold md:text-4xl;
+    @apply text-2xl font-semibold md:text-3xl;
   }
   
   h3 {
-    @apply text-2xl font-semibold md:text-3xl;
+    @apply text-xl font-semibold md:text-2xl;
   }
   
   p {
@@ -89,10 +92,34 @@
   .text-balance {
     text-wrap: balance;
   }
+  
+  /* Improved global image styles for responsiveness */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Make all interactive elements have sufficient touch target size */
+  button, a, input[type="button"], input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve form element touch targets */
+  input, select, textarea {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+  
+  /* Make sure all button text is readable on small screens */
+  button, .btn, a.btn {
+    white-space: normal;
+    word-wrap: break-word;
+  }
 }
 
 .section-padding {
-  @apply py-16 md:py-24;
+  @apply py-12 md:py-16 lg:py-24;
 }
 
 .container-padding {
@@ -106,8 +133,8 @@ a, button, input, select, textarea {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -122,6 +149,17 @@ a, button, input, select, textarea {
   @apply bg-aztec-400;
 }
 
+/* Responsive grids with auto-sizing */
+.responsive-grid {
+  @apply grid gap-4 sm:gap-6 lg:gap-8;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Responsive utilities */
+.touch-target {
+  @apply min-h-[44px] min-w-[44px];
+}
+
 /* Applied when elements transition in on scroll */
 .reveal {
   opacity: 0;
@@ -132,4 +170,20 @@ a, button, input, select, textarea {
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Fix for iPhone X+ safe areas */
+@supports (padding: max(0px)) {
+  .safe-area-bottom {
+    padding-bottom: max(env(safe-area-inset-bottom), 1rem);
+  }
+  
+  .safe-area-top {
+    padding-top: max(env(safe-area-inset-top), 1rem);
+  }
+}
+
+/* Prevent text size adjustment after orientation changes in iOS */
+html {
+  -webkit-text-size-adjust: 100%;
 }

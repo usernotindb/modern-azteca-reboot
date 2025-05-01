@@ -1,122 +1,117 @@
 
+import React from 'react';
 import { motion } from 'framer-motion';
-import AnimatedButton from '@/components/ui/AnimatedButton';
-import { Product } from '@/lib/types/product';
 import { useNavigate } from 'react-router-dom';
 import { getImagePath } from '@/config/images';
+import { cn } from '@/lib/utils';
+import { useIsMobile, useIsTablet } from '@/hooks/use-media-query';
+import { ResponsiveImage } from '@/components/ui/responsive-image';
 
-interface ProductCardProps extends Partial<Product> {
-  variant?: 'home' | 'product' | 'featured';
-  index?: number;
-  delay?: number;
+interface ProductCardProps {
+  name: string;
+  description: string;
+  imageId?: string;
+  image?: string; // Fallback if imageId is not provided
+  categorySlug?: string;
+  price?: string;
+  link?: string;
   onLearnMore?: () => void;
+  index?: number;
+  variant?: 'default' | 'home';
   className?: string;
 }
 
 const ProductCard = ({
   name,
   description,
-  price,
-  image,
   imageId,
+  image,
   categorySlug,
+  price,
   link,
-  variant = 'product',
-  index = 0,
-  delay = 0,
   onLearnMore,
-  className = ''
+  index = 0,
+  variant = 'default',
+  className,
 }: ProductCardProps) => {
   const navigate = useNavigate();
-  const variantStyles = {
-    home: 'p-4 bg-white border border-aztec-50 rounded-lg shadow-sm hover:shadow-md transition-shadow',
-    product: 'p-4 bg-white border border-aztec-50 rounded-lg shadow-sm hover:shadow-md transition-shadow',
-    featured: 'p-6 bg-white border-2 border-accent-100 rounded-xl shadow-md hover:shadow-lg transition-shadow'
-  };
-
-  // Handle the click for the Learn More button
-  const handleLearnMoreClick = (e: React.MouseEvent) => {
-    if (onLearnMore) {
-      e.preventDefault();
+  const isMobile = useIsMobile();
+  const isTablet = useIsTablet();
+  
+  // Determine delay based on index for staggered animations
+  const animationDelay = 0.1 * (index % 10);
+  
+  // Handle click on the card
+  const handleClick = () => {
+    if (link) {
+      navigate(link);
+    } else if (onLearnMore) {
       onLearnMore();
     }
   };
-
-  // Determine the proper href for the Learn More button - prioritize link field if available
-  const getLearnMoreHref = () => {
-    if (link) return link;
-    if (!categorySlug) return '#';
-    
-    // Special case for hardware-solutions products that have their own pages
-    if (categorySlug === 'hardware-solutions') {
-      if (name?.toLowerCase().includes('laptop')) return '/products/laptops';
-      if (name?.toLowerCase().includes('server')) return '/products/servers';
-      if (name?.toLowerCase().includes('workstation')) return '/products/workstations';
-    }
-    
-    return `/products/${categorySlug}`;
-  };
-
-  // Get the image path, prioritizing imageId if provided
-  const imagePath = imageId ? getImagePath(imageId) : image || getImagePath('placeholder');
-
+  
+  // Get image source
+  const imageSrc = imageId ? getImagePath(imageId) : image;
+  
+  // Determine if this is a touchscreen device
+  const isTouch = isMobile || isTablet;
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: delay + (index * 0.1) }}
-      className={`${variantStyles[variant]} ${className}`}
-    >
-      {imagePath && (
-        <div className="mb-4 aspect-video overflow-hidden rounded-md">
-          <img
-            src={imagePath}
-            alt={name || 'Product image'}
-            className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
-          />
-        </div>
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: animationDelay }}
+      className={cn(
+        "bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300",
+        "border border-gray-100 h-full flex flex-col",
+        className
       )}
-
-      <div>
-        {name && (
-          <h3 className="text-lg md:text-xl font-semibold text-aztec-900 mb-2">
-            {name}
-          </h3>
-        )}
-
-        {price && (
-          <div className="mb-2">
-            <span className="bg-aztec-50 text-aztec-800 px-2 py-1 rounded-full text-sm font-medium">
-              {price}
-            </span>
+      onClick={handleClick}
+    >
+      {/* Product Image */}
+      <div className="relative overflow-hidden aspect-[4/3]">
+        {imageSrc ? (
+          <ResponsiveImage
+            src={imageSrc}
+            alt={name}
+            aspectRatio={4/3}
+            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+          />
+        ) : (
+          <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+            <span className="text-gray-400">No image</span>
           </div>
         )}
-
-        {description && (
-          <p className="text-aztec-600 text-sm mb-4 line-clamp-3">
-            {description}
-          </p>
+        
+        {/* Price Tag - if provided */}
+        {price && (
+          <div className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+            {price}
+          </div>
         )}
-
-        <div className="flex justify-center">
-          <AnimatedButton
-            href={getLearnMoreHref()}
-            variant="outline"
-            className="text-sm px-4 py-2 bg-blue-600 text-white border-blue-300 hover:bg-blue-500 font-medium shadow-sm w-full justify-center"
-            onClick={handleLearnMoreClick}
+      </div>
+      
+      {/* Content */}
+      <div className="flex-grow p-5 flex flex-col">
+        <h3 className="text-lg font-semibold mb-2">{name}</h3>
+        <p className="text-gray-600 text-sm flex-grow mb-4">{description}</p>
+        
+        {/* Call to Action */}
+        <div className="mt-auto">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handleClick();
+            }}
+            className={cn(
+              "text-sm font-medium px-4 py-2 rounded transition-colors",
+              "bg-blue-600 text-white hover:bg-blue-700",
+              isTouch ? "w-full text-center" : ""
+            )}
           >
             Learn More
-          </AnimatedButton>
-
-          {variant === 'product' && (
-            <AnimatedButton
-              href="/contact"
-              variant="link"
-              className="text-sm text-blue-600 hover:text-blue-800"
-            >
-              Contact Us
-            </AnimatedButton>
-          )}
+          </button>
         </div>
       </div>
     </motion.div>

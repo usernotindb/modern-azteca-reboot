@@ -3,7 +3,6 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import ProductCard from '@/components/shared/ProductCard';
 import ProductsHeader from './ProductsHeader';
-import ProductsShowcase from './ProductsShowcase';
 import { productsList } from './ProductsData';
 import { useNavigate } from 'react-router-dom';
 import { getImagePath } from '@/config/images';
@@ -34,8 +33,6 @@ const Products = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <ProductsHeader />
-        
-        <ProductsShowcase />
         
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-3 gap-8"

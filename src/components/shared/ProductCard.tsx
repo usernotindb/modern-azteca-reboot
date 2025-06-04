@@ -59,6 +59,9 @@ const ProductCard = ({
 
   // Get the image path, prioritizing imageId if provided
   const imagePath = imageId ? getImagePath(imageId) : image || getImagePath('placeholder');
+  
+  // Debug logging to help identify missing images
+  console.log(`ProductCard: name="${name}", imageId="${imageId}", imagePath="${imagePath}"`);
 
   return (
     <motion.div
@@ -68,12 +71,19 @@ const ProductCard = ({
       className={`${variantStyles[variant]} ${className} w-full`}
     >
       {imagePath && (
-        <div className="mb-4 aspect-video overflow-hidden rounded-md">
+        <div className="mb-4 aspect-video overflow-hidden rounded-md bg-gray-100">
           <img
             src={imagePath}
             alt={name || 'Product image'}
             className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
             loading="lazy"
+            onError={(e) => {
+              console.error(`Failed to load image: ${imagePath} for product: ${name}`);
+              e.currentTarget.style.display = 'none';
+            }}
+            onLoad={() => {
+              console.log(`Successfully loaded image: ${imagePath} for product: ${name}`);
+            }}
           />
         </div>
       )}

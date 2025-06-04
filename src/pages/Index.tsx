@@ -7,7 +7,6 @@ import Products from '@/components/home/Products';
 import Contact from '@/components/home/Contact';
 import ITServices from '@/components/home/ITServices';
 import SoftwareSolutions from '@/components/home/SoftwareSolutions';
-import SecuritySolutions from '@/components/home/SecuritySolutions';
 import FadeIn from '@/components/ui/FadeIn';
 import { Check, Award, Clock, Users } from 'lucide-react';
 import AnimatedButton from '@/components/ui/AnimatedButton';

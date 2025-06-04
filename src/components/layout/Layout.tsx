@@ -1,7 +1,6 @@
 
 import { ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
 import Header from './Header';
 import Footer from './Footer';
 import ScrollToTop from '@/components/ui/ScrollToTop';

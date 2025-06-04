@@ -1,30 +1,41 @@
 
 /**
- * Centralized image configuration system with improved organization
+ * Optimized centralized image configuration system
  * 
- * Image configurations are now split into separate files by category
- * and re-exported from this central index file for easier usage
+ * This file now uses lazy loading for better performance
  */
 
 // Import the type first
 import type { ImageConfig } from './types';
 import { PLACEHOLDER_IMAGE } from './types';
-import { LOGO_IMAGES } from './logoImages';
-import { PRODUCT_IMAGES } from './productImages';
-import { ICON_IMAGES } from './iconImages';
-import { BACKGROUND_IMAGES } from './backgroundImages';
 
-// Re-export everything for backward compatibility
+// Re-export types and constants
 export type { ImageConfig };
 export { PLACEHOLDER_IMAGE } from './types';
+
+// Import static configs for immediate use
 export { LOGO_IMAGES } from './logoImages';
 export { PRODUCT_IMAGES } from './productImages';
 export { ICON_IMAGES } from './iconImages';
 export { BACKGROUND_IMAGES } from './backgroundImages';
 
-// Utility function to get an image by ID from any category
-export function getImageById(id: string): ImageConfig | undefined {
-  // Search in all image categories
+// Re-export optimized utilities
+export {
+  getImageById,
+  getImageByIdSync,
+  getImagePath,
+  getImage,
+  preloadCriticalImages
+} from './utils';
+
+// Legacy compatibility - maintain existing API
+export function getImagePathLegacy(id: string): string {
+  // For backward compatibility, import all configs synchronously
+  const { LOGO_IMAGES } = require('./logoImages');
+  const { PRODUCT_IMAGES } = require('./productImages');
+  const { ICON_IMAGES } = require('./iconImages');
+  const { BACKGROUND_IMAGES } = require('./backgroundImages');
+  
   const allImages = {
     ...LOGO_IMAGES,
     ...PRODUCT_IMAGES,
@@ -32,25 +43,6 @@ export function getImageById(id: string): ImageConfig | undefined {
     ...BACKGROUND_IMAGES
   };
   
-  return allImages[id] || undefined;
-}
-
-// Utility function to get image path with fallback to placeholder
-export function getImagePath(id: string): string {
-  const image = getImageById(id);
+  const image = allImages[id];
   return image ? image.path : PLACEHOLDER_IMAGE;
-}
-
-// Utility function to get full image config with fallback
-export function getImage(id: string): ImageConfig {
-  const image = getImageById(id);
-  if (!image) {
-    return {
-      id: 'placeholder',
-      path: PLACEHOLDER_IMAGE,
-      alt: 'Image not found',
-      category: 'background'
-    };
-  }
-  return image;
 }

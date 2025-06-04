@@ -1,13 +1,12 @@
 
-import React, { useRef } from 'react';
+import React, { useRef, memo, useMemo } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import ProductCard from '@/components/shared/ProductCard';
 import ProductsHeader from './ProductsHeader';
 import { productsList } from './ProductsData';
 import { useNavigate } from 'react-router-dom';
-import { getImagePath } from '@/config/images';
 
-const Products = () => {
+const Products = memo(() => {
   const navigate = useNavigate();
   const ref = useRef(null);
   const {
@@ -18,13 +17,16 @@ const Products = () => {
   });
   const translateX = useTransform(scrollYProgress, [0, 1], [0, -50]);
   
-  // Handle navigation to the specific product page using the link property
-  const handleLearnMore = (productIndex: number) => {
+  // Memoize the navigation handler
+  const handleLearnMore = useMemo(() => (productIndex: number) => {
     const product = productsList[productIndex];
     if (product && product.link) {
       navigate(product.link);
     }
-  };
+  }, [navigate]);
+  
+  // Memoize the products list to prevent unnecessary re-renders
+  const memoizedProducts = useMemo(() => productsList, []);
   
   return (
     <section 
@@ -41,7 +43,7 @@ const Products = () => {
             translateX 
           }}
         >
-          {productsList.map((product, index) => (
+          {memoizedProducts.map((product, index) => (
             <ProductCard 
               key={product.id} 
               name={product.name} 
@@ -58,6 +60,8 @@ const Products = () => {
       </div>
     </section>
   );
-};
+});
+
+Products.displayName = 'Products';
 
 export default Products;

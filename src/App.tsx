@@ -5,29 +5,40 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import Index from "./pages/Index";
-import Products from "./pages/Products";
-import About from "./pages/About";
-import Support from "./pages/Support";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
+import { lazy, Suspense } from "react";
+import LoadingSpinner from "@/components/ui/LoadingSpinner";
 
-import SoftwareSolutionsPage from "./pages/product-categories/SoftwareSolutionsPage";
-import HardwareSolutionsPage from "./pages/product-categories/HardwareSolutionsPage";
-import ITServicesPage from "./pages/product-categories/ITServicesPage";
-import SecuritySolutionsPage from "./pages/product-categories/SecuritySolutionsPage";
+// Lazy load components for better performance
+const Index = lazy(() => import("./pages/Index"));
+const Products = lazy(() => import("./pages/Products"));
+const About = lazy(() => import("./pages/About"));
+const Support = lazy(() => import("./pages/Support"));
+const Contact = lazy(() => import("./pages/Contact"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
-import LaptopsPage from "./pages/products/Laptops";
-import ServersPage from "./pages/products/Servers";
-import WorkstationsPage from "./pages/products/Workstations";
+const SoftwareSolutionsPage = lazy(() => import("./pages/product-categories/SoftwareSolutionsPage"));
+const HardwareSolutionsPage = lazy(() => import("./pages/product-categories/HardwareSolutionsPage"));
+const ITServicesPage = lazy(() => import("./pages/product-categories/ITServicesPage"));
+const SecuritySolutionsPage = lazy(() => import("./pages/product-categories/SecuritySolutionsPage"));
 
-import ImageGeneratorPage from "./pages/admin/ImageGeneratorPage";
+const LaptopsPage = lazy(() => import("./pages/products/Laptops"));
+const ServersPage = lazy(() => import("./pages/products/Servers"));
+const WorkstationsPage = lazy(() => import("./pages/products/Workstations"));
 
-import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
-import TermsOfService from "./pages/legal/TermsOfService";
-import CookiePolicy from "./pages/legal/CookiePolicy";
+const ImageGeneratorPage = lazy(() => import("./pages/admin/ImageGeneratorPage"));
 
-const queryClient = new QueryClient();
+const PrivacyPolicy = lazy(() => import("./pages/legal/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("./pages/legal/TermsOfService"));
+const CookiePolicy = lazy(() => import("./pages/legal/CookiePolicy"));
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      gcTime: 10 * 60 * 1000, // 10 minutes
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -36,32 +47,34 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AnimatePresence mode="wait">
-          <Routes>
-            <Route path="/" element={<Index />} />
-            
-            <Route path="/products" element={<Products />} />
-            <Route path="/products/software-solutions" element={<SoftwareSolutionsPage />} />
-            <Route path="/products/hardware-solutions" element={<HardwareSolutionsPage />} />
-            <Route path="/products/it-services" element={<ITServicesPage />} />
-            <Route path="/products/security-solutions" element={<SecuritySolutionsPage />} />
-            
-            <Route path="/products/laptops" element={<LaptopsPage />} />
-            <Route path="/products/servers" element={<ServersPage />} />
-            <Route path="/products/workstations" element={<WorkstationsPage />} />
-            
-            <Route path="/support" element={<Support />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            
-            {/* Admin routes */}
-            <Route path="/admin/image-generator" element={<ImageGeneratorPage />} />
-            
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route path="/cookie-policy" element={<CookiePolicy />} />
-            
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense fallback={<LoadingSpinner />}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              
+              <Route path="/products" element={<Products />} />
+              <Route path="/products/software-solutions" element={<SoftwareSolutionsPage />} />
+              <Route path="/products/hardware-solutions" element={<HardwareSolutionsPage />} />
+              <Route path="/products/it-services" element={<ITServicesPage />} />
+              <Route path="/products/security-solutions" element={<SecuritySolutionsPage />} />
+              
+              <Route path="/products/laptops" element={<LaptopsPage />} />
+              <Route path="/products/servers" element={<ServersPage />} />
+              <Route path="/products/workstations" element={<WorkstationsPage />} />
+              
+              <Route path="/support" element={<Support />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              
+              {/* Admin routes */}
+              <Route path="/admin/image-generator" element={<ImageGeneratorPage />} />
+              
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
+              <Route path="/cookie-policy" element={<CookiePolicy />} />
+              
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </AnimatePresence>
       </BrowserRouter>
     </TooltipProvider>

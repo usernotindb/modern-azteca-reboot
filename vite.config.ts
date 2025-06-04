@@ -20,4 +20,23 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          animation: ['framer-motion'],
+          ui: ['@radix-ui/react-slot', '@radix-ui/react-toast'],
+          routing: ['react-router-dom'],
+          query: ['@tanstack/react-query'],
+        },
+      },
+    },
+    sourcemap: mode === 'development',
+    minify: mode === 'production' ? 'esbuild' : false,
+    target: 'es2020',
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'framer-motion', 'lucide-react'],
+  },
 }));

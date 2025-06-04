@@ -1,5 +1,5 @@
 
-import { ReactNode } from 'react';
+import { ReactNode, memo } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
@@ -11,7 +11,7 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = memo(({ children }: LayoutProps) => {
   const location = useLocation();
   const isMobile = useIsMobile();
   
@@ -34,6 +34,8 @@ const Layout = ({ children }: LayoutProps) => {
       <ScrollToTop threshold={300} />
     </div>
   );
-};
+});
+
+Layout.displayName = 'Layout';
 
 export default Layout;

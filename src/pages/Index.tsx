@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react';
+import { useEffect, memo } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import Hero from '@/components/home/Hero';
@@ -13,11 +13,15 @@ import AnimatedButton from '@/components/ui/AnimatedButton';
 import StatCard from '@/components/home/StatCard';
 import ServiceCard from '@/components/home/ServiceCard';
 import { Toaster } from '@/components/ui/toaster';
+import { preloadCriticalImages } from '@/config/images';
 
-const Index = () => {
+const Index = memo(() => {
   const controls = useAnimation();
   
   useEffect(() => {
+    // Preload critical images for better performance
+    preloadCriticalImages();
+    
     controls.start({
       opacity: 1,
       y: 0,
@@ -125,6 +129,8 @@ const Index = () => {
       <Toaster />
     </Layout>
   );
-};
+});
+
+Index.displayName = 'Index';
 
 export default Index;

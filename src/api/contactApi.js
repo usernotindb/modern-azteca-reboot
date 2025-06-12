@@ -1,4 +1,5 @@
 
+
 import express from 'express';
 import { sendEmail, createContactEmailTemplate, createContactEmailText } from '../services/emailService.js';
 
@@ -39,7 +40,11 @@ const rateLimiter = (req, res, next) => {
 // Contact form endpoint
 router.post('/contact', rateLimiter, async (req, res) => {
   try {
-    console.log('Contact form submission received:', req.body);
+    console.log('=== CONTACT API CALLED ===');
+    console.log('Request method:', req.method);
+    console.log('Request path:', req.path);
+    console.log('Request body:', req.body);
+    console.log('Headers:', req.headers);
     
     const { name, email, subject, message } = req.body;
     
@@ -102,4 +107,11 @@ router.post('/contact', rateLimiter, async (req, res) => {
   }
 });
 
+// Add a test GET route to verify the API is working
+router.get('/test', (req, res) => {
+  console.log('API test endpoint called');
+  res.json({ message: 'Contact API is working', timestamp: new Date().toISOString() });
+});
+
 export default router;
+

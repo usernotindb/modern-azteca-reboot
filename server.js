@@ -1,4 +1,5 @@
 
+
 import 'dotenv/config';
 import express from 'express';
 import path from 'path';
@@ -13,6 +14,10 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3235;
 
+console.log('=== SERVER STARTING ===');
+console.log('Port:', PORT);
+console.log('Environment:', process.env.NODE_ENV || 'development');
+
 // Enable compression for all responses
 app.use(compression());
 
@@ -22,8 +27,20 @@ app.use(express.json());
 // Trust proxy for correct IP addresses in rate limiting
 app.set('trust proxy', 1);
 
+// Add request logging middleware
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path} - ${new Date().toISOString()}`);
+  next();
+});
+
 // API routes - these must come BEFORE static file serving
+console.log('Mounting contact API routes...');
 app.use('/api', contactApi);
+
+// Add a test route to verify server is working
+app.get('/api-test', (req, res) => {
+  res.json({ message: 'Server API test working', timestamp: new Date().toISOString() });
+});
 
 // Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, 'dist')));
@@ -32,6 +49,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.get('*', (req, res) => {
   // Don't serve HTML for API routes that might not exist
   if (req.path.startsWith('/api/')) {
+    console.log(`404 - API route not found: ${req.path}`);
     return res.status(404).json({ error: 'API endpoint not found' });
   }
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
@@ -48,5 +66,8 @@ app.use((err, req, res, next) => {
 
 // Start the server
 app.listen(PORT, () => {
+  console.log(`=== SERVER RUNNING ===`);
   console.log(`Server running on port ${PORT}`);
+  console.log(`Test the API at: http://localhost:${PORT}/api/test`);
 });
+

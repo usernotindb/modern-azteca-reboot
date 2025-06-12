@@ -39,13 +39,25 @@ const rateLimiter = (req, res, next) => {
 // Contact form endpoint
 router.post('/contact', rateLimiter, async (req, res) => {
   try {
+    console.log('Contact form submission received:', req.body);
+    
     const { name, email, subject, message } = req.body;
     
     // Validate required fields
     if (!name || !email || !subject || !message) {
+      console.log('Validation failed - missing fields');
       return res.status(400).json({
         success: false,
         message: 'All fields are required'
+      });
+    }
+    
+    // For development/testing - if email service is not configured, just return success
+    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      console.log('Email service not configured - returning mock success');
+      return res.status(200).json({
+        success: true,
+        message: 'Message received (email service not configured in development)'
       });
     }
     
@@ -76,6 +88,7 @@ router.post('/contact', rateLimiter, async (req, res) => {
       `
     });
     
+    console.log('Email sent successfully');
     res.status(200).json({
       success: true,
       message: 'Email sent successfully'

@@ -1,5 +1,4 @@
 
-
 import 'dotenv/config';
 import express from 'express';
 import path from 'path';
@@ -21,15 +20,31 @@ console.log('Environment:', process.env.NODE_ENV || 'development');
 // Enable compression for all responses
 app.use(compression());
 
-// Parse JSON request body - this must come before API routes
-app.use(express.json());
+// Parse JSON request body with increased limit
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Trust proxy for correct IP addresses in rate limiting
 app.set('trust proxy', 1);
 
+// CORS headers for API requests
+app.use('/api', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  next();
+});
+
 // Add request logging middleware
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.path} - ${new Date().toISOString()}`);
+  if (req.path.startsWith('/api/')) {
+    console.log('API Request Body:', req.body);
+  }
   next();
 });
 
@@ -70,4 +85,3 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Test the API at: http://localhost:${PORT}/api/test`);
 });
-
